@@ -5,7 +5,7 @@
     
   <url>
     <loc>http://note.leodev.me/2017/03/15/Hexo%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2017-03-15T15:55:32.000Z</lastmod>
+    <lastmod>2017-03-15T15:56:42.000Z</lastmod>
     <data>
         <display>
         <title>Hexo静态博客搭建笔记</title>
@@ -21,79 +21,4 @@
     </url>
 
     
-  <url>
-    <loc>http://note.leodev.me/2017/03/15/hxeo%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</loc>
-    <lastmod>2017-03-15T14:58:01.000Z</lastmod>
-    <data>
-        <display>
-        <title>hxeo静态博客搭建遇到的一些问题</title>
-        <pubTime>2017-03-15T14:58:01.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://note.leodev.me/2017/03/15/d/</loc>
-    <lastmod>2017-03-15T14:54:33.000Z</lastmod>
-    <data>
-        <display>
-        <title>d</title>
-        <pubTime>2017-03-15T14:54:33.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://note.leodev.me/2017/03/15/%E7%AC%AC%E4%B8%80%E7%AF%87/</loc>
-    <lastmod>2017-03-15T14:52:25.000Z</lastmod>
-    <data>
-        <display>
-        <title>测试文章</title>
-        <pubTime>2017-03-15T13:03:05.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-    
-  <url>
-    <loc>http://note.leodev.me/2017/03/15/pagepageNamsdsds/</loc>
-    <lastmod>2017-03-15T08:49:40.000Z</lastmod>
-    <data>
-        <display>
-        <title>pagepageNamsdsds</title>
-        <pubTime>2017-03-15T08:49:40.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://note.leodev.me/2017/03/15/hello-world/</loc>
-    <lastmod>2017-03-15T08:38:03.000Z</lastmod>
-    <data>
-        <display>
-        <title>Hello World</title>
-        <pubTime>2017-03-15T08:38:03.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
 </urlset>
