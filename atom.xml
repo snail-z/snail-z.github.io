@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://note.leodev.me/"/>
-  <updated>2017-03-15T13:03:05.000Z</updated>
+  <updated>2017-03-15T15:55:32.000Z</updated>
   <id>http://note.leodev.me/</id>
   
   <author>
@@ -16,13 +16,84 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>第一篇</title>
+    <title>Hexo静态博客搭建笔记</title>
+    <link href="http://note.leodev.me/2017/03/15/Hexo%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E7%AC%94%E8%AE%B0/"/>
+    <id>http://note.leodev.me/2017/03/15/Hexo静态博客搭建笔记/</id>
+    <published>2017-03-15T14:59:29.000Z</published>
+    <updated>2017-03-15T15:55:32.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>简单记录下搭建hexo静态博客中遇到的相关问题以及查阅的相关资料<br><a href="https://hexo.io" target="_blank" rel="external">Hexo</a> 是一个基于 <a href="https://nodejs.org/en/" target="_blank" rel="external">Node.js</a> 的静态博客程序，可以方便的生成静态网页托管在 GitHub 和 Heroku 上。作者是来自台湾的 <a href="https://github.com/hexojs/hexo" target="_blank" rel="external">tommy351</a>。<br><a id="more"></a></p>
+<h4 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题:"></a>相关问题:</h4><p>关于博客根目录下的 _config.yml 文件配置，末尾添加如下信息<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">deploy:</span></div><div class="line">  <span class="symbol">type:</span> git</div><div class="line">  <span class="symbol">repository:</span> <span class="comment"># 你的 GitHub 仓库地址，别忘了加上 .git （我的是https://github.com/snail-z/snail-z.github.io.git）</span></div><div class="line">  <span class="symbol">branch:</span> master</div></pre></td></tr></table></figure></p>
+<p>然后执行命令：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hexo generate <span class="comment"># 生成静态页面，可以简化为 hexo g</span></div><div class="line">hexo deploy   <span class="comment"># 部署到 GitHub，可以简化为 hexo d</span></div></pre></td></tr></table></figure></p>
+<p>浏览器访问 snail-z.github.io 就能看到自己的 Blog 了，一般延迟半分钟左右才能看到效果。一开始看到 404 页面不要惊慌，耐心等等。<br>手打党请注意，配置文件的冒号后必须有一个空格。deploy 下面的字段前必须空两个空格，_config.yml配置文件严格要求。</p>
+<hr>
+<h4 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h4><ul>
+<li><a href="https://note.leodev.me/2016/09/01/Hexo-3-1-1-Staic-Blog-Build-Guide/">Hexo 3.1.1 静态博客搭建指南</a></li>
+<li><a href="http://baixin.io/2015/08/HEXO搭建个人博客/" target="_blank" rel="external">HEXO搭建个人博客</a></li>
+<li><a href="http://ibruce.info/2013/11/22/hexo-your-blog/" target="_blank" rel="external">hexo你的博客</a></li>
+<li><a href="https://www.zybuluo.com/mdeditor" target="_blank" rel="external">Markdown 使用</a></li>
+<li><a href="http://www.yaosansi.com/post/markdown-on-github/" target="_blank" rel="external">GitHub上Markdown基本使用</a></li>
+<li><a href="http://theme-next.iissnan.com" target="_blank" rel="external">NexT 使用文档</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;简单记录下搭建hexo静态博客中遇到的相关问题以及查阅的相关资料&lt;br&gt;&lt;a href=&quot;https://hexo.io&quot;&gt;Hexo&lt;/a&gt; 是一个基于 &lt;a href=&quot;https://nodejs.org/en/&quot;&gt;Node.js&lt;/a&gt; 的静态博客程序，可以方便的生成静态网页托管在 GitHub 和 Heroku 上。作者是来自台湾的 &lt;a href=&quot;https://github.com/hexojs/hexo&quot;&gt;tommy351&lt;/a&gt;。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="随笔" scheme="http://note.leodev.me/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>hxeo静态博客搭建遇到的一些问题</title>
+    <link href="http://note.leodev.me/2017/03/15/hxeo%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/"/>
+    <id>http://note.leodev.me/2017/03/15/hxeo静态博客搭建遇到的一些问题/</id>
+    <published>2017-03-15T14:58:01.000Z</published>
+    <updated>2017-03-15T14:58:01.000Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>d</title>
+    <link href="http://note.leodev.me/2017/03/15/d/"/>
+    <id>http://note.leodev.me/2017/03/15/d/</id>
+    <published>2017-03-15T14:54:33.000Z</published>
+    <updated>2017-03-15T14:54:33.000Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>测试文章</title>
     <link href="http://note.leodev.me/2017/03/15/%E7%AC%AC%E4%B8%80%E7%AF%87/"/>
     <id>http://note.leodev.me/2017/03/15/第一篇/</id>
     <published>2017-03-15T13:03:05.000Z</published>
-    <updated>2017-03-15T13:03:05.000Z</updated>
+    <updated>2017-03-15T14:52:25.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="骑行"><a href="#骑行" class="headerlink" title="骑行"></a>骑行</h3><p><em>这是我们在北京的第一次骑行————永定河森林公园骑行。记得当年自己在上海骑车去看灰姑娘，电影结束后大雨滂沱，我没有王子，于是独自享受着在异乡的大雨中骑行，那时的我，那时的自行车，那时的伙伴，那时候的复旦，同济！我相信我还会继续在路上。</em> <a id="more"></a></p>
+<p>####藏身柳暗花明处<br><em>来到北京后，我们在吵杂中用心感受这座城市，在它的怀抱中穿梭，有时候徒步，有时候骑行，有时候静静地坐在公交车上让眼睛悄悄地映着穿流的一切。玉渊潭的樱花，钓鱼台的银杏，香山的红叶，奥林匹克森林公园醉人的氧气！再怎么快节奏的生活，都会在这样的环境下慢下脚步，真心的想好好的过日子。</em></p>
+<h4 id="逛京城"><a href="#逛京城" class="headerlink" title="逛京城"></a>逛京城</h4><p><em>西单，王府井，崇文门，国贸，三里屯，蓝色港湾，望京798，中关村，五道口，南锣鼓巷，雍和宫，簋街，立水桥，奥林匹克公园，故宫，长城等。我在这些地方留下了我的足迹。无论在哪里都离不开吃喝住行，在北京的吃喝住行还算是便利的，虽然南北有差异，但是在北京的生活并不让我排斥。</em></p>
+<h4 id="谋生术"><a href="#谋生术" class="headerlink" title="谋生术"></a>谋生术</h4><p><em>工作就是做自己喜欢做的事情————敲代码。我喜欢做的事情很多，看书，画画，设计，总结一句就是看到美好的事物总是心生向往，想去触碰它。敲代码是一件我已经做了快4年的事情了。不是什么高手级别的，只是一年比一年对它更加熟悉，更加了解它，更想去了解它的点滴。对于想去了解它的动机也越来越单纯。它不再是一个用来挣钱养活自己的利器，而是它更加具有魅力，让我更想追寻着它奔跑。有人说追着累，而我有时候感觉看着它发展也挺高兴的。跟着它的脚步看它在未来某个时候蜕变或是变得消声觅迹也是一种心灵上的安慰。在这个互联网的时代，遍地是码农的时代，我只想做好自己，保持学习，分享的心态。</em></p>
+<h4 id="流浪四海"><a href="#流浪四海" class="headerlink" title="流浪四海"></a>流浪四海</h4><p><em>曾经畅想过很多次我的老年生活————我希望到了某个年纪，有诗和远方。人总是喜欢用各种方式满足自己的好奇心。以前的生活很慢，慢得一生只够爱一个人。现在的生活很快，快到现在我在北京，晚上我估计已经在厦门和朋友聚餐了。这样的航空条件，还有当今的多媒体，让我们对整个国家乃至整个地球有了即视感。巴西的热带丛林，澳洲夏天的圣诞节，斯里兰卡的海岸线，欧洲的古老建筑，纽约的Open。我很想去亲身体验一下。想想这些场景，自己心里美滋滋的，脸上也洋溢的微笑，感觉棒棒的。这是我不敲代码想做的事情。</em><br>  <figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">dslfjsld</div><div class="line">		dsjfsl</div></pre></td></tr></table></figure></p>
+<p><img src="https://www.zybuluo.com/static/img/logo.png" alt="cmd-markdown-logo"></p>
+]]></content>
     
     <summary type="html">
+    
+      &lt;h3 id=&quot;骑行&quot;&gt;&lt;a href=&quot;#骑行&quot; class=&quot;headerlink&quot; title=&quot;骑行&quot;&gt;&lt;/a&gt;骑行&lt;/h3&gt;&lt;p&gt;&lt;em&gt;这是我们在北京的第一次骑行————永定河森林公园骑行。记得当年自己在上海骑车去看灰姑娘，电影结束后大雨滂沱，我没有王子，于是独自享受着在异乡的大雨中骑行，那时的我，那时的自行车，那时的伙伴，那时候的复旦，同济！我相信我还会继续在路上。&lt;/em&gt;
     
     </summary>
     
