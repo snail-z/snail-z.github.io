@@ -4,9 +4,9 @@
   <subtitle>书山有路勤为径，学海无涯苦作舟</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://note.leodev.me/"/>
+  <link href="http://note.snail-z.me/"/>
   <updated>2017-03-15T17:01:22.000Z</updated>
-  <id>http://note.leodev.me/</id>
+  <id>http://note.snail-z.me/</id>
   
   <author>
     <name>Snail-z</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>2017我在北京</title>
-    <link href="http://note.leodev.me/2017/03/16/2017%E6%88%91%E5%9C%A8%E5%8C%97%E4%BA%AC/"/>
-    <id>http://note.leodev.me/2017/03/16/2017我在北京/</id>
+    <link href="http://note.snail-z.me/2017/03/16/2017%E6%88%91%E5%9C%A8%E5%8C%97%E4%BA%AC/"/>
+    <id>http://note.snail-z.me/2017/03/16/2017我在北京/</id>
     <published>2017-03-15T16:18:53.000Z</published>
     <updated>2017-03-15T17:01:22.000Z</updated>
     
@@ -36,17 +36,17 @@
     
     </summary>
     
-      <category term="我和她" scheme="http://note.leodev.me/categories/%E6%88%91%E5%92%8C%E5%A5%B9/"/>
+      <category term="我和她" scheme="http://note.snail-z.me/categories/%E6%88%91%E5%92%8C%E5%A5%B9/"/>
     
     
-      <category term="我和她" scheme="http://note.leodev.me/tags/%E6%88%91%E5%92%8C%E5%A5%B9/"/>
+      <category term="我和她" scheme="http://note.snail-z.me/tags/%E6%88%91%E5%92%8C%E5%A5%B9/"/>
     
   </entry>
   
   <entry>
     <title>Hexo静态博客搭建笔记</title>
-    <link href="http://note.leodev.me/2017/03/15/Hexo%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E7%AC%94%E8%AE%B0/"/>
-    <id>http://note.leodev.me/2017/03/15/Hexo静态博客搭建笔记/</id>
+    <link href="http://note.snail-z.me/2017/03/15/Hexo%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E7%AC%94%E8%AE%B0/"/>
+    <id>http://note.snail-z.me/2017/03/15/Hexo静态博客搭建笔记/</id>
     <published>2017-03-15T14:59:29.000Z</published>
     <updated>2017-03-15T16:13:26.000Z</updated>
     
@@ -57,7 +57,7 @@
 <p>浏览器访问 snail-z.github.io 就能看到自己的 Blog 了，一般延迟半分钟左右才能看到效果。一开始看到 404 页面不要惊慌，耐心等等。</p>
 <hr>
 <h4 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h4><ul>
-<li><a href="https://note.leodev.me/2016/09/01/Hexo-3-1-1-Staic-Blog-Build-Guide/">Hexo 3.1.1 静态博客搭建指南</a></li>
+<li><a href="https://note.leodev.me/2016/09/01/Hexo-3-1-1-Staic-Blog-Build-Guide/" target="_blank" rel="external">Hexo 3.1.1 静态博客搭建指南</a></li>
 <li><a href="http://baixin.io/2015/08/HEXO搭建个人博客/" target="_blank" rel="external">HEXO搭建个人博客</a></li>
 <li><a href="http://ibruce.info/2013/11/22/hexo-your-blog/" target="_blank" rel="external">hexo你的博客</a></li>
 <li><a href="http://oakland.github.io/2016/04/30/hexo-%E5%A6%82%E4%BD%95%E6%9B%B4%E6%8D%A2%E4%B8%BB%E9%A2%98%E3%80%81%E5%88%A0%E9%99%A4%E6%96%87%E7%AB%A0/" target="_blank" rel="external">hexo如何更换主题、删除文章</a></li>
@@ -73,10 +73,10 @@
     
     </summary>
     
-      <category term="技术" scheme="http://note.leodev.me/categories/%E6%8A%80%E6%9C%AF/"/>
+      <category term="技术" scheme="http://note.snail-z.me/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="技术" scheme="http://note.leodev.me/tags/%E6%8A%80%E6%9C%AF/"/>
+      <category term="技术" scheme="http://note.snail-z.me/tags/%E6%8A%80%E6%9C%AF/"/>
     
   </entry>
   
