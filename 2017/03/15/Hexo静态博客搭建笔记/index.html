@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -115,7 +115,7 @@
 <meta property="og:url" content="http://note.snail-z.me/2017/03/15/Hexo静态博客搭建笔记/index.html">
 <meta property="og:site_name" content="Snail-z Notes">
 <meta property="og:description" content="简单记录下搭建hexo静态博客中遇到的相关问题以及查阅的相关资料Hexo 是一个基于 Node.js 的静态博客程序，可以方便的生成静态网页托管在 GitHub 和 Heroku 上。作者是来自台湾的 tommy351。">
-<meta property="og:updated_time" content="2017-03-16T04:30:56.000Z">
+<meta property="og:updated_time" content="2017-03-16T08:41:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo静态博客搭建笔记">
 <meta name="twitter:description" content="简单记录下搭建hexo静态博客中遇到的相关问题以及查阅的相关资料Hexo 是一个基于 Node.js 的静态博客程序，可以方便的生成静态网页托管在 GitHub 和 Heroku 上。作者是来自台湾的 tommy351。">
@@ -126,7 +126,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
+    scheme: 'Muse',
     sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
     motion: true,
@@ -401,6 +401,9 @@
 <p>然后执行命令：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hexo generate <span class="comment"># 生成静态页面，可以简化为 hexo g</span></div><div class="line">hexo deploy   <span class="comment"># 部署到 GitHub，可以简化为 hexo d</span></div></pre></td></tr></table></figure></p>
 <p>浏览器访问 snail-z.github.io 就能看到自己的 Blog 了，一般延迟半分钟左右才能看到效果。一开始看到 404 页面不要惊慌，耐心等等。</p>
 <hr>
+<h4 id="网页背景图像"><a href="#网页背景图像" class="headerlink" title="网页背景图像"></a>网页背景图像</h4><p> 为网页增加背景图片包括header、主体背景、footer，具体做法是在hexo/themes/next/source/css/_custom/ 里面的custom.styl增加如下代码：<br> <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">#header &#123;</div><div class="line">    background: url("../images/background-header.jpg");</div><div class="line">    background-size: cover;</div><div class="line">&#125;</div><div class="line">body &#123;</div><div class="line">    background: url("../images/background-body.jpg");</div><div class="line">    background-size: cover;</div><div class="line">&#125;</div><div class="line">#footer &#123;</div><div class="line">    background: url("../images/background-footer.jpg");</div><div class="line">    background-size: cover;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p> 将上述中的图片放到hexo/themes/next/source/images中即可。</p>
+<hr>
 <h4 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h4><ul>
 <li><a href="https://note.leodev.me/2016/09/01/Hexo-3-1-1-Staic-Blog-Build-Guide/" target="_blank" rel="external">Hexo 3.1.1 静态博客搭建指南</a></li>
 <li><a href="http://baixin.io/2015/08/HEXO搭建个人博客/" target="_blank" rel="external">HEXO搭建个人博客</a></li>
@@ -409,6 +412,8 @@
 <li><a href="https://www.zybuluo.com/mdeditor" target="_blank" rel="external">Markdown 使用</a></li>
 <li><a href="http://www.yaosansi.com/post/markdown-on-github/" target="_blank" rel="external">GitHub上Markdown基本使用</a></li>
 <li><a href="http://theme-next.iissnan.com" target="_blank" rel="external">NexT 使用文档</a></li>
+<li><a href="http://zhouhuix.cn/2016/11/24/%E4%BF%AE%E6%94%B9Hexo%E7%9A%84Next%E4%B8%BB%E9%A2%98/" target="_blank" rel="external">修改Hexo的Next主题</a></li>
+<li><a href="https://www.fengyu.info/blog/2016/06/30/hexo-theme-next-modify/" target="_blank" rel="external">Hexo Next主题修改与优化 – 基础篇</a></li>
 </ul>
 
       
@@ -601,7 +606,7 @@
           <div class="links-of-blogroll motion-element links-of-blogroll-inline">
             <div class="links-of-blogroll-title">
               <i class="fa  fa-fw fa-globe"></i>
-              Links
+              
             </div>
             <ul class="links-of-blogroll-list">
               
@@ -628,7 +633,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#相关问题"><span class="nav-number">1.</span> <span class="nav-text">相关问题:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#相关资料"><span class="nav-number">2.</span> <span class="nav-text">相关资料</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#相关问题"><span class="nav-number">1.</span> <span class="nav-text">相关问题:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网页背景图像"><span class="nav-number">2.</span> <span class="nav-text">网页背景图像</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#相关资料"><span class="nav-number">3.</span> <span class="nav-text">相关资料</span></a></li></ol></div>
             
 
           </div>
@@ -666,7 +671,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
+    NexT.Muse
   </a>
 </div>
 
@@ -737,13 +742,6 @@
 
   
   
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
-
-
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
