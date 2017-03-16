@@ -1,1 +1,1 @@
-snail-z
+#### [hexo](https://hexo.io)简单搭建的个人博客[Snail-z Notes](https://snail-z.github.io)
