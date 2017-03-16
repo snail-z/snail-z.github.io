@@ -1684,7 +1684,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #86ffeb;
+  background: #7191f4;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2532,6 +2532,6 @@ embed {
   display: inline-block;
 }
 #header {
-  background: url("../images/background-header.JPG");
+  background: url("https://raw.githubusercontent.com/snail-z/snail-z.github.io/master/images/background-header.jpg");
   background-size: cover;
 }
