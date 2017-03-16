@@ -1002,8 +1002,8 @@ pre .javascript .function {
 }
 .site-subtitle {
   margin-top: 10px;
-  font-size: 13px;
-  color: #999;
+  font-size: 15px;
+  color: #fffafa;
 }
 .use-motion .brand {
   opacity: 0;
@@ -1668,6 +1668,9 @@ pre .javascript .function {
 .links-of-author {
   margin-top: 20px;
 }
+.links-of-author-item {
+  text-align: center;
+}
 .links-of-author a {
   display: inline-block;
   vertical-align: middle;
@@ -1684,7 +1687,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #3e6953;
+  background: #716726;
 }
 .links-of-blogroll {
   font-size: 13px;
