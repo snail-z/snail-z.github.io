@@ -115,7 +115,7 @@
 <meta property="og:url" content="http://note.snail-z.me/2017/03/15/Hexo静态博客搭建笔记/index.html">
 <meta property="og:site_name" content="Snail-z Notes">
 <meta property="og:description" content="简单记录下搭建hexo静态博客中遇到的相关问题以及查阅的相关资料Hexo 是一个基于 Node.js 的静态博客程序，可以方便的生成静态网页托管在 GitHub 和 Heroku 上。作者是来自台湾的 tommy351。">
-<meta property="og:updated_time" content="2017-03-15T16:13:26.000Z">
+<meta property="og:updated_time" content="2017-03-16T02:39:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo静态博客搭建笔记">
 <meta name="twitter:description" content="简单记录下搭建hexo静态博客中遇到的相关问题以及查阅的相关资料Hexo 是一个基于 Node.js 的静态博客程序，可以方便的生成静态网页托管在 GitHub 和 Heroku 上。作者是来自台湾的 tommy351。">
@@ -395,7 +395,7 @@
       
 
       
-        <p>简单记录下搭建hexo静态博客中遇到的相关问题以及查阅的相关资料<br><a href="https://hexo.io" target="_blank" rel="external">Hexo</a> 是一个基于 <a href="https://nodejs.org/en/" target="_blank" rel="external">Node.js</a> 的静态博客程序，可以方便的生成静态网页托管在 GitHub 和 Heroku 上。作者是来自台湾的 <a href="https://github.com/hexojs/hexo" target="_blank" rel="external">tommy351</a>。<br><a id="more"></a></p>
+        <p><blockquote class="blockquote-center">简单记录下搭建hexo静态博客中遇到的相关问题以及查阅的相关资料</blockquote><br><a href="https://hexo.io" target="_blank" rel="external">Hexo</a> 是一个基于 <a href="https://nodejs.org/en/" target="_blank" rel="external">Node.js</a> 的静态博客程序，可以方便的生成静态网页托管在 GitHub 和 Heroku 上。作者是来自台湾的 <a href="https://github.com/hexojs/hexo" target="_blank" rel="external">tommy351</a>。<br><a id="more"></a></p>
 <h4 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题:"></a>相关问题:</h4><p>关于博客根目录下的 _config.yml 文件配置，末尾添加如下信息<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">deploy:</span></div><div class="line">  <span class="symbol">type:</span> git</div><div class="line">  <span class="symbol">repository:</span> <span class="comment"># 你的 GitHub 仓库地址，别忘了加上 .git （我的是https://github.com/snail-z/snail-z.github.io.git）</span></div><div class="line">  <span class="symbol">branch:</span> master</div></pre></td></tr></table></figure></p>
 <p>手打党请注意，配置文件的冒号后必须有一个空格。deploy 下面的字段前必须空两个空格，_config.yml配置文件严格要求</p>
 <p>然后执行命令：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hexo generate <span class="comment"># 生成静态页面，可以简化为 hexo g</span></div><div class="line">hexo deploy   <span class="comment"># 部署到 GitHub，可以简化为 hexo d</span></div></pre></td></tr></table></figure></p>

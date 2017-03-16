@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://note.snail-z.me/2017/03/15/Hexo%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E7%AC%94%E8%AE%B0/</loc>
+    
+    <lastmod>2017-03-16T02:39:10.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://note.snail-z.me/%E6%8A%80%E6%9C%AF/index.html</loc>
     
     <lastmod>2017-03-16T01:50:06.000Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>http://note.snail-z.me/2017/03/16/2017%E6%88%91%E5%9C%A8%E5%8C%97%E4%BA%AC/</loc>
     
     <lastmod>2017-03-16T01:38:14.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://note.snail-z.me/2017/03/15/Hexo%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E7%AC%94%E8%AE%B0/</loc>
-    
-    <lastmod>2017-03-15T16:13:26.000Z</lastmod>
     
   </url>
   
