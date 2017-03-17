@@ -186,7 +186,7 @@ th {
 body {
   position: relative;
   font-family: "Microsoft YaHei", Verdana, sans-serif;
-  font-size: 17px;
+  font-size: 16px;
   line-height: 2;
   color: #555;
   background: #fff;
@@ -1104,7 +1104,7 @@ pre .javascript .function {
 .post-body .figure .caption {
   margin: 10px auto 15px;
   text-align: center;
-  font-size: 17px;
+  font-size: 16px;
   color: #999;
   font-weight: bold;
   line-height: 1;
@@ -1687,7 +1687,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #18ec22;
+  background: #a37a01;
 }
 .links-of-blogroll {
   font-size: 13px;

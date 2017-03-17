@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://note.snail-z.me/2017/03/15/Hexo%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2017-03-17T03:16:55.000Z</lastmod>
+    <data>
+        <display>
+        <title>Hexo静态博客使用笔记</title>
+        <pubTime>2017-03-15T14:59:29.000Z</pubTime>
+        
+        <tag>hexo</tag>
+         
+         
+           
+             
+              <breadCrumb title="技术" url="http://note.snail-z.me/categories/%E6%8A%80%E6%9C%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+    
+  <url>
     <loc>http://note.snail-z.me/2017/03/16/2017%E6%88%91%E5%9C%A8%E5%8C%97%E4%BA%AC/</loc>
     <lastmod>2017-03-17T01:31:22.000Z</lastmod>
     <data>
@@ -22,28 +44,6 @@
     </data>
     </url>
 
-    
-  <url>
-    <loc>http://note.snail-z.me/2017/03/15/Hexo%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2017-03-17T01:31:01.000Z</lastmod>
-    <data>
-        <display>
-        <title>Hexo静态博客搭建笔记</title>
-        <pubTime>2017-03-15T14:59:29.000Z</pubTime>
-        
-        <tag>hexo</tag>
-         
-         
-           
-             
-              <breadCrumb title="技术" url="http://note.snail-z.me/categories/%E6%8A%80%E6%9C%AF/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-    
     
     
     
