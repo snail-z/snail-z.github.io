@@ -996,9 +996,9 @@ pre .javascript .function {
   display: inline-block;
   vertical-align: top;
   line-height: 36px;
-  font-size: 24px;
+  font-size: 32px;
   font-weight: normal;
-  font-family: 'Georgia', 'Monda', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'PT Mono', 'Monda', "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 .site-subtitle {
   margin-top: 10px;
@@ -1687,7 +1687,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #749c20;
+  background: #8701e9;
 }
 .links-of-blogroll {
   font-size: 13px;
