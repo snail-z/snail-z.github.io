@@ -1687,7 +1687,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ecffc6;
+  background: #990559;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2535,6 +2535,6 @@ embed {
   display: inline-block;
 }
 #header {
-  background: url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1489719452346&di=5600be7169dee0383b32148ca007fcc8&imgtype=0&src=http%3A%2F%2Fwww.jmyx.com.cn%2Fbbs%2Fdata%2Fattachment%2Fforum%2F201508%2F20%2F100623kgsyj3pp4js3j74p.jpg");
+  background: url("https://raw.githubusercontent.com/snail-z/snail-z.github.io/master/images/background-header.jpg");
   background-size: cover;
 }
