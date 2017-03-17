@@ -115,7 +115,7 @@
 <meta property="og:url" content="http://note.snail-z.me/2017/03/15/Hexo静态博客搭建笔记/index.html">
 <meta property="og:site_name" content="Snail-z Notes">
 <meta property="og:description" content="Hexo 是一个基于 Node.js 的静态博客程序，可以方便的生成静态网页托管在 GitHub 和 Heroku 上。作者是来自台湾的 tommy351。关于hexo静态网页搭建过程本文不再赘述，网上教程很多，本篇末尾也有相应的网络链接供参考。本文只是简单记录下使用hexo中的一些问题和需求更改。">
-<meta property="og:updated_time" content="2017-03-17T03:16:55.000Z">
+<meta property="og:updated_time" content="2017-03-17T03:28:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo静态博客使用笔记">
 <meta name="twitter:description" content="Hexo 是一个基于 Node.js 的静态博客程序，可以方便的生成静态网页托管在 GitHub 和 Heroku 上。作者是来自台湾的 tommy351。关于hexo静态网页搭建过程本文不再赘述，网上教程很多，本篇末尾也有相应的网络链接供参考。本文只是简单记录下使用hexo中的一些问题和需求更改。">
@@ -406,15 +406,15 @@
 
       
         <p><a href="https://hexo.io" target="_blank" rel="external">Hexo</a> 是一个基于 <a href="https://nodejs.org/en/" target="_blank" rel="external">Node.js</a> 的静态博客程序，可以方便的生成静态网页托管在 <a href="https://github.com/" target="_blank" rel="external">GitHub</a> 和 <a href="https://www.heroku.com/" target="_blank" rel="external">Heroku</a> 上。作者是来自台湾的 <a href="https://github.com/hexojs/hexo" target="_blank" rel="external">tommy351</a>。<br>关于hexo静态网页搭建过程本文不再赘述，网上教程很多，本篇末尾也有相应的网络链接供参考。本文只是简单记录下使用hexo中的一些问题和需求更改。<br><a id="more"></a></p>
-<h3 id="关联Github仓库"><a href="#关联Github仓库" class="headerlink" title="关联Github仓库:"></a>关联Github仓库:</h3><p>在hexo根目录下的 _config.yml 文件配置，末尾添加如下信息<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">deploy:</span></div><div class="line">  <span class="symbol">type:</span> git</div><div class="line">  <span class="symbol">repository:</span> <span class="comment"># 你的 GitHub 仓库地址，别忘了加上 .git （我的是https://github.com/snail-z/snail-z.github.io.git）</span></div><div class="line">  <span class="symbol">branch:</span> master</div></pre></td></tr></table></figure></p>
+<h2 id="关联Github仓库"><a href="#关联Github仓库" class="headerlink" title="关联Github仓库:"></a>关联Github仓库:</h2><p>在hexo根目录下的 _config.yml 文件配置，末尾添加如下信息<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">deploy:</span></div><div class="line">  <span class="symbol">type:</span> git</div><div class="line">  <span class="symbol">repository:</span> <span class="comment"># 你的 GitHub 仓库地址，别忘了加上 .git （我的是https://github.com/snail-z/snail-z.github.io.git）</span></div><div class="line">  <span class="symbol">branch:</span> master</div></pre></td></tr></table></figure></p>
 <p>注意，配置文件的冒号后必须有一个空格。deploy 下面的每个字段前必须空两个空格，严格要求。</p>
 <p>然后执行命令：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hexo generate <span class="comment"># 生成静态页面，可以简化为 hexo g</span></div><div class="line">hexo deploy   <span class="comment"># 部署到 GitHub，可以简化为 hexo d</span></div></pre></td></tr></table></figure></p>
 <p>浏览器访问 <a href="https://snail-z.github.io" target="_blank" rel="external">snail-z.github.io</a> 就能看到自己的 Blog 了，如果看到 404 页面不要惊慌，一般延迟半分钟左右才能看到效果。耐心等待。</p>
 <hr>
-<h3 id="添加网页背景图"><a href="#添加网页背景图" class="headerlink" title="添加网页背景图"></a>添加网页背景图</h3><p> 为网页增加header, body, footer的背景图片，具体做法是在<code>hexo/themes/next/source/css/_custom/</code>里面的custom.styl增加如下代码：<br> <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">#header &#123;</div><div class="line">    background: url("../images/background-header.jpg");</div><div class="line">    background-size: cover;</div><div class="line">&#125;</div><div class="line">body &#123;</div><div class="line">    background: url("../images/background-body.jpg");</div><div class="line">    background-size: cover;</div><div class="line">&#125;</div><div class="line">#footer &#123;</div><div class="line">    background: url("../images/background-footer.jpg");</div><div class="line">    background-size: cover;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="添加网页背景图"><a href="#添加网页背景图" class="headerlink" title="添加网页背景图"></a>添加网页背景图</h2><p> 为网页增加header, body, footer的背景图片，具体做法是在<code>hexo/themes/next/source/css/_custom/</code>里面的custom.styl增加如下代码：<br> <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">#header &#123;</div><div class="line">    background: url("../images/background-header.jpg");</div><div class="line">    background-size: cover;</div><div class="line">&#125;</div><div class="line">body &#123;</div><div class="line">    background: url("../images/background-body.jpg");</div><div class="line">    background-size: cover;</div><div class="line">&#125;</div><div class="line">#footer &#123;</div><div class="line">    background: url("../images/background-footer.jpg");</div><div class="line">    background-size: cover;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p> 将上述中的图片放到<code>hexo/themes/next/source/images</code>中即可。</p>
 <hr>
-<h3 id="创建标签云页面和分类页面"><a href="#创建标签云页面和分类页面" class="headerlink" title="创建标签云页面和分类页面"></a>创建标签云页面和分类页面</h3><ul>
+<h2 id="创建标签云页面和分类页面"><a href="#创建标签云页面和分类页面" class="headerlink" title="创建标签云页面和分类页面"></a>创建标签云页面和分类页面</h2><ul>
 <li>添加标签云页面，并在menu中显示。</li>
 </ul>
 <ol>
@@ -448,7 +448,7 @@
 </li>
 </ol>
 <hr>
-<h3 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h3><ul>
+<h2 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h2><ul>
 <li><a href="https://note.leodev.me/2016/09/01/Hexo-3-1-1-Staic-Blog-Build-Guide/" target="_blank" rel="external">Hexo 3.1.1 静态博客搭建指南</a></li>
 <li><a href="http://baixin.io/2015/08/HEXO搭建个人博客/" target="_blank" rel="external">HEXO搭建个人博客</a></li>
 <li><a href="http://ibruce.info/2013/11/22/hexo-your-blog/" target="_blank" rel="external">hexo你的博客</a></li>
@@ -689,7 +689,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#关联Github仓库"><span class="nav-number">1.</span> <span class="nav-text">关联Github仓库:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加网页背景图"><span class="nav-number">2.</span> <span class="nav-text">添加网页背景图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建标签云页面和分类页面"><span class="nav-number">3.</span> <span class="nav-text">创建标签云页面和分类页面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关资料"><span class="nav-number">4.</span> <span class="nav-text">相关资料</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#关联Github仓库"><span class="nav-number">1.</span> <span class="nav-text">关联Github仓库:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加网页背景图"><span class="nav-number">2.</span> <span class="nav-text">添加网页背景图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建标签云页面和分类页面"><span class="nav-number">3.</span> <span class="nav-text">创建标签云页面和分类页面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相关资料"><span class="nav-number">4.</span> <span class="nav-text">相关资料</span></a></li></ol></div>
             
 
           </div>
