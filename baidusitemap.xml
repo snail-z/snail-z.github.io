@@ -4,18 +4,18 @@
 
     
   <url>
-    <loc>http://note.snail-z.me/2017/03/18/iOS%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0-KVOController/</loc>
-    <lastmod>2017-03-18T04:43:00.000Z</lastmod>
+    <loc>http://note.snail-z.me/2017/03/18/Cocoa%E4%B8%AD%E7%9A%84%E9%94%AE%E5%80%BC%E8%A7%82%E5%AF%9F%20-%20KVO/</loc>
+    <lastmod>2017-03-18T07:51:13.000Z</lastmod>
     <data>
         <display>
-        <title>iOS源码学习 - KVOController</title>
+        <title>Cocoa中的键值观察 - KVO</title>
         <pubTime>2017-03-18T03:28:30.000Z</pubTime>
         
         <tag>iOS</tag>
          
         <tag>Objective-C</tag>
          
-        <tag>源码学习</tag>
+        <tag>KVO</tag>
          
          
            
