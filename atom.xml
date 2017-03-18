@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://note.snail-z.me/"/>
-  <updated>2017-03-18T03:34:42.000Z</updated>
+  <updated>2017-03-18T04:43:00.000Z</updated>
   <id>http://note.snail-z.me/</id>
   
   <author>
@@ -20,9 +20,50 @@
     <link href="http://note.snail-z.me/2017/03/18/iOS%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0-KVOController/"/>
     <id>http://note.snail-z.me/2017/03/18/iOS源码学习-KVOController/</id>
     <published>2017-03-18T03:28:30.000Z</published>
-    <updated>2017-03-18T03:34:42.000Z</updated>
+    <updated>2017-03-18T04:43:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="相关知识"><a href="#相关知识" class="headerlink" title="相关知识"></a>相关知识</h4><p>Key Value Coding是cocoa的一个标准组成部分，可以使用来检测对象属性的变化、快速做出响应，这能够为我们在开发强交互、响应式应用以及实现视图和模型的双向绑定时提供大量的帮助。</p>
+<p>订阅：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)addObserver:(<span class="built_in">NSObject</span> *)observer</div><div class="line">         forKeyPath:(<span class="built_in">NSString</span> *)keyPath</div><div class="line">            options:(<span class="built_in">NSKeyValueObservingOptions</span>)options</div><div class="line">            context:(<span class="keyword">void</span> *)context;</div></pre></td></tr></table></figure></p>
+<ul>
+<li><code>observer</code>：KVO通知的对象注册。观察者必须实现键值观察方法</li>
+<li><code>keyPath</code>：关联路径，即被观察的属性。不能设置为nil</li>
+<li><code>options</code>：options可选值是一个NSKeyValueObservingOptions枚举值；首先了解一个概念，即KVO响应方法有一个NSDictionary类型参数change，这个字典中会有一个与被监听属性相关的值，譬如被改变之前的值、新值等，NSDictionary中有什么值由订阅时的options值决定，options可取值如下：<ul>
+<li>NSKeyValueObservingOptionNew: 指示change字典中包含新属性值；</li>
+<li>NSKeyValueObservingOptionOld: 指示change字典中包含旧属性值；</li>
+<li>NSKeyValueObservingOptionInitial: 相对复杂一些，NSKeyValueObserving.h文件中有详细说明，此处略过；</li>
+<li>NSKeyValueObservingOptionPrior: 相对复杂一些，NSKeyValueObserving.h文件中有详细说明，此处略过；</li>
+</ul>
+</li>
+<li><code>context</code>：需要传递给观察者的上下文信息</li>
+</ul>
+<p>响应：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)observeValueForKeyPath:(<span class="built_in">NSString</span> *)keyPath</div><div class="line">                      ofObject:(<span class="keyword">id</span>)object</div><div class="line">                        change:(<span class="built_in">NSDictionary</span> *)change</div><div class="line">                       context:(<span class="keyword">void</span> *)context;</div></pre></td></tr></table></figure></p>
+<ul>
+<li><code>keyPath</code>：keyPath的类型是NSString，这导致了我们使用了错误的keyPath而不自知，譬如将@”contentSize”错误写成@”contentsize”，一个更好的方法是不直接使用@”xxxx”，而是积极使用NSStringFromSelector(SEL aSelector)方法，即改@”contentSize”为NSStringFromSelector(@selector(contentSize))。</li>
+<li><code>object</code>：被观察者的对象</li>
+<li><code>change</code>：根据上面的Options设置，给出对应的属性值</li>
+<li><code>context</code>：使用 context 上下文以及其它辅助手段才能够帮助我们更加精准地确定被观测的对象。假如父类（ClassA）和子类（ClassB）都监听了同一个对象怎么办？是ClassB处理呢还是交给父类ClassA的<code>observeValueForKeyPath:ofObject:change:context:</code>处理呢？更复杂一点，如果子类的子类（设为ClassC）也监听了同一个对象，当ClassB接收到ClassC的<code>[super observeValueForKeyPath:keyPath ofObject:object change:change context:context]</code>消息时又该如何处理呢？<br>比较靠谱的做法是自己的屁股自己擦。ClassB的observe事务在ClassB中处理，怎么知道是自己的事务还是ClassC传上来的事务呢？用context参数判断！在add observer时为context参数设置一个独一无二的值即可，在responding处理时对这个context值进行检验。如此就解决了问题，但这需要靠用户（各个层级类的程序员用户）自觉遵守。</li>
+</ul>
+<p>取消订阅：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)removeObserver:(<span class="built_in">NSObject</span> *)observer forKeyPath:(<span class="built_in">NSString</span> *)keyPath context:(<span class="keyword">void</span> *)context;</div><div class="line">- (<span class="keyword">void</span>)removeObserver:(<span class="built_in">NSObject</span> *)observer forKeyPath:(<span class="built_in">NSString</span> *)keyPath;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注：使用KVO消息传递机制有两个要求：</p>
+<ol>
+<li>观察者必须知道被观察对象，即在同一作用域。</li>
+<li>观察者还需要知道被观察对象的生命周期，因为在销毁发送者对象之前，需要取消观察者的注册。</li>
+</ol>
+</blockquote>
+<p>由于系统提供的API使用起来非常不优雅，使用过程也是非常麻烦需要注意很多问题：</p>
+<ol>
+<li>需要手动移除观察者，且移除观察者的时机必须合适；</li>
+<li>注册观察者的代码和事件发生处的代码上下文不同，传递上下文是通过 void * 指针；</li>
+<li>需要覆写 -observeValueForKeyPath:ofObject:change:context: 方法，比较麻烦；</li>
+<li>在复杂的业务逻辑中，准确判断被观察者相对比较麻烦，有多个被观测的对象和属性时，需要在方法中写大量的 if 进行判断；</li>
+</ol>
+<p>如何优雅的解决呢？ - 使用 Facebook 开源的 <a href="">KVOController</a>，如下</p>
+<h3 id="KVOController"><a href="#KVOController" class="headerlink" title="KVOController"></a>KVOController</h3>]]></content>
     
     <summary type="html">
+    
+      &lt;h4 id=&quot;相关知识&quot;&gt;&lt;a href=&quot;#相关知识&quot; class=&quot;headerlink&quot; title=&quot;相关知识&quot;&gt;&lt;/a&gt;相关知识&lt;/h4&gt;&lt;p&gt;Key Value Coding是cocoa的一个标准组成部分，可以使用来检测对象属性的变化、快速做出响应，这能够为我们在开
     
     </summary>
     
@@ -42,7 +83,7 @@
     <link href="http://note.snail-z.me/2017/03/17/CADisplayLink%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     <id>http://note.snail-z.me/2017/03/17/CADisplayLink学习笔记/</id>
     <published>2017-03-17T14:21:32.000Z</published>
-    <updated>2017-03-18T04:13:36.000Z</updated>
+    <updated>2017-03-18T04:15:21.000Z</updated>
     
     <content type="html"><![CDATA[<p>CADisplayLink相当于一个定时器，比起NSTimer，它可以确保系统渲染每一帧的时候我们的方法都被调用，从而保证了动画的流畅性。<br>iOS设备的屏幕刷新频率是固定的，CADisplayLink在正常情况下会在每次刷新结束都被调用，精确度相当高。NSTimer的精确度相对显得较低；CADisplayLink使用场合相对专一，适合做UI的不停重绘，比如自定义动画引擎或者视频播放的渲染。NSTimer的使用范围要广泛的多，各种需要单次或者循环定时处理的任务都可以使用。<br><a id="more"></a></p>
 <h3 id="相关属性"><a href="#相关属性" class="headerlink" title="相关属性"></a>相关属性</h3><ol>
@@ -60,7 +101,7 @@
 <p>CADisplaylink 与 NSTimer 类似，都可以以一定的时间间隔触发回调 selector，不同点在于 CADisplaylink 的时间间隔是与屏幕的刷新频率相关联的，这一点决定了 CADisplaylink 的应用多与显示有关。</p>
 </blockquote>
 <h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><ul>
-<li>当scrollview / tableview滚动时CADisplayLink停止响应。<br>要解决这个问题需要简单了解一下runloop的知识，runloop可以理解为cocoa下的一种消息循环机制，用来处理各种消息事件，我们在开发的时候并不需要手动去创建一个runloop，因为框架为我们创建了一个默认的runloop,通过[NSRunloop currentRunloop]可以得到一个当前线程下面对应的runloop对象，不过需要注意的是不同的runloop之间消息的通知方式。在开启一个NSTimer或CADisplayLink实质上是在当前的runloop中注册了一个新的事件源，而当scrollView滚动的时候，当前的MainRunLoop是处于UITrackingRunLoopMode的模式下，在这个模式下是不会处理NSDefaultRunLoopMode的消息(因为RunLoop Mode不一样)，要想在scrollView滚动的同时也接受其它runloop的消息，就不能将Mode参数设置为NSDefaultRunLoopMode，而应该设置为NSRunLoopCommonModes。</li>
+<li>当scrollview / tableview滚动时CADisplayLink停止响应。<br>要解决这个问题需要简单了解一下runloop的知识，runloop可以理解为cocoa下的一种消息循环机制，用来处理各种消息事件，我们在开发的时候并不需要手动去创建一个runloop，因为框架为我们创建了一个默认的runloop，通过[NSRunloop currentRunloop]可以得到一个当前线程下对应的runloop对象，不过需要注意的是不同的runloop之间消息的通知方式。在开启一个NSTimer或CADisplayLink实质上是在当前的runloop中注册了一个新的事件源，而当scrollView滚动的时候，当前的MainRunLoop是处于UITrackingRunLoopMode的模式下，在这个模式下是不会处理NSDefaultRunLoopMode的消息(因为RunLoop Mode不一样)，要想在scrollView滚动的同时也接受其它runloop的消息，就不能将Mode参数设置为NSDefaultRunLoopMode，而应该设置为NSRunLoopCommonModes。</li>
 </ul>
 <h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
 <li><a href="http://www.jianshu.com/p/c35a81c3b9eb" target="_blank" rel="external">CADisplayLink</a></li>
