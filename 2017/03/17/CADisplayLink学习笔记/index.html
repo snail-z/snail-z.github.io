@@ -115,7 +115,7 @@
 <meta property="og:url" content="http://note.snail-z.me/2017/03/17/CADisplayLink学习笔记/index.html">
 <meta property="og:site_name" content="Snail-z Notes">
 <meta property="og:description" content="CADisplayLink相当于一个定时器，比起NSTimer，它可以确保系统渲染每一帧的时候我们的方法都被调用，从而保证了动画的流畅性。iOS设备的屏幕刷新频率是固定的，CADisplayLink在正常情况下会在每次刷新结束都被调用，精确度相当高。NSTimer的精确度相对显得较低；CADisplayLink使用场合相对专一，适合做UI的不停重绘，比如自定义动画引擎或者视频播放的渲染。NSTim">
-<meta property="og:updated_time" content="2017-03-18T02:44:37.000Z">
+<meta property="og:updated_time" content="2017-03-18T04:13:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CADisplayLink学习笔记">
 <meta name="twitter:description" content="CADisplayLink相当于一个定时器，比起NSTimer，它可以确保系统渲染每一帧的时候我们的方法都被调用，从而保证了动画的流畅性。iOS设备的屏幕刷新频率是固定的，CADisplayLink在正常情况下会在每次刷新结束都被调用，精确度相当高。NSTimer的精确度相对显得较低；CADisplayLink使用场合相对专一，适合做UI的不停重绘，比如自定义动画引擎或者视频播放的渲染。NSTim">
@@ -406,7 +406,7 @@
 
       
         <p>CADisplayLink相当于一个定时器，比起NSTimer，它可以确保系统渲染每一帧的时候我们的方法都被调用，从而保证了动画的流畅性。<br>iOS设备的屏幕刷新频率是固定的，CADisplayLink在正常情况下会在每次刷新结束都被调用，精确度相当高。NSTimer的精确度相对显得较低；CADisplayLink使用场合相对专一，适合做UI的不停重绘，比如自定义动画引擎或者视频播放的渲染。NSTimer的使用范围要广泛的多，各种需要单次或者循环定时处理的任务都可以使用。<br><a id="more"></a></p>
-<h3 id="部分属性介绍"><a href="#部分属性介绍" class="headerlink" title="部分属性介绍"></a>部分属性介绍</h3><ol>
+<h3 id="相关属性"><a href="#相关属性" class="headerlink" title="相关属性"></a>相关属性</h3><ol>
 <li><code>preferredFramesPerSecond</code> （iOS10用这个方法）<br>标识每秒钟调用几次，比如每秒钟调用10次，那就是每0.1秒调用一次</li>
 <li><code>frameInterval</code>（ios10被弃用）<br>标识间隔多少帧调用一次selector方法。<br>CADisplayLink的selector每秒调用次数 = 60 / frameInterval。<br>苹果文档中还提到：如果应用不能及时提供显示帧，则应该降低帧率，可以通过增大 frameInterval 这一属性的值来降低动画帧率。frameInterval 默认值为 1，表示每帧都回调一次selector。在没有卡顿时，iOS 设备屏幕显示每秒刷新60次，意味着 frameInterval 为默认值时，每秒回调60次 selector，当frameInterval 改为2时，每秒回调30（60/2）次 selector。</li>
 <li><code>duration</code><br>只读的CFTimeInterval值，提供每帧之间的时间，也就是屏幕每次刷新的时间。</li>
@@ -420,6 +420,9 @@
 <blockquote>
 <p>CADisplaylink 与 NSTimer 类似，都可以以一定的时间间隔触发回调 selector，不同点在于 CADisplaylink 的时间间隔是与屏幕的刷新频率相关联的，这一点决定了 CADisplaylink 的应用多与显示有关。</p>
 </blockquote>
+<h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><ul>
+<li>当scrollview / tableview滚动时CADisplayLink停止响应。<br>要解决这个问题需要简单了解一下runloop的知识，runloop可以理解为cocoa下的一种消息循环机制，用来处理各种消息事件，我们在开发的时候并不需要手动去创建一个runloop，因为框架为我们创建了一个默认的runloop,通过[NSRunloop currentRunloop]可以得到一个当前线程下面对应的runloop对象，不过需要注意的是不同的runloop之间消息的通知方式。在开启一个NSTimer或CADisplayLink实质上是在当前的runloop中注册了一个新的事件源，而当scrollView滚动的时候，当前的MainRunLoop是处于UITrackingRunLoopMode的模式下，在这个模式下是不会处理NSDefaultRunLoopMode的消息(因为RunLoop Mode不一样)，要想在scrollView滚动的同时也接受其它runloop的消息，就不能将Mode参数设置为NSDefaultRunLoopMode，而应该设置为NSRunLoopCommonModes。</li>
+</ul>
 <h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
 <li><a href="http://www.jianshu.com/p/c35a81c3b9eb" target="_blank" rel="external">CADisplayLink</a></li>
 <li><a href="http://kittenyang.com/cadisplaylinkanduibezierpath/" target="_blank" rel="external">CADisplayLink结合UIBezierPath的神奇妙用</a></li>
@@ -480,6 +483,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/18/iOS源码学习-KVOController/" rel="prev" title="iOS源码学习 - KVOController">
+                iOS源码学习 - KVOController <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -558,7 +565,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -580,7 +587,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -660,7 +667,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#部分属性介绍"><span class="nav-number">1.</span> <span class="nav-text">部分属性介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用CADisplayLink"><span class="nav-number">2.</span> <span class="nav-text">使用CADisplayLink</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考资料"><span class="nav-number">3.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#相关属性"><span class="nav-number">1.</span> <span class="nav-text">相关属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用CADisplayLink"><span class="nav-number">2.</span> <span class="nav-text">使用CADisplayLink</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关问题"><span class="nav-number">3.</span> <span class="nav-text">相关问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考资料"><span class="nav-number">4.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
             
 
           </div>

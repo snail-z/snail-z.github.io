@@ -5,7 +5,7 @@
     
   <url>
     <loc>http://note.snail-z.me/2017/03/17/CADisplayLink%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2017-03-18T02:44:37.000Z</lastmod>
+    <lastmod>2017-03-18T04:13:36.000Z</lastmod>
     <data>
         <display>
         <title>CADisplayLink学习笔记</title>
@@ -14,6 +14,50 @@
         <tag>iOS</tag>
          
         <tag>Objective-C</tag>
+         
+         
+           
+             
+              <breadCrumb title="技术" url="http://note.snail-z.me/categories/%E6%8A%80%E6%9C%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://note.snail-z.me/2017/03/18/iOS%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0-KVOController/</loc>
+    <lastmod>2017-03-18T03:34:42.000Z</lastmod>
+    <data>
+        <display>
+        <title>iOS源码学习 - KVOController</title>
+        <pubTime>2017-03-18T03:28:30.000Z</pubTime>
+        
+        <tag>iOS</tag>
+         
+        <tag>Objective-C</tag>
+         
+        <tag>源码学习</tag>
+         
+         
+           
+             
+              <breadCrumb title="技术" url="http://note.snail-z.me/categories/%E6%8A%80%E6%9C%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://note.snail-z.me/2017/03/15/Hexo%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2017-03-18T03:34:39.000Z</lastmod>
+    <data>
+        <display>
+        <title>Hexo静态博客使用笔记</title>
+        <pubTime>2017-03-15T14:59:29.000Z</pubTime>
+        
+        <tag>Hexo</tag>
          
          
            
@@ -39,26 +83,6 @@
            
              
               <breadCrumb title="我和她" url="http://note.snail-z.me/categories/%E6%88%91%E5%92%8C%E5%A5%B9/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://note.snail-z.me/2017/03/15/Hexo%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2017-03-17T07:36:29.000Z</lastmod>
-    <data>
-        <display>
-        <title>Hexo静态博客使用笔记</title>
-        <pubTime>2017-03-15T14:59:29.000Z</pubTime>
-        
-        <tag>hexo</tag>
-         
-         
-           
-             
-              <breadCrumb title="技术" url="http://note.snail-z.me/categories/%E6%8A%80%E6%9C%AF/"/>
           
         </display>
     </data>
