@@ -115,7 +115,7 @@
 <meta property="og:url" content="http://note.snail-z.me/2017/03/18/Cocoa中的键值观察 - KVO/index.html">
 <meta property="og:site_name" content="Snail-z Notes">
 <meta property="og:description" content="Key-Value Observing，是iOS中的一种设计模式，用于检测对象的某些属性的实时变化情况并作出响应，这能够为我们在开发强交互、响应式应用以及实现视图和模型的双向绑定时提供大量的帮助。KVO主要用于视图交互方面，比如界面的某些数据变化了，界面的显示也跟着需要变化，那就要建立数据和界面的关联。">
-<meta property="og:updated_time" content="2017-03-18T08:01:50.000Z">
+<meta property="og:updated_time" content="2017-03-18T08:54:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Cocoa中的键值观察 - KVO">
 <meta name="twitter:description" content="Key-Value Observing，是iOS中的一种设计模式，用于检测对象的某些属性的实时变化情况并作出响应，这能够为我们在开发强交互、响应式应用以及实现视图和模型的双向绑定时提供大量的帮助。KVO主要用于视图交互方面，比如界面的某些数据变化了，界面的显示也跟着需要变化，那就要建立数据和界面的关联。">
@@ -438,7 +438,7 @@
 <li>在复杂的业务逻辑中，准确判断被观察者相对比较麻烦，有多个被观测的对象和属性时，需要在方法中写大量的 if 进行判断；</li>
 </ol>
 <p>如何优雅的解决呢？ - 使用 Facebook 开源的 <a href="">KVOController</a>，如下</p>
-<h3 id="KVOController"><a href="#KVOController" class="headerlink" title="KVOController"></a>KVOController</h3><p><a href="https://github.com/facebook/KVOController" target="_blank" rel="external">KVOController</a>是Facebook开源的框架使用在iOS，maxOS上，是对Cocoa中KVO的封装。 提供了block和@selector(SEL) 的回调操作，使用起来简洁优雅保证线程安全。相比原生KVO，使用KVOController的好处如下：</p>
+<h3 id="KVOController"><a href="#KVOController" class="headerlink" title="KVOController"></a>KVOController</h3><p><a href="https://github.com/facebook/KVOController" target="_blank" rel="external">KVOController</a>是Facebook开源的框架使用在iOS，maxOS上，是对Cocoa中KVO的封装。 提供了<code>block</code>和<code>@selector(SEL)</code>的回调操作，使用起来既简洁优雅又保证线程安全。相比原生KVO优点如下：</p>
 <ol>
 <li>不需要手动移除观察者；</li>
 <li>实现 KVO 与事件发生处的代码上下文相同，不需要跨方法传参数；</li>
