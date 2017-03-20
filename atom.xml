@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://note.snail-z.me/"/>
-  <updated>2017-03-20T07:07:01.000Z</updated>
+  <updated>2017-03-20T07:12:08.000Z</updated>
   <id>http://note.snail-z.me/</id>
   
   <author>
@@ -20,16 +20,16 @@
     <link href="http://note.snail-z.me/2017/03/19/iOS%20AutoLayout%E4%B9%8B%20-%20NSLayoutConstraint/"/>
     <id>http://note.snail-z.me/2017/03/19/iOS AutoLayout之 - NSLayoutConstraint/</id>
     <published>2017-03-19T08:15:03.000Z</published>
-    <updated>2017-03-20T07:07:01.000Z</updated>
+    <updated>2017-03-20T07:12:08.000Z</updated>
     
     <content type="html"><![CDATA[<p>AutoLayout是在iOS6之后推出的一种基于约束的，描述性的布局系统。使用约束条件来定义view的位置和尺寸。解决了不同分辨率和屏幕尺寸下view的适配问题，也简化了旋转时view位置的定义。<br>之前一直使用frame或第三方库<a href="https://github.com/SnapKit/Masonry.git" target="_blank" rel="external">Masonry</a>布局，对约束如何实现的并不清楚，所以抽时间进行了简单学习，并记录下如何使用纯代码NSLayoutConstraint实现autoLayout。<br><a id="more"></a></p>
 <h3 id="显式创建约束方法constraintWithItem"><a href="#显式创建约束方法constraintWithItem" class="headerlink" title="显式创建约束方法constraintWithItem"></a>显式创建约束方法constraintWithItem</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">+(<span class="keyword">instancetype</span>)constraintWithItem:(<span class="keyword">id</span>)view1</div><div class="line">                        attribute:(<span class="built_in">NSLayoutAttribute</span>)attr1</div><div class="line">                        relatedBy:(<span class="built_in">NSLayoutRelation</span>)relation</div><div class="line">                           toItem:(<span class="keyword">nullable</span> <span class="keyword">id</span>)view2</div><div class="line">                        attribute:(<span class="built_in">NSLayoutAttribute</span>)attr2</div><div class="line">                       multiplier:(<span class="built_in">CGFloat</span>)multiplier</div><div class="line">                         constant:(<span class="built_in">CGFloat</span>)constant;</div></pre></td></tr></table></figure>
 <ul>
-<li><code>view1</code>：传入想要添加约束的视图</li>
-<li><code>attr1</code>：传入想要添加约束的枚举值<code>NSLayoutAttribute</code></li>
-<li><code>relation</code>： 传入与约束值的关系，大于 等于或小于</li>
-<li><code>view2</code>：传入被参照对象</li>
-<li><code>attr2</code>：传入被参照对象所被参照的枚举值<code>NSLayoutAttribute</code></li>
+<li><code>view1</code>：要添加约束的视图</li>
+<li><code>attr1</code>：约束枚举<code>NSLayoutAttribute</code></li>
+<li><code>relation</code>：与约束值的关系，大于 等于或小于</li>
+<li><code>view2</code>：被参照对象</li>
+<li><code>attr2</code>：被参照对象所被参照的枚举值<code>NSLayoutAttribute</code></li>
 <li><code>multiplier</code>：乘数，确定间距倍数等关系（默认1.0） </li>
 <li><code>constant</code>：差值常量<blockquote>
 <p>注：view1与view2的位置和大小约束关系满足表达式:<br><code>view1.attr1 = view2.attr2 * multiplier + constant</code></p>
