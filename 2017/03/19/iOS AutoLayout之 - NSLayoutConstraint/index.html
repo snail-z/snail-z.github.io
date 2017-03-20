@@ -1,0 +1,869 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="1rAjSg_LYunVt576r01InAPcRzfUpJ1sf6iiNhZPVwg" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iOS,Objective-C,AutoLayout," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Snail-z Notes" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="AutoLayout是在iOS6之后推出的一种基于约束的，描述性的布局系统。使用约束条件来定义view的位置和尺寸。解决了不同分辨率和屏幕尺寸下view的适配问题，也简化了旋转时view位置的定义。之前一直使用frame或第三方库Masonry布局，对约束如何实现的并不清楚，所以抽时间进行了简单学习，并记录下如何使用纯代码NSLayoutConstraint实现autoLayout。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS AutoLayout之 - NSLayoutConstraint">
+<meta property="og:url" content="http://note.snail-z.me/2017/03/19/iOS AutoLayout之 - NSLayoutConstraint/index.html">
+<meta property="og:site_name" content="Snail-z Notes">
+<meta property="og:description" content="AutoLayout是在iOS6之后推出的一种基于约束的，描述性的布局系统。使用约束条件来定义view的位置和尺寸。解决了不同分辨率和屏幕尺寸下view的适配问题，也简化了旋转时view位置的定义。之前一直使用frame或第三方库Masonry布局，对约束如何实现的并不清楚，所以抽时间进行了简单学习，并记录下如何使用纯代码NSLayoutConstraint实现autoLayout。">
+<meta property="og:image" content="https://github.com/snail-z/snail-z.github.io/blob/master/images/constraint1.png?raw=true">
+<meta property="og:updated_time" content="2017-03-20T03:48:53.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS AutoLayout之 - NSLayoutConstraint">
+<meta name="twitter:description" content="AutoLayout是在iOS6之后推出的一种基于约束的，描述性的布局系统。使用约束条件来定义view的位置和尺寸。解决了不同分辨率和屏幕尺寸下view的适配问题，也简化了旋转时view位置的定义。之前一直使用frame或第三方库Masonry布局，对约束如何实现的并不清楚，所以抽时间进行了简单学习，并记录下如何使用纯代码NSLayoutConstraint实现autoLayout。">
+<meta name="twitter:image" content="https://github.com/snail-z/snail-z.github.io/blob/master/images/constraint1.png?raw=true">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '14163254',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://note.snail-z.me/2017/03/19/iOS AutoLayout之 - NSLayoutConstraint/"/>
+
+
+
+
+
+  <title> iOS AutoLayout之 - NSLayoutConstraint | Snail-z Notes </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?4b0e6935e468cecbeb1b9f84a40c1d54";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Snail-z Notes</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">书山有路勤为径，学海无涯苦作舟</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://note.snail-z.me/2017/03/19/iOS AutoLayout之 - NSLayoutConstraint/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Snail-z">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://raw.githubusercontent.com/snail-z/snail-z.github.io/master/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Snail-z Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                iOS AutoLayout之 - NSLayoutConstraint
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-19T16:15:03+08:00">
+                2017-03-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/03/19/iOS AutoLayout之 - NSLayoutConstraint/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/19/iOS AutoLayout之 - NSLayoutConstraint/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>AutoLayout是在iOS6之后推出的一种基于约束的，描述性的布局系统。使用约束条件来定义view的位置和尺寸。解决了不同分辨率和屏幕尺寸下view的适配问题，也简化了旋转时view位置的定义。<br>之前一直使用frame或第三方库Masonry布局，对约束如何实现的并不清楚，所以抽时间进行了简单学习，并记录下如何使用纯代码NSLayoutConstraint实现autoLayout。<br><a id="more"></a></p>
+<h3 id="显式创建约束方法constraintWithItem"><a href="#显式创建约束方法constraintWithItem" class="headerlink" title="显式创建约束方法constraintWithItem"></a>显式创建约束方法constraintWithItem</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">+(<span class="keyword">instancetype</span>)constraintWithItem:(<span class="keyword">id</span>)view1</div><div class="line">                        attribute:(<span class="built_in">NSLayoutAttribute</span>)attr1</div><div class="line">                        relatedBy:(<span class="built_in">NSLayoutRelation</span>)relation</div><div class="line">                           toItem:(<span class="keyword">nullable</span> <span class="keyword">id</span>)view2</div><div class="line">                        attribute:(<span class="built_in">NSLayoutAttribute</span>)attr2</div><div class="line">                       multiplier:(<span class="built_in">CGFloat</span>)multiplier</div><div class="line">                         constant:(<span class="built_in">CGFloat</span>)constant;</div></pre></td></tr></table></figure>
+<ul>
+<li><code>view1</code>：传入想要添加约束的视图</li>
+<li><code>attr1</code>：传入想要添加约束的枚举值<code>NSLayoutAttribute</code></li>
+<li><code>relation</code>： 传入与约束值的关系，大于 等于或小于</li>
+<li><code>view2</code>：传入被参照对象</li>
+<li><code>attr2</code>：传入被参照对象所被参照的枚举值<code>NSLayoutAttribute</code></li>
+<li><code>multiplier</code>：乘数，确定间距倍数等关系（默认1.0） </li>
+<li><code>constant</code>：差值常量<blockquote>
+<p>注：view1与view2的位置和大小约束关系满足表达式:<br><code>view1.attr1 = view2.attr2 * multiplier + constant</code></p>
+</blockquote>
+</li>
+</ul>
+<p>简单介绍下NSLayoutAttribute的枚举值：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSLayoutAttributeLeft</span>：          <span class="comment">// 视图的x坐标，相当于CGRectGetMinX(view.frame)</span></div><div class="line"><span class="built_in">NSLayoutAttributeRight</span>：         <span class="comment">// CGRectGetMaxX(view.frame);</span></div><div class="line"><span class="built_in">NSLayoutAttributeTop</span>：           <span class="comment">// CGRectGetMinY(view.frame);</span></div><div class="line"><span class="built_in">NSLayoutAttributeBottom</span>：        <span class="comment">// CGRectGetMinY(view.frame);</span></div><div class="line"><span class="built_in">NSLayoutAttributeWidth</span>：         <span class="comment">// 视图宽度</span></div><div class="line"><span class="built_in">NSLayoutAttributeHeight</span>：        <span class="comment">// 视图高度</span></div><div class="line"><span class="built_in">NSLayoutAttributeCenterX</span>：       <span class="comment">// 视图中点的X值</span></div><div class="line"><span class="built_in">NSLayoutAttributeCenterY</span>：       <span class="comment">// 视图中点的Y值;</span></div><div class="line"><span class="built_in">NSLayoutAttributeBaseline</span>：      <span class="comment">// 视图的基准线</span></div><div class="line"><span class="built_in">NSLayoutAttributeLastBaseline</span>：  <span class="comment">// 相当于NSLayoutAttributeBaseline;</span></div><div class="line"><span class="built_in">NSLayoutAttributeFirstBaseline</span>： <span class="comment">// 文本上标线;</span></div><div class="line"><span class="built_in">NSLayoutAttributeNotAnAttribute</span>：<span class="comment">// None;</span></div><div class="line"></div><div class="line"><span class="built_in">NSLayoutAttributeLeading</span>： <span class="comment">// 在习惯由左向右看的地区，相当于NSLayoutAttributeLeft；在习惯从右至左看的地区，相当于NSLayoutAttributeRight;</span></div><div class="line"><span class="built_in">NSLayoutAttributeTrailing</span>：<span class="comment">// 在习惯由左向右看的地区，相当于NSLayoutAttributeRight；在习惯从右至左看的地区，相当于NSLayoutAttributeLeft;</span></div><div class="line"></div><div class="line"><span class="comment">// 以下iOS8新增属性，各种间距，网络查阅不少文章也没具体介绍，暂时我也不清楚，有时间会再详细测试。</span></div><div class="line"><span class="built_in">NSLayoutAttributeLeftMargin</span></div><div class="line"><span class="built_in">NSLayoutAttributeRightMargin</span></div><div class="line"><span class="built_in">NSLayoutAttributeTopMargin</span></div><div class="line"><span class="built_in">NSLayoutAttributeBottomMargin</span></div><div class="line"><span class="built_in">NSLayoutAttributeLeadingMargin</span></div><div class="line"><span class="built_in">NSLayoutAttributeTrailingMargin</span></div><div class="line"><span class="built_in">NSLayoutAttributeCenterXWithinMargins</span></div><div class="line"><span class="built_in">NSLayoutAttributeCenterYWithinMargins</span></div></pre></td></tr></table></figure></p>
+<p>下面通过代码来了解constraintWithItem这个方法：</p>
+<blockquote>
+<p>注: 使用<code>Auto Layout</code>时，必须先将视图的<code>translatesAutoresizingMaskIntoConstraints</code>属性设为NO。因为当它为YES时，自己添加的约束会与系统的<code>Autoresizing Mask</code>约束产生冲突。</p>
+</blockquote>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 创建两个视图view1和view2</span></div><div class="line"><span class="built_in">UIView</span> *view1 = [[<span class="built_in">UIView</span> alloc] init];</div><div class="line">view1.backgroundColor = [<span class="built_in">UIColor</span> brownColor];</div><div class="line">[<span class="keyword">self</span>.view addSubview:view1];</div><div class="line"><span class="comment">// 不需要给view设置frame</span></div><div class="line"></div><div class="line"><span class="built_in">UIView</span> *view2 = [[<span class="built_in">UIView</span> alloc] init];</div><div class="line">view2.backgroundColor = [<span class="built_in">UIColor</span> orangeColor];</div><div class="line">[<span class="keyword">self</span>.view addSubview:view2];</div><div class="line"></div><div class="line"><span class="comment">// 关掉AutoresizingMask布局</span></div><div class="line">view1.translatesAutoresizingMaskIntoConstraints = <span class="literal">NO</span>;</div><div class="line">view2.translatesAutoresizingMaskIntoConstraints = <span class="literal">NO</span>;</div><div class="line"> </div><div class="line"><span class="comment">// view1：设置宽度为100px</span></div><div class="line">[<span class="keyword">self</span>.view addConstraint:[<span class="built_in">NSLayoutConstraint</span> constraintWithItem:view1</div><div class="line">                                                      attribute:<span class="built_in">NSLayoutAttributeWidth</span></div><div class="line">                                                      relatedBy:<span class="built_in">NSLayoutRelationEqual</span></div><div class="line">                                                         toItem:<span class="literal">nil</span></div><div class="line">                                                      attribute:<span class="built_in">NSLayoutAttributeNotAnAttribute</span></div><div class="line">                                                     multiplier:<span class="number">1</span></div><div class="line">                                                       constant:<span class="number">100</span>]];</div><div class="line"><span class="comment">// 如果是设置view自身的属性，不涉及到与其他view的位置约束关系时。constraintWithItem:方法的toItem参数应设为nil；且第五个参数attribute应设为NSLayoutAttributeNotAnAttribute </span></div><div class="line"><span class="comment">// 约束一定要添加在父视图上</span></div><div class="line"></div><div class="line"><span class="comment">// view1：设置高度等于宽度</span></div><div class="line">[<span class="keyword">self</span>.view addConstraint:[<span class="built_in">NSLayoutConstraint</span> constraintWithItem:view1</div><div class="line">                                                     attribute:<span class="built_in">NSLayoutAttributeHeight</span></div><div class="line">                                                     relatedBy:<span class="built_in">NSLayoutRelationEqual</span></div><div class="line">                                                        toItem:view1</div><div class="line">                                                     attribute:<span class="built_in">NSLayoutAttributeWidth</span></div><div class="line">                                                    multiplier:<span class="number">1</span></div><div class="line">                                                      constant:<span class="number">0</span>]];</div><div class="line"></div><div class="line"><span class="comment">// view1：设置在父视图水平方向上居中</span></div><div class="line">[<span class="keyword">self</span>.view addConstraint:[<span class="built_in">NSLayoutConstraint</span> constraintWithItem:view1</div><div class="line">                                                      attribute:<span class="built_in">NSLayoutAttributeCenterX</span></div><div class="line">                                                      relatedBy:<span class="built_in">NSLayoutRelationEqual</span></div><div class="line">                                                         toItem:<span class="keyword">self</span>.view</div><div class="line">                                                      attribute:<span class="built_in">NSLayoutAttributeCenterX</span></div><div class="line">                                                     multiplier:<span class="number">1</span></div><div class="line">                                                       constant:<span class="number">0</span>]];</div><div class="line"><span class="comment">// view1：设置在垂直方向上始终距离父视图底部为50px</span></div><div class="line">[<span class="keyword">self</span>.view addConstraint:[<span class="built_in">NSLayoutConstraint</span> constraintWithItem:view1</div><div class="line">                                                      attribute:<span class="built_in">NSLayoutAttributeBottom</span></div><div class="line">                                                      relatedBy:<span class="built_in">NSLayoutRelationEqual</span></div><div class="line">                                                         toItem:<span class="keyword">self</span>.view</div><div class="line">                                                      attribute:<span class="built_in">NSLayoutAttributeBottom</span></div><div class="line">                                                     multiplier:<span class="number">1</span></div><div class="line">                                                       constant:<span class="number">-50</span>]]; <span class="comment">// 类似的Bottom、Right设置为负</span></div><div class="line"></div><div class="line"><span class="comment">// view2：设置宽度是view1宽度的0.5倍</span></div><div class="line">[<span class="keyword">self</span>.view addConstraint:[<span class="built_in">NSLayoutConstraint</span> constraintWithItem:view2</div><div class="line">                                                      attribute:<span class="built_in">NSLayoutAttributeWidth</span></div><div class="line">                                                      relatedBy:<span class="built_in">NSLayoutRelationEqual</span></div><div class="line">                                                         toItem:view1</div><div class="line">                                                      attribute:<span class="built_in">NSLayoutAttributeWidth</span></div><div class="line">                                                     multiplier:<span class="number">0.5</span></div><div class="line">                                                       constant:<span class="number">0</span>]];</div><div class="line"></div><div class="line"><span class="comment">// view2：设置垂直方向上距父视图顶部100px</span></div><div class="line">[<span class="keyword">self</span>.view addConstraint:[<span class="built_in">NSLayoutConstraint</span> constraintWithItem:view2</div><div class="line">                                                      attribute:<span class="built_in">NSLayoutAttributeTop</span></div><div class="line">                                                      relatedBy:<span class="built_in">NSLayoutRelationEqual</span></div><div class="line">                                                         toItem:<span class="keyword">self</span>.view</div><div class="line">                                                      attribute:<span class="built_in">NSLayoutAttributeTop</span></div><div class="line">                                                     multiplier:<span class="number">1</span></div><div class="line">                                                       constant:<span class="number">100</span>]];</div><div class="line"></div><div class="line"><span class="comment">// view2：设置垂直方向上距view1顶部50px</span></div><div class="line">[<span class="keyword">self</span>.view addConstraint:[<span class="built_in">NSLayoutConstraint</span> constraintWithItem:view2</div><div class="line">                                                      attribute:<span class="built_in">NSLayoutAttributeBottom</span></div><div class="line">                                                      relatedBy:<span class="built_in">NSLayoutRelationEqual</span></div><div class="line">                                                         toItem:view1</div><div class="line">                                                      attribute:<span class="built_in">NSLayoutAttributeTop</span></div><div class="line">                                                     multiplier:<span class="number">1</span></div><div class="line">                                                       constant:<span class="number">-50</span>]];</div><div class="line"><span class="comment">// 通过以上两个条件可以确定高度，所以不需要再设置高度。</span></div><div class="line"></div><div class="line"><span class="comment">//view2：最后设置水平方向上距离父视图的左边间距与距离view1的间距相等</span></div><div class="line">[<span class="keyword">self</span>.view addConstraint:[<span class="built_in">NSLayoutConstraint</span> constraintWithItem:view2</div><div class="line">                                                      attribute:<span class="built_in">NSLayoutAttributeCenterX</span></div><div class="line">                                                      relatedBy:<span class="built_in">NSLayoutRelationEqual</span></div><div class="line">                                                         toItem:view1</div><div class="line">                                                      attribute:<span class="built_in">NSLayoutAttributeLeft</span></div><div class="line">                                                     multiplier:<span class="number">0.5</span></div><div class="line">                                                       constant:<span class="number">0</span>]];</div></pre></td></tr></table></figure>
+<p>运行程序查看效果，也可以大致参考下图的简单说明：</p>
+<p><img src="https://github.com/snail-z/snail-z.github.io/blob/master/images/constraint1.png?raw=true" alt="image"></p>
+<h3 id="使用VFL-即Visual-Format-Language-可视化格式语言创建约束"><a href="#使用VFL-即Visual-Format-Language-可视化格式语言创建约束" class="headerlink" title="使用VFL(即Visual Format Language)可视化格式语言创建约束"></a>使用VFL(即Visual Format Language)可视化格式语言创建约束</h3><p>VFL的API<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">+ (<span class="built_in">NSArray</span>&lt;<span class="built_in">NSLayoutConstraint</span> *&gt; *)constraintsWithVisualFormat:(<span class="built_in">NSString</span> *)format</div><div class="line">                                                       options:(<span class="built_in">NSLayoutFormatOptions</span>)opts</div><div class="line">                                                       metrics:(<span class="keyword">nullable</span> <span class="built_in">NSDictionary</span>&lt;<span class="built_in">NSString</span> *,<span class="keyword">id</span>&gt; *)metrics</div><div class="line">                                                         views:(<span class="built_in">NSDictionary</span>&lt;<span class="built_in">NSString</span> *, <span class="keyword">id</span>&gt; *)views;</div></pre></td></tr></table></figure></p>
+<ul>
+<li><code>format</code>：VFL格式字符串</li>
+<li><code>opts</code>： 对齐方式的枚举值<code>NSLayoutFormatOptions</code></li>
+<li><code>metrics</code>：设置需要进行替换的值，是字典类型，通过下面代码加以理解</li>
+<li><code>views</code>：传入约束中用到的views，也是字典类型。注意字典中的values一定要和format参数里所写的views名字相同</li>
+</ul>
+<p>部分NSLayoutFormatOptions的枚举值介绍：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSLayoutFormatAlignAllLeft</span> = (<span class="number">1</span> &lt;&lt; <span class="built_in">NSLayoutAttributeLeft</span>)：      <span class="comment">// 左边对齐</span></div><div class="line"><span class="built_in">NSLayoutFormatAlignAllRight</span> = (<span class="number">1</span> &lt;&lt; <span class="built_in">NSLayoutAttributeRight</span>)：    <span class="comment">// 右边对齐</span></div><div class="line"><span class="built_in">NSLayoutFormatAlignAllTop</span> = (<span class="number">1</span> &lt;&lt; <span class="built_in">NSLayoutAttributeTop</span>)：        <span class="comment">// 顶部对齐</span></div><div class="line"><span class="built_in">NSLayoutFormatAlignAllBottom</span> = (<span class="number">1</span> &lt;&lt; <span class="built_in">NSLayoutAttributeBottom</span>)：  <span class="comment">// 底部对齐</span></div><div class="line"><span class="built_in">NSLayoutFormatAlignAllCenterX</span> = (<span class="number">1</span> &lt;&lt; <span class="built_in">NSLayoutAttributeCenterX</span>)：<span class="comment">// 垂直方向中心对齐</span></div><div class="line"><span class="built_in">NSLayoutFormatAlignAllCenterY</span> = (<span class="number">1</span> &lt;&lt; <span class="built_in">NSLayoutAttributeCenterY</span>)：<span class="comment">// 水平方向中心对齐</span></div></pre></td></tr></table></figure></p>
+<p>下面通过代码来了解constraintsWithVisualFormat这个方法：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 创建视图</span></div><div class="line"><span class="built_in">UIView</span> *view1 = [[<span class="built_in">UIView</span> alloc] init];</div><div class="line">view1.backgroundColor = [<span class="built_in">UIColor</span> brownColor];</div><div class="line">[<span class="keyword">self</span>.view addSubview:view1];</div><div class="line"></div><div class="line"><span class="comment">// 关掉AutoresizingMask</span></div><div class="line">view1.translatesAutoresizingMaskIntoConstraints = <span class="literal">NO</span>;</div><div class="line"></div><div class="line"><span class="comment">// ①</span></div><div class="line"><span class="built_in">NSDictionary</span> *viewsDict = <span class="built_in">NSDictionaryOfVariableBindings</span>(view1);</div><div class="line"></div><div class="line"><span class="comment">// ②</span></div><div class="line"><span class="built_in">NSArray</span> *constraints1 = [<span class="built_in">NSLayoutConstraint</span> constraintsWithVisualFormat:<span class="string">@"H:|-[view1]-50-|"</span></div><div class="line">                                                                options:<span class="number">0</span></div><div class="line">                                                                metrics:<span class="literal">nil</span></div><div class="line">                                                                  views:viewsDict];</div><div class="line"></div><div class="line"><span class="comment">// ③</span></div><div class="line"><span class="built_in">NSArray</span> *constraints2 = [<span class="built_in">NSLayoutConstraint</span> constraintsWithVisualFormat:<span class="string">@"V:|-100-[view1(==200)]"</span></div><div class="line">                                                                options:<span class="number">0</span></div><div class="line">                                                                metrics:<span class="literal">nil</span></div><div class="line">                                                                  views:viewsDict];</div><div class="line"></div><div class="line"><span class="comment">// 使用addConstraints添加约束</span></div><div class="line">[<span class="keyword">self</span>.view addConstraints:constraints1];</div><div class="line">[<span class="keyword">self</span>.view addConstraints:constraints2];</div></pre></td></tr></table></figure>
+<p>下面介绍上面代码中的标记：<br>① <code>NSDictionaryOfVariableBindings(view1)</code>：<br>    这是个宏定义，字典格式可以理解为 <code>@{ @&quot;view1&quot; : @&quot;view1&quot;};</code> 相当于将key - value进行对应绑定；因为在VFL中是通过key来寻找对应的value。比如<code>@{@&quot;aView&quot; : @&quot;self.sView&quot;}</code>它会布局self.sView而不是aView。所以你在VFL中看到的变量是key，而不是value。</p>
+<blockquote>
+<p>注：在format字符串里或是在binding字典里，都应该避免使用类似self.view1这样的字样。</p>
+</blockquote>
+<p>② <code>@&quot;H:|-[view1]-50-|&quot;</code> ：<br>    <code>H:</code> 表示在水平方向上添加约束（H即horizontal）；<br>    <code>|</code> 是表示父视图；<br>    <code>-</code> 表示一个间距；如果未设置间距值，当和父视图之间时，默认代表20px（可看作-20-），如果是两个同级别的view，比如<code>@&quot;[view1]-[view2]&quot;</code>，则表示8px；<br>    所以这句话可理解为view1在水平方向上距父视图左边20px，距离父视图右边50px</p>
+<p>③ <code>@&quot;V:|-100-[view1(==200)]&quot;</code> ：<br>    <code>V:</code> 表示在垂直方向上添加约束（V即vertical）；<br>    <code>[view1(==200)]</code> 如果是在垂直方向上则表示view1的高度等200，水平方向则表示宽等某个值，可省略<code>==</code> 简化为<code>[view1(200)]</code>；<br>    由于确定了高度，所以底部间距不用设置，不然会起冲突。所以这句话可理解为view1在垂直方向上距父视图顶部100px，高为200px</p>
+<p>再通过一个例子加深理解：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">UIView</span> *sView = [[<span class="built_in">UIView</span> alloc] init];</div><div class="line">sView.backgroundColor = [<span class="built_in">UIColor</span> darkGrayColor];</div><div class="line">[<span class="keyword">self</span>.view addSubview:sView];</div><div class="line"></div><div class="line"><span class="built_in">UIView</span> *view1 = [[<span class="built_in">UIView</span> alloc] init];</div><div class="line">view1.backgroundColor = [<span class="built_in">UIColor</span> brownColor];</div><div class="line">[sView addSubview:view1];</div><div class="line"></div><div class="line"><span class="built_in">UIView</span> *view2 = [[<span class="built_in">UIView</span> alloc] init];</div><div class="line">view2.backgroundColor = [<span class="built_in">UIColor</span> orangeColor];</div><div class="line">[sView addSubview:view2]; <span class="comment">// 将view1 view2添加到sView上</span></div><div class="line"></div><div class="line"><span class="comment">// 关掉AutoresizingMask布局</span></div><div class="line">sView.translatesAutoresizingMaskIntoConstraints = <span class="literal">NO</span>;</div><div class="line">view1.translatesAutoresizingMaskIntoConstraints = <span class="literal">NO</span>;</div><div class="line">view2.translatesAutoresizingMaskIntoConstraints = <span class="literal">NO</span>;</div><div class="line"></div><div class="line"><span class="built_in">NSDictionary</span> *viewsDict = <span class="built_in">NSDictionaryOfVariableBindings</span>(sView, view1, view2);</div><div class="line"></div><div class="line"><span class="comment">// 设置间距和宽度要进行替换的值</span></div><div class="line"><span class="built_in">NSDictionary</span> *metricsDict = @&#123;<span class="string">@"padding"</span> : @<span class="number">50</span>, <span class="string">@"height"</span> : @<span class="number">150</span>&#125;;</div><div class="line"></div><div class="line"><span class="comment">// sView：水平方向布局</span></div><div class="line"><span class="built_in">NSArray</span> *constraints1 = [<span class="built_in">NSLayoutConstraint</span> constraintsWithVisualFormat:<span class="string">@"H:|-padding-[sView]-padding-|"</span></div><div class="line">                                                                options:kNilOptions</div><div class="line">                                                                metrics:metricsDict</div><div class="line">                                                                  views:viewsDict];</div><div class="line"></div><div class="line"><span class="comment">// sView：垂直方向布局</span></div><div class="line"><span class="built_in">NSArray</span> *constraints2 = [<span class="built_in">NSLayoutConstraint</span> constraintsWithVisualFormat:<span class="string">@"V:[sView(height)]-padding-|"</span></div><div class="line">                                                                options:kNilOptions</div><div class="line">                                                                metrics:metricsDict</div><div class="line">                                                                  views:viewsDict];</div><div class="line"></div><div class="line"><span class="comment">// 使用addConstraints添加约束</span></div><div class="line">[<span class="keyword">self</span>.view addConstraints:constraints1];</div><div class="line">[<span class="keyword">self</span>.view addConstraints:constraints2];</div><div class="line"></div><div class="line"><span class="comment">// view1 - view2：水平方向布局</span></div><div class="line"><span class="comment">// 设置对齐方式，view2顶部与底部都与view1对齐</span></div><div class="line"><span class="built_in">NSLayoutFormatOptions</span> options = <span class="built_in">NSLayoutFormatAlignAllTop</span> | <span class="built_in">NSLayoutFormatAlignAllBottom</span>;</div><div class="line"></div><div class="line"><span class="built_in">NSArray</span> *constraints3 = [<span class="built_in">NSLayoutConstraint</span> constraintsWithVisualFormat:<span class="string">@"H:|-15-[view1(100)]-padding-[view2]-15-|"</span></div><div class="line">                                                                options:options</div><div class="line">                                                                metrics:metricsDict</div><div class="line">                                                                  views:viewsDict];</div><div class="line"></div><div class="line"><span class="comment">// view1：垂直方向布局，根据设置的对齐方式可以确定view2高度与view1相等，所以不需要再进行对view2垂直方向上的布局</span></div><div class="line"><span class="built_in">NSArray</span> *constraints4 = [<span class="built_in">NSLayoutConstraint</span> constraintsWithVisualFormat:<span class="string">@"V:|-15-[view1]-15-|"</span></div><div class="line">                                                                options:kNilOptions</div><div class="line">                                                                metrics:metricsDict</div><div class="line">                                                                  views:viewsDict];</div><div class="line"></div><div class="line">[sView addConstraints:constraints3];</div><div class="line">[sView addConstraints:constraints4];</div><div class="line"></div><div class="line"><span class="comment">// 继续创建一个视图redView</span></div><div class="line"><span class="built_in">UIView</span> *redView = [[<span class="built_in">UIView</span> alloc] init];</div><div class="line">redView.backgroundColor = [<span class="built_in">UIColor</span> redColor];</div><div class="line">redView.translatesAutoresizingMaskIntoConstraints = <span class="literal">NO</span>;</div><div class="line">[<span class="keyword">self</span>.view addSubview:redView];</div><div class="line"></div><div class="line"><span class="comment">// 设置redView的左右两端对齐sView且高度等于sView的高</span></div><div class="line"><span class="built_in">NSArray</span> *constraints5 = [<span class="built_in">NSLayoutConstraint</span></div><div class="line">                        constraintsWithVisualFormat:<span class="string">@"V:[redView(sView)]-15-[sView]"</span></div><div class="line">                        options:<span class="built_in">NSLayoutFormatAlignAllLeft</span> | <span class="built_in">NSLayoutFormatAlignAllRight</span></div><div class="line">                        metrics:<span class="literal">nil</span></div><div class="line">                        views:<span class="built_in">NSDictionaryOfVariableBindings</span>(sView, redView)];</div><div class="line"></div><div class="line">[<span class="keyword">self</span>.view addConstraints:constraints5];</div></pre></td></tr></table></figure></p>
+<p>查看运行效果：</p>
+<h3 id="相关问题"><a href="#相关问题" class="headerlink" title="相关问题"></a>相关问题</h3><p>xxxxxxx</p>
+<blockquote>
+<p>注: xxxxxxxxxx…</p>
+</blockquote>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li><a href="url">name</a></li>
+<li><a href="url">name</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag"># iOS</a>
+          
+            <a href="/tags/Objective-C/" rel="tag"># Objective-C</a>
+          
+            <a href="/tags/AutoLayout/" rel="tag"># AutoLayout</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/18/Cocoa中的键值观察 - KVO/" rel="next" title="Cocoa中的键值观察 - KVO">
+                <i class="fa fa-chevron-left"></i> Cocoa中的键值观察 - KVO
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/19/iOS AutoLayout之 - NSLayoutConstraint/"
+           data-title="iOS AutoLayout之 - NSLayoutConstraint" data-url="http://note.snail-z.me/2017/03/19/iOS AutoLayout之 - NSLayoutConstraint/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://raw.githubusercontent.com/snail-z/snail-z.github.io/master/uploads/avatar.png"
+               alt="Snail-z" />
+          <p class="site-author-name" itemprop="name">Snail-z</p>
+           
+              <p class="site-description motion-element" itemprop="description">Happy Wife Happy Life.</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/snail-z" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/ll5235?refer_flag=1005055010_" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://snail-z.github.io/" title="Home" target="_blank">Home</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.jianshu.com/u/0052b40ffd10" title="coding鸿" target="_blank">coding鸿</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#显式创建约束方法constraintWithItem"><span class="nav-number">1.</span> <span class="nav-text">显式创建约束方法constraintWithItem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用VFL-即Visual-Format-Language-可视化格式语言创建约束"><span class="nav-number">2.</span> <span class="nav-text">使用VFL(即Visual Format Language)可视化格式语言创建约束</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关问题"><span class="nav-number">3.</span> <span class="nav-text">相关问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考资料"><span class="nav-number">4.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Snail-z</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"snail-z"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
