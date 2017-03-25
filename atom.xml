@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://note.snail-z.me/"/>
-  <updated>2017-03-25T04:08:47.000Z</updated>
+  <updated>2017-03-25T04:31:24.000Z</updated>
   <id>http://note.snail-z.me/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://note.snail-z.me/2017/03/19/iOS%20AutoLayout%E4%B9%8B%20-%20NSLayoutConstraint/"/>
     <id>http://note.snail-z.me/2017/03/19/iOS AutoLayout之 - NSLayoutConstraint/</id>
     <published>2017-03-19T08:15:03.000Z</published>
-    <updated>2017-03-25T04:08:47.000Z</updated>
+    <updated>2017-03-25T04:31:24.000Z</updated>
     
     <content type="html"><![CDATA[<p>AutoLayout是在iOS6之后推出的一种基于约束的，描述性的布局系统。使用约束条件来定义view的位置和尺寸。解决了不同分辨率和屏幕尺寸下view的适配问题，也简化了旋转时view位置的定义。<br>之前一直使用frame或第三方库<a href="https://github.com/SnapKit/Masonry.git" target="_blank" rel="external">Masonry</a>布局，对约束如何实现的并不清楚，所以抽时间进行了简单学习，并记录下如何使用纯代码NSLayoutConstraint实现autoLayout。<br><a id="more"></a></p>
 <h3 id="显式创建约束方法constraintWithItem"><a href="#显式创建约束方法constraintWithItem" class="headerlink" title="显式创建约束方法constraintWithItem"></a>显式创建约束方法constraintWithItem</h3><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">+(<span class="keyword">instancetype</span>)constraintWithItem:(<span class="keyword">id</span>)view1</div><div class="line">                        attribute:(<span class="built_in">NSLayoutAttribute</span>)attr1</div><div class="line">                        relatedBy:(<span class="built_in">NSLayoutRelation</span>)relation</div><div class="line">                           toItem:(<span class="keyword">nullable</span> <span class="keyword">id</span>)view2</div><div class="line">                        attribute:(<span class="built_in">NSLayoutAttribute</span>)attr2</div><div class="line">                       multiplier:(<span class="built_in">CGFloat</span>)multiplier</div><div class="line">                         constant:(<span class="built_in">CGFloat</span>)constant;</div></pre></td></tr></table></figure>
@@ -74,6 +74,7 @@
 <p>以上就是对NSLayoutConstraint学习做的笔记和遇到的问题，后期会在进行深入理解研究~~<br>本文<a href="https://github.com/snail-z/blog-demos.git" target="_blank" rel="external">Demo</a>已经上传至github，在里面的AutoLayout-Notes目录下。</p>
 <hr>
 <h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li><a href="http://adad184.com/2014/09/28/use-masonry-to-quick-solve-autolayout/" target="_blank" rel="external">Masonry介绍与使用实践(快速上手Autolayout)</a></li>
 <li><a href="http://tutuge.me/2015/12/14/autolayout-example-with-masonry3/" target="_blank" rel="external">有趣的Autolayout示例三-Masonry实现</a></li>
 <li><a href="http://jinqianchina.github.io/2016/04/29/iOS%E5%BC%80%E5%8F%91-%E8%87%AA%E5%8A%A8%E5%B8%83%E5%B1%80%E7%AF%87%EF%BC%9A%E5%8F%B2%E4%B8%8A%E6%9C%80%E7%89%9B%E7%9A%84%E8%87%AA%E5%8A%A8%E5%B8%83%E5%B1%80%E6%95%99%E5%AD%A6%EF%BC%81/" target="_blank" rel="external">iOS开发-自动布局篇</a></li>
 <li><a href="http://www.jianshu.com/p/d7a4790090f1" target="_blank" rel="external">iOS Autolayout解读</a></li>
