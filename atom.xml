@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://note.snail-z.me/"/>
-  <updated>2017-03-25T04:31:24.000Z</updated>
+  <updated>2017-04-07T14:06:48.000Z</updated>
   <id>http://note.snail-z.me/</id>
   
   <author>
@@ -14,6 +14,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>OC笔记</title>
+    <link href="http://note.snail-z.me/2017/04/07/OC%E7%AC%94%E8%AE%B0/"/>
+    <id>http://note.snail-z.me/2017/04/07/OC笔记/</id>
+    <published>2017-04-07T13:56:56.000Z</published>
+    <updated>2017-04-07T14:06:48.000Z</updated>
+    
+    <content type="html"><![CDATA[<font color="#4682B4"> 1. UIScrollview上的UIPangesturerecognizer冲突 </font>
+
+<p>在tableview里的cell的imageview上加了个UIPangesturerecognizer发现优先滚动imageview，往上拖的时候，tableView不响应滚动了，原来是tableview的实现也是用了UIPangesturerecognizer。解决方案如下：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 实现 UIGestureRecognizerDelegate</span></div><div class="line">- (<span class="built_in">BOOL</span>)gestureRecognizer:(<span class="built_in">UIGestureRecognizer</span> *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(<span class="built_in">UIGestureRecognizer</span> *)otherGestureRecognizer&#123;</div><div class="line">    <span class="keyword">return</span> <span class="literal">YES</span>;<span class="comment">//uitableview和子view也响应 no只响应子view uipangesturerecognizer</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<font color="#4682B4"> 2. title </font>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;font color=&quot;#4682B4&quot;&gt; 1. UIScrollview上的UIPangesturerecognizer冲突 &lt;/font&gt;
+
+&lt;p&gt;在tableview里的cell的imageview上加了个UIPangesturerecognizer发现优先滚动imageview，往上拖的时候，tableView不响应滚动了，原来是tableview的实现也是用了UIPangesturerecognizer。解决方案如下：&lt;br&gt;&lt;figure class=&quot;highlight objc&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 实现 UIGestureRecognizerDelegate&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;- (&lt;span class=&quot;built_in&quot;&gt;BOOL&lt;/span&gt;)gestureRecognizer:(&lt;span class=&quot;built_in&quot;&gt;UIGestureRecognizer&lt;/span&gt; *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(&lt;span class=&quot;built_in&quot;&gt;UIGestureRecognizer&lt;/span&gt; *)otherGestureRecognizer&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;YES&lt;/span&gt;;&lt;span class=&quot;comment&quot;&gt;//uitableview和子view也响应 no只响应子view uipangesturerecognizer&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://note.snail-z.me/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="iOS" scheme="http://note.snail-z.me/tags/iOS/"/>
+    
+      <category term="Objective-C" scheme="http://note.snail-z.me/tags/Objective-C/"/>
+    
+  </entry>
   
   <entry>
     <title>iOS AutoLayout之 - NSLayoutConstraint</title>

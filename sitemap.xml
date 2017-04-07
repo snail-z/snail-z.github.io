@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://note.snail-z.me/2017/04/07/OC%E7%AC%94%E8%AE%B0/</loc>
+    
+    <lastmod>2017-04-07T14:06:48.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://note.snail-z.me/about/index.html</loc>
+    
+    <lastmod>2017-03-26T03:35:18.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://note.snail-z.me/2017/03/19/iOS%20AutoLayout%E4%B9%8B%20-%20NSLayoutConstraint/</loc>
     
     <lastmod>2017-03-25T04:31:24.000Z</lastmod>
@@ -47,13 +61,6 @@
     <loc>http://note.snail-z.me/tags/index.html</loc>
     
     <lastmod>2017-03-17T02:40:57.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://note.snail-z.me/about/index.html</loc>
-    
-    <lastmod>2017-03-16T07:54:07.000Z</lastmod>
     
   </url>
   
