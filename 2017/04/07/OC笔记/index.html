@@ -115,7 +115,7 @@
 <meta property="og:url" content="http://note.snail-z.me/2017/04/07/OC笔记/index.html">
 <meta property="og:site_name" content="Snail-z Notes">
 <meta property="og:description" content="1. UIScrollview上的UIPangesturerecognizer冲突 在tableview里的cell的imageview上加个UIPangesturerecognizer会发现优先滚动imageview，tableView不响应滚动了，原因是tableview的实现也是用了UIPangesturerecognizer。解决方案如下：1234// 实现 UIGestureRecog">
-<meta property="og:updated_time" content="2017-04-07T14:20:02.000Z">
+<meta property="og:updated_time" content="2017-04-07T14:36:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OC笔记">
 <meta name="twitter:description" content="1. UIScrollview上的UIPangesturerecognizer冲突 在tableview里的cell的imageview上加个UIPangesturerecognizer会发现优先滚动imageview，tableView不响应滚动了，原因是tableview的实现也是用了UIPangesturerecognizer。解决方案如下：1234// 实现 UIGestureRecog">
@@ -405,7 +405,20 @@
       
 
       
-        <font color="#4682B4"> 1. UIScrollview上的UIPangesturerecognizer冲突 </font><br>在tableview里的cell的imageview上加个UIPangesturerecognizer会发现优先滚动imageview，tableView不响应滚动了，原因是tableview的实现也是用了UIPangesturerecognizer。解决方案如下：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 实现 UIGestureRecognizerDelegate</span></div><div class="line">- (<span class="built_in">BOOL</span>)gestureRecognizer:(<span class="built_in">UIGestureRecognizer</span> *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(<span class="built_in">UIGestureRecognizer</span> *)otherGestureRecognizer&#123;</div><div class="line">    <span class="keyword">return</span> <span class="literal">YES</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure><br><br><a id="more"></a><br><font color="#4682B4"> 2. title </font>
+        <p><font color="#4FAC8D"> 1. UIScrollview上的UIPangesturerecognizer冲突 </font><br>在tableview里的cell的imageview上加个UIPangesturerecognizer会发现优先滚动imageview，tableView不响应滚动了，原因是tableview的实现也是用了UIPangesturerecognizer。解决方案如下：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 实现 UIGestureRecognizerDelegate</span></div><div class="line">- (<span class="built_in">BOOL</span>)gestureRecognizer:(<span class="built_in">UIGestureRecognizer</span> *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(<span class="built_in">UIGestureRecognizer</span> *)otherGestureRecognizer &#123;</div><div class="line">    <span class="keyword">return</span> <span class="literal">YES</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p><font color="#4FAC8D"> 2. CGRect函数 </font></p>
+<ul>
+<li><p>CGRectOffset使用从源CGRect偏移的原点来创建矩形</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">    <span class="keyword">float</span> offset = <span class="number">25.0</span>;</div><div class="line">    <span class="built_in">CGRect</span> r1 = <span class="built_in">CGRectMake</span>(<span class="number">100</span>, <span class="number">100</span>, <span class="number">100</span>, <span class="number">100</span>);</div><div class="line">    <span class="built_in">CGRect</span> r2 = <span class="built_in">CGRectOffset</span>(r1, offset, offset);</div></pre></td></tr></table></figure>
+</li>
+<li><p>CGRectIntersectsRect允许我们确定两个矩形是否相交</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">    <span class="keyword">float</span> offset = <span class="number">25.0</span>;</div><div class="line">    <span class="built_in">CGRect</span> r1 = <span class="built_in">CGRectMake</span>(<span class="number">100</span>, <span class="number">100</span>, <span class="number">100</span>, <span class="number">100</span>);</div><div class="line">    <span class="built_in">CGRect</span> r2 = <span class="built_in">CGRectMake</span>(<span class="number">150</span>, <span class="number">150</span>, <span class="number">100</span>, <span class="number">100</span>);</div><div class="line">    <span class="keyword">if</span> (<span class="built_in">CGRectIntersectsRect</span>(r1, r2))</div><div class="line">    &#123;</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"intersecting"</span>);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>NSStringFromCGRect可以用来把CGRect显示到控制台</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">    <span class="built_in">CGRect</span> r1 = <span class="built_in">CGRectMake</span>(<span class="number">100</span>, <span class="number">100</span>, <span class="number">100</span>, <span class="number">100</span>);</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"rect:@%"</span>,<span class="built_in">NSStringFromCGRect</span>(r1));  </div><div class="line">  </div><div class="line"><span class="comment">// 同样，CGRectFromString允许我们根据一个字符串创建一个CGRect：</span></div><div class="line">    <span class="built_in">NSString</span> *r = <span class="string">@"&#123;0,0&#125;,&#123;100,100&#125;"</span>;</div><div class="line">    <span class="built_in">CGRect</span> r1 = <span class="built_in">CGRectFromString</span>(r);</div></pre></td></tr></table></figure>
+</li>
+</ul>
 
       
     </div>
