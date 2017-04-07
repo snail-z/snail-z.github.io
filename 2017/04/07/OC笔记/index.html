@@ -109,22 +109,16 @@
 
 
 
-<meta name="description" content="1. UIScrollview上的UIPangesturerecognizer冲突 
-
-在tableview里的cell的imageview上加了个UIPangesturerecognizer发现优先滚动imageview，往上拖的时候，tableView不响应滚动了，原来是tableview的实现也是用了UIPangesturerecognizer。解决方案如下：1234// 实现 UIGes">
+<meta name="description" content="1. UIScrollview上的UIPangesturerecognizer冲突 在tableview里的cell的imageview上加个UIPangesturerecognizer会发现优先滚动imageview，tableView不响应滚动了，原因是tableview的实现也是用了UIPangesturerecognizer。解决方案如下：1234// 实现 UIGestureRecog">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OC笔记">
 <meta property="og:url" content="http://note.snail-z.me/2017/04/07/OC笔记/index.html">
 <meta property="og:site_name" content="Snail-z Notes">
-<meta property="og:description" content="1. UIScrollview上的UIPangesturerecognizer冲突 
-
-在tableview里的cell的imageview上加了个UIPangesturerecognizer发现优先滚动imageview，往上拖的时候，tableView不响应滚动了，原来是tableview的实现也是用了UIPangesturerecognizer。解决方案如下：1234// 实现 UIGes">
-<meta property="og:updated_time" content="2017-04-07T14:06:48.000Z">
+<meta property="og:description" content="1. UIScrollview上的UIPangesturerecognizer冲突 在tableview里的cell的imageview上加个UIPangesturerecognizer会发现优先滚动imageview，tableView不响应滚动了，原因是tableview的实现也是用了UIPangesturerecognizer。解决方案如下：1234// 实现 UIGestureRecog">
+<meta property="og:updated_time" content="2017-04-07T14:20:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OC笔记">
-<meta name="twitter:description" content="1. UIScrollview上的UIPangesturerecognizer冲突 
-
-在tableview里的cell的imageview上加了个UIPangesturerecognizer发现优先滚动imageview，往上拖的时候，tableView不响应滚动了，原来是tableview的实现也是用了UIPangesturerecognizer。解决方案如下：1234// 实现 UIGes">
+<meta name="twitter:description" content="1. UIScrollview上的UIPangesturerecognizer冲突 在tableview里的cell的imageview上加个UIPangesturerecognizer会发现优先滚动imageview，tableView不响应滚动了，原因是tableview的实现也是用了UIPangesturerecognizer。解决方案如下：1234// 实现 UIGestureRecog">
 
 
 
@@ -411,11 +405,7 @@
       
 
       
-        <font color="#4682B4"> 1. UIScrollview上的UIPangesturerecognizer冲突 </font>
-
-<p>在tableview里的cell的imageview上加了个UIPangesturerecognizer发现优先滚动imageview，往上拖的时候，tableView不响应滚动了，原来是tableview的实现也是用了UIPangesturerecognizer。解决方案如下：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 实现 UIGestureRecognizerDelegate</span></div><div class="line">- (<span class="built_in">BOOL</span>)gestureRecognizer:(<span class="built_in">UIGestureRecognizer</span> *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(<span class="built_in">UIGestureRecognizer</span> *)otherGestureRecognizer&#123;</div><div class="line">    <span class="keyword">return</span> <span class="literal">YES</span>;<span class="comment">//uitableview和子view也响应 no只响应子view uipangesturerecognizer</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<a id="more"></a>
-<font color="#4682B4"> 2. title </font>
+        <font color="#4682B4"> 1. UIScrollview上的UIPangesturerecognizer冲突 </font><br>在tableview里的cell的imageview上加个UIPangesturerecognizer会发现优先滚动imageview，tableView不响应滚动了，原因是tableview的实现也是用了UIPangesturerecognizer。解决方案如下：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 实现 UIGestureRecognizerDelegate</span></div><div class="line">- (<span class="built_in">BOOL</span>)gestureRecognizer:(<span class="built_in">UIGestureRecognizer</span> *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(<span class="built_in">UIGestureRecognizer</span> *)otherGestureRecognizer&#123;</div><div class="line">    <span class="keyword">return</span> <span class="literal">YES</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure><br><br><a id="more"></a><br><font color="#4682B4"> 2. title </font>
 
       
     </div>
