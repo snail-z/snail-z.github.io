@@ -1687,7 +1687,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ffffd0;
+  background: #aaa8aa;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2535,6 +2535,6 @@ embed {
   display: inline-block;
 }
 #header {
-  background: url("http://oo8l3jrvb.bkt.clouddn.com/scott-webb-51542.jpg");
+  background: url("http://oo8l3jrvb.bkt.clouddn.com/ww2.jpg");
   background-size: cover;
 }
