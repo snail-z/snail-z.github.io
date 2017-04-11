@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://note.snail-z.me/"/>
-  <updated>2017-04-09T14:12:27.000Z</updated>
+  <updated>2017-04-10T12:06:13.000Z</updated>
   <id>http://note.snail-z.me/</id>
   
   <author>
@@ -14,6 +14,20 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>UICollectionView学习笔记</title>
+    <link href="http://note.snail-z.me/2017/04/10/UICollectionView%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>http://note.snail-z.me/2017/04/10/UICollectionView学习笔记/</id>
+    <published>2017-04-10T11:56:34.000Z</published>
+    <updated>2017-04-10T12:06:13.000Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>OC笔记</title>
