@@ -115,10 +115,12 @@
 <meta property="og:url" content="http://note.snail-z.me/2017/04/07/OC笔记/index.html">
 <meta property="og:site_name" content="Snail-z Notes">
 <meta property="og:description" content="UIScrollview上的UIPangesturerecognizer冲突在tableview里的cell的imageview上加个UIPangesturerecognizer会发现优先滚动imageview，tableView不响应滚动了，原因是tableview的实现也是用了UIPangesturerecognizer。解决方案如下：1234// 实现 UIGestureRecognizer">
-<meta property="og:updated_time" content="2017-04-09T14:12:27.000Z">
+<meta property="og:image" content="http://oo8l3jrvb.bkt.clouddn.com/pch%20configuration.png">
+<meta property="og:updated_time" content="2017-04-11T15:09:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OC笔记">
 <meta name="twitter:description" content="UIScrollview上的UIPangesturerecognizer冲突在tableview里的cell的imageview上加个UIPangesturerecognizer会发现优先滚动imageview，tableView不响应滚动了，原因是tableview的实现也是用了UIPangesturerecognizer。解决方案如下：1234// 实现 UIGestureRecognizer">
+<meta name="twitter:image" content="http://oo8l3jrvb.bkt.clouddn.com/pch%20configuration.png">
 
 
 
@@ -431,6 +433,8 @@
 </ol>
 <p>去掉分割线 <code>_tableView.separatorStyle = UITableViewCellSeparatorStyleNone;</code></p>
 <h2 id="Frame布局时使用CGRectInset设置左右、上下边距"><a href="#Frame布局时使用CGRectInset设置左右、上下边距" class="headerlink" title="Frame布局时使用CGRectInset设置左右、上下边距"></a>Frame布局时使用CGRectInset设置左右、上下边距</h2><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">UIView</span> *aView = [[<span class="built_in">UIView</span> alloc] initWithFrame:<span class="built_in">CGRectInset</span>(<span class="keyword">self</span>.view.bounds, <span class="number">10</span>, <span class="number">100</span>)];</div><div class="line">aView.backgroundColor = [<span class="built_in">UIColor</span> orangeColor];</div><div class="line">[<span class="keyword">self</span>.view addSubview:aView];</div></pre></td></tr></table></figure>
+<h2 id="PCH文件配置"><a href="#PCH文件配置" class="headerlink" title="PCH文件配置"></a>PCH文件配置</h2><p>如图：在Build Settings内搜索<code>prefix header</code><br><img src="http://oo8l3jrvb.bkt.clouddn.com/pch%20configuration.png" width="550px" height="330px"><br>然后修改为<code>$(SRCROOT)/Mydemo/MydemoPrefixHeader.pch</code><br>其中<code>Mydemo</code>对应project name, <code>MydemoPrefixHeader.pch</code>对应PCH file</p>
+
       
     </div>
 
@@ -667,7 +671,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#UIScrollview上的UIPangesturerecognizer冲突"><span class="nav-number">1.</span> <span class="nav-text">UIScrollview上的UIPangesturerecognizer冲突</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CGRect函数"><span class="nav-number">2.</span> <span class="nav-text">CGRect函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为视图某个角添加圆角"><span class="nav-number">3.</span> <span class="nav-text">为视图某个角添加圆角</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置UITableView的分割线顶头"><span class="nav-number">4.</span> <span class="nav-text">设置UITableView的分割线顶头</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Frame布局时使用CGRectInset设置左右、上下边距"><span class="nav-number">5.</span> <span class="nav-text">Frame布局时使用CGRectInset设置左右、上下边距</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#UIScrollview上的UIPangesturerecognizer冲突"><span class="nav-number">1.</span> <span class="nav-text">UIScrollview上的UIPangesturerecognizer冲突</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CGRect函数"><span class="nav-number">2.</span> <span class="nav-text">CGRect函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为视图某个角添加圆角"><span class="nav-number">3.</span> <span class="nav-text">为视图某个角添加圆角</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置UITableView的分割线顶头"><span class="nav-number">4.</span> <span class="nav-text">设置UITableView的分割线顶头</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Frame布局时使用CGRectInset设置左右、上下边距"><span class="nav-number">5.</span> <span class="nav-text">Frame布局时使用CGRectInset设置左右、上下边距</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PCH文件配置"><span class="nav-number">6.</span> <span class="nav-text">PCH文件配置</span></a></li></ol></div>
             
 
           </div>

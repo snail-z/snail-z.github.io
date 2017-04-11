@@ -34,7 +34,7 @@
     <link href="http://note.snail-z.me/2017/04/07/OC%E7%AC%94%E8%AE%B0/"/>
     <id>http://note.snail-z.me/2017/04/07/OC笔记/</id>
     <published>2017-04-07T13:56:56.000Z</published>
-    <updated>2017-04-09T14:12:27.000Z</updated>
+    <updated>2017-04-11T15:09:16.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="UIScrollview上的UIPangesturerecognizer冲突"><a href="#UIScrollview上的UIPangesturerecognizer冲突" class="headerlink" title="UIScrollview上的UIPangesturerecognizer冲突"></a>UIScrollview上的UIPangesturerecognizer冲突</h2><p>在tableview里的cell的imageview上加个UIPangesturerecognizer会发现优先滚动imageview，tableView不响应滚动了，原因是tableview的实现也是用了UIPangesturerecognizer。解决方案如下：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 实现 UIGestureRecognizerDelegate</span></div><div class="line">- (<span class="built_in">BOOL</span>)gestureRecognizer:(<span class="built_in">UIGestureRecognizer</span> *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(<span class="built_in">UIGestureRecognizer</span> *)otherGestureRecognizer &#123;</div><div class="line">    <span class="keyword">return</span> <span class="literal">YES</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <a id="more"></a>
@@ -61,7 +61,9 @@
 </li>
 </ol>
 <p>去掉分割线 <code>_tableView.separatorStyle = UITableViewCellSeparatorStyleNone;</code></p>
-<h2 id="Frame布局时使用CGRectInset设置左右、上下边距"><a href="#Frame布局时使用CGRectInset设置左右、上下边距" class="headerlink" title="Frame布局时使用CGRectInset设置左右、上下边距"></a>Frame布局时使用CGRectInset设置左右、上下边距</h2><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">UIView</span> *aView = [[<span class="built_in">UIView</span> alloc] initWithFrame:<span class="built_in">CGRectInset</span>(<span class="keyword">self</span>.view.bounds, <span class="number">10</span>, <span class="number">100</span>)];</div><div class="line">aView.backgroundColor = [<span class="built_in">UIColor</span> orangeColor];</div><div class="line">[<span class="keyword">self</span>.view addSubview:aView];</div></pre></td></tr></table></figure>]]></content>
+<h2 id="Frame布局时使用CGRectInset设置左右、上下边距"><a href="#Frame布局时使用CGRectInset设置左右、上下边距" class="headerlink" title="Frame布局时使用CGRectInset设置左右、上下边距"></a>Frame布局时使用CGRectInset设置左右、上下边距</h2><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">UIView</span> *aView = [[<span class="built_in">UIView</span> alloc] initWithFrame:<span class="built_in">CGRectInset</span>(<span class="keyword">self</span>.view.bounds, <span class="number">10</span>, <span class="number">100</span>)];</div><div class="line">aView.backgroundColor = [<span class="built_in">UIColor</span> orangeColor];</div><div class="line">[<span class="keyword">self</span>.view addSubview:aView];</div></pre></td></tr></table></figure>
+<h2 id="PCH文件配置"><a href="#PCH文件配置" class="headerlink" title="PCH文件配置"></a>PCH文件配置</h2><p>如图：在Build Settings内搜索<code>prefix header</code><br><img src="http://oo8l3jrvb.bkt.clouddn.com/pch%20configuration.png" width="550px" height="330px"><br>然后修改为<code>$(SRCROOT)/Mydemo/MydemoPrefixHeader.pch</code><br>其中<code>Mydemo</code>对应project name, <code>MydemoPrefixHeader.pch</code>对应PCH file</p>
+]]></content>
     
     <summary type="html">
     
