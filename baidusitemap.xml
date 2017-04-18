@@ -5,14 +5,23 @@
     
   <url>
     <loc>http://note.snail-z.me/2017/04/10/UICollectionView%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2017-04-17T15:45:53.000Z</lastmod>
+    <lastmod>2017-04-18T01:24:21.000Z</lastmod>
     <data>
         <display>
         <title>UICollectionView学习笔记</title>
         <pubTime>2017-04-10T11:56:34.000Z</pubTime>
         
+        <tag>iOS</tag>
+         
+        <tag>Objective-C</tag>
+         
+        <tag>集合视图</tag>
+         
          
            
+             
+              <breadCrumb title="技术" url="http://note.snail-z.me/categories/%E6%8A%80%E6%9C%AF/"/>
+          
         </display>
     </data>
     </url>
