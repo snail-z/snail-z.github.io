@@ -302,7 +302,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://note.snail-z.me/2017/05/13/iOS知识理论整理/">
+    <link itemprop="mainEntityOfPage" href="http://note.snail-z.me/2017/05/13/Cocoa Touch中的响应者链/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Snail-z">
@@ -324,7 +324,7 @@
             
               
                 
-                <a class="post-title-link" href="/2017/05/13/iOS知识理论整理/" itemprop="url">
+                <a class="post-title-link" href="/2017/05/13/Cocoa Touch中的响应者链/" itemprop="url">
                   Cocoa Touch中的响应者链
                 </a>
               
@@ -382,8 +382,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/05/13/iOS知识理论整理/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/13/iOS知识理论整理/" itemprop="commentCount"></span>
+                <a href="/2017/05/13/Cocoa Touch中的响应者链/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/13/Cocoa Touch中的响应者链/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -414,7 +414,7 @@
 <p>在iOS中，当发生事件响应时，由响应者链来对事件进行响应。<br>所有事件响应的类都是 UIResponder 的子类，响应者链是一个由不同对象组成的层次结构，其中的每个对象将依次获得响应事件消息的机会。当发生事件时，事件首先被发送给第一响应者，第一响应者往往是事件发生的视图，也就是用户触摸屏幕的地方。事件将沿着响应者链一直向下传递，直到被接受并做出处理。一般来说，第一响应者是个视图对象或者其子类对象，当其被触摸后事件被交由它处理，如果它不处理，事件就会被传递给它的视图控制器对象 ViewController（如果存在），然后是它的父视图（superview）对象（如果存在），以此类推，直到顶层视图。接下来会沿着顶层视图（top view）到窗口（UIWindow 对象）再到程序（UIApplication 对象）。如果整个过程都没有响应这个事件，该事件就被丢弃。一般情况下，在响应者链中只要由对象处理事件，事件就停止传递。</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/05/13/iOS知识理论整理/#more" rel="contents">
+            <a class="btn" href="/2017/05/13/Cocoa Touch中的响应者链/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
