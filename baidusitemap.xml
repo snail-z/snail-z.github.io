@@ -4,18 +4,16 @@
 
     
   <url>
-    <loc>http://note.snail-z.me/2017/04/10/UICollectionView%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2017-04-18T02:56:55.000Z</lastmod>
+    <loc>http://note.snail-z.me/2017/05/13/iOS%E7%9F%A5%E8%AF%86%E7%90%86%E8%AE%BA%E6%95%B4%E7%90%86/</loc>
+    <lastmod>2017-05-13T08:11:51.000Z</lastmod>
     <data>
         <display>
-        <title>UICollectionView学习笔记</title>
-        <pubTime>2017-04-10T11:56:34.000Z</pubTime>
+        <title>Cocoa Touch中的响应者链</title>
+        <pubTime>2017-05-13T04:33:29.000Z</pubTime>
         
         <tag>iOS</tag>
          
         <tag>Objective-C</tag>
-         
-        <tag>集合视图</tag>
          
          
            
@@ -28,16 +26,60 @@
 
     
   <url>
-    <loc>http://note.snail-z.me/2017/04/07/OC%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2017-04-12T02:03:20.000Z</lastmod>
+    <loc>http://note.snail-z.me/2017/03/16/2017%E6%88%91%E5%9C%A8%E5%8C%97%E4%BA%AC/</loc>
+    <lastmod>2017-05-13T04:39:49.000Z</lastmod>
     <data>
         <display>
-        <title>OC笔记</title>
+        <title>2017我在北京</title>
+        <pubTime>2017-03-15T16:18:53.000Z</pubTime>
+        
+        <tag>生活</tag>
+         
+         
+           
+             
+              <breadCrumb title="生活" url="http://note.snail-z.me/categories/%E7%94%9F%E6%B4%BB/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://note.snail-z.me/2017/04/07/Objective-C%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2017-05-13T04:35:01.000Z</lastmod>
+    <data>
+        <display>
+        <title>Objective-C笔记</title>
         <pubTime>2017-04-07T13:56:56.000Z</pubTime>
         
         <tag>iOS</tag>
          
         <tag>Objective-C</tag>
+         
+         
+           
+             
+              <breadCrumb title="技术" url="http://note.snail-z.me/categories/%E6%8A%80%E6%9C%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://note.snail-z.me/2017/04/10/UICollectionView%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2017-04-18T02:56:55.000Z</lastmod>
+    <data>
+        <display>
+        <title>UICollectionView学习笔记</title>
+        <pubTime>2017-04-10T11:56:34.000Z</pubTime>
+        
+        <tag>iOS</tag>
+         
+        <tag>Objective-C</tag>
+         
+        <tag>集合视图</tag>
          
          
            
@@ -134,26 +176,6 @@
            
              
               <breadCrumb title="技术" url="http://note.snail-z.me/categories/%E6%8A%80%E6%9C%AF/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://note.snail-z.me/2017/03/16/2017%E6%88%91%E5%9C%A8%E5%8C%97%E4%BA%AC/</loc>
-    <lastmod>2017-03-17T07:39:32.000Z</lastmod>
-    <data>
-        <display>
-        <title>2017我在北京</title>
-        <pubTime>2017-03-15T16:18:53.000Z</pubTime>
-        
-        <tag>我和她</tag>
-         
-         
-           
-             
-              <breadCrumb title="我和她" url="http://note.snail-z.me/categories/%E6%88%91%E5%92%8C%E5%A5%B9/"/>
           
         </display>
     </data>
