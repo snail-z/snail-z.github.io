@@ -1,0 +1,909 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="1rAjSg_LYunVt576r01InAPcRzfUpJ1sf6iiNhZPVwg" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iOS,面试题," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Snail-z Notes" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="记录一下自己最近面试过程中遇到的一些面试题。
+1. OC中@property的作用是什么？可以有哪些关键字修饰？@Property是声明属性的语法，作为OC的一项特性，主要作用就在于封装对象中的数据。可以快速方便的为实例变量创建存取器，并允许通过点语法使用存取器。@property本质就是ivar(实例变量) 和 getter / setter(存取方法)。
+
+存取器（accessor）：用于获取">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS面试技术问题总结">
+<meta property="og:url" content="http://note.snail-z.me/2017/05/13/iOS面试技术问题总结/index.html">
+<meta property="og:site_name" content="Snail-z Notes">
+<meta property="og:description" content="记录一下自己最近面试过程中遇到的一些面试题。
+1. OC中@property的作用是什么？可以有哪些关键字修饰？@Property是声明属性的语法，作为OC的一项特性，主要作用就在于封装对象中的数据。可以快速方便的为实例变量创建存取器，并允许通过点语法使用存取器。@property本质就是ivar(实例变量) 和 getter / setter(存取方法)。
+
+存取器（accessor）：用于获取">
+<meta property="og:image" content="http://oo8l3jrvb.bkt.clouddn.com/expr_lldb.png">
+<meta property="og:image" content="http://oo8l3jrvb.bkt.clouddn.com/expr2_lldb.png">
+<meta property="og:image" content="http://oo8l3jrvb.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-05-14%20%E4%B8%8B%E5%8D%8812.06.32.png">
+<meta property="og:updated_time" content="2017-05-14T09:29:43.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS面试技术问题总结">
+<meta name="twitter:description" content="记录一下自己最近面试过程中遇到的一些面试题。
+1. OC中@property的作用是什么？可以有哪些关键字修饰？@Property是声明属性的语法，作为OC的一项特性，主要作用就在于封装对象中的数据。可以快速方便的为实例变量创建存取器，并允许通过点语法使用存取器。@property本质就是ivar(实例变量) 和 getter / setter(存取方法)。
+
+存取器（accessor）：用于获取">
+<meta name="twitter:image" content="http://oo8l3jrvb.bkt.clouddn.com/expr_lldb.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '14163254',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://note.snail-z.me/2017/05/13/iOS面试技术问题总结/"/>
+
+
+
+
+
+  <title> iOS面试技术问题总结 | Snail-z Notes </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?4b0e6935e468cecbeb1b9f84a40c1d54";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Snail-z Notes</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">书山有路勤为径，学海无涯苦作舟</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://note.snail-z.me/2017/05/13/iOS面试技术问题总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Snail-z">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://raw.githubusercontent.com/snail-z/snail-z.github.io/master/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Snail-z Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                iOS面试技术问题总结
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-13T16:36:32+08:00">
+                2017-05-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/05/13/iOS面试技术问题总结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/13/iOS面试技术问题总结/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>记录一下自己最近面试过程中遇到的一些面试题。</p>
+<h4 id="1-OC中-property的作用是什么？可以有哪些关键字修饰？"><a href="#1-OC中-property的作用是什么？可以有哪些关键字修饰？" class="headerlink" title="1. OC中@property的作用是什么？可以有哪些关键字修饰？"></a>1. OC中@property的作用是什么？可以有哪些关键字修饰？</h4><p>@Property是声明属性的语法，作为OC的一项特性，主要作用就在于封装对象中的数据。可以快速方便的为实例变量创建存取器，并允许通过点语法使用存取器。<br>@property本质就是ivar(实例变量) 和 getter / setter(存取方法)。</p>
+<blockquote>
+<p>存取器（accessor）：用于获取和设置实例变量的方法。用于获取实例变量值的存取器是getter，用于设置实例变量值的存取器是setter。</p>
+</blockquote>
+<p>关键字修饰：</p>
+<ul>
+<li>线程安全的(关于是否原子访问): <code>atomic, nonatomic</code> </li>
+<li>访问权限的(关于访问控制操作): <code>readonly, readwrite</code></li>
+<li>内存管理(MRC)(关于set方法中属性引用计数相关): <code>assign, retain, copy</code></li>
+<li>内存管理(ARC)(增加了weak、strong属性): <code>assign, strong, weak, copy</code></li>
+<li>指定方法名称: <code>getter=  / setter=</code><a id="more"></a>
+</li>
+</ul>
+<h4 id="2-ARC下，不显示指定任何属性关键字时，默认的关键字都有哪些？"><a href="#2-ARC下，不显示指定任何属性关键字时，默认的关键字都有哪些？" class="headerlink" title="2. ARC下，不显示指定任何属性关键字时，默认的关键字都有哪些？"></a>2. ARC下，不显示指定任何属性关键字时，默认的关键字都有哪些？</h4><ul>
+<li>基本数据类型默认关键字是<code>atomic, readwrite, assign</code></li>
+<li>普通的OC对象默认关键字是<code>atomic, readwrite, strong</code></li>
+</ul>
+<h4 id="3-谈谈对-protocol的理解？-property能否在-protocol中使用？"><a href="#3-谈谈对-protocol的理解？-property能否在-protocol中使用？" class="headerlink" title="3. 谈谈对@protocol的理解？@property能否在@protocol中使用？"></a>3. 谈谈对@protocol的理解？@property能否在@protocol中使用？</h4><p>协议声明了任何类都能够选择实现的程序接口。协议能够使两个不同继承树上的类相互交流并完成特定的目的，因此它提供了除继承外的另一种选择。如果协议遵守者实现了协议中的方法，那么声明协议的类就能够通过遵守者调用协议中的方法。<br>总结:</p>
+<ul>
+<li>@Protocol是用来声明一系列方法定义公共接口(不能声明成员变量)，不能写实现</li>
+<li>只要某个类遵守了这个协议，就拥有了这个协议中的所有方法声明</li>
+<li>只要父类遵守了某个协议，那么它的子类也遵守</li>
+<li>OC不能多继承但是能够遵守多个协议；继承<code>:</code>  遵守协议<code>&lt;&gt;</code></li>
+<li>基协议:<code>&lt;NSObject&gt;</code>基协议，是最基本的协议其中声明了很多最基本的方法，例如要辨别id &lt;协议名&gt;这个指针所指的对象属于哪个类，就要用到<code>-isMemberOf:</code>这个方法，而这个方法是<code>&lt;NSObject&gt;</code>这个协议中的方法之一，所以我们自定义的协议都需要继承<code>&lt;NSObject&gt;</code>。</li>
+<li>协议可以遵守协议，一个协议遵守了另一个协议，就可以拥有另一个协议中的方法声明(称为协议继承)</li>
+</ul>
+<blockquote>
+<p>协议中能够声明方法，以及属性。但是不能定义实例变量。@property包含了实例变量、setter方法和getter方法。在类中定义的属性，当然三者都有，然而由于@protocol特性的限制，@property在@protocol中并不会合成实例变量，只会合成存取方法。这就要求该协议的遵守者必须自己写出setter和getter方法的实现。但是有一种情况是不需要的，那就是遵守者本来就有这个属性，此时系统会为这个属性自动生成存取方法，既然已经实现了，那么遵守者就没必要去实现协议中的这个属性了。尽管可以实现‘伪属性’，但是，我们还是应该尽量把属性定义在主接口中，而不应该定义在协议中。</p>
+</blockquote>
+<h4 id="4-通过Category给现有类添加的属性，可以直接使用吗？"><a href="#4-通过Category给现有类添加的属性，可以直接使用吗？" class="headerlink" title="4. 通过Category给现有类添加的属性，可以直接使用吗？"></a>4. 通过Category给现有类添加的属性，可以直接使用吗？</h4><p>比如建立个UIView的Loading分类并增加beginLoading属性，如下：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">UIView</span> (<span class="title">Loading</span>)</span></div><div class="line"></div><div class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>) <span class="built_in">UIView</span> *beginLoading;</div><div class="line"></div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+<p> 你会发现编译器并不会报任何错误，build一下也不会有问题，但是运行后会发生crash。这是因为在运行时找不到getter and setter methods，所以发生崩溃。如何解决？可以利用<code>runtime</code>的<a href="http://nshipster.com/associated-objects/" target="_blank" rel="external">Associated Objects</a>动态关联属性来解决问题。<br> 参考：<a href="http://www.cnblogs.com/Ohero/p/4739089.html" target="_blank" rel="external">iOS之Category属性的理解</a></p>
+<ul>
+<li>继续问：通过Associated关联的对象被存放在什么地方，关联对象的生命周期是什么样的？<br> 可以参考这篇文章：<a href="http://blog.leichunfeng.com/blog/2015/06/26/objective-c-associated-objects-implementation-principle/" target="_blank" rel="external">Objective-C Associated Objects 的实现原理</a></li>
+</ul>
+<h4 id="5-synthesize和-dynamic分别有什么作用？"><a href="#5-synthesize和-dynamic分别有什么作用？" class="headerlink" title="5. @synthesize和@dynamic分别有什么作用？"></a>5. @synthesize和@dynamic分别有什么作用？</h4><p><code>@synthesize</code>和<code>@dynamic</code>是@property的两个对应词。如果<code>@synthesize</code>和<code>@dynamic</code>都没写，那么默认的就是<code>@syntheszie var = _var;</code><br>@synthesize告诉编译器：如果你没有手动实现setter和getter方法，编译器会自动帮你生成。<br>@dynamic 告诉编译器：属性的setter与getter方法由用户自己实现，不自动生成。（当然对于readonly的属性只需提供getter即可）。假如一个属性被声明为<code>@dynamic var</code>，然后你没有提供@setter方法和@getter方法，编译的时候没问题，但是当程序运行到<code>instance.var = someVar</code>，由于缺setter方法会导致程序崩溃；或者当运行到<code>someVar = var</code>时，由于缺 getter 方法同样会导致崩溃。编译时没问题，运行时才执行相应的方法，这就是所谓的动态绑定。</p>
+<h4 id="6-说一说ARC下的assign与weak区别？"><a href="#6-说一说ARC下的assign与weak区别？" class="headerlink" title="6. 说一说ARC下的assign与weak区别？"></a>6. 说一说ARC下的assign与weak区别？</h4><ul>
+<li>weak :<br>1）ARC中，在有可能出现循环引用的时候，往往要通过让其中一端使用weak来解决，比如最常见的delegate代理属性。<br>2）如果自身已经对它进行一次强引用，没有必要再次强引用时也会使用weak。比如自定义IBOutlet控件属性一般使用weak，当然也可以使用strong。</li>
+<li>assign :<br>assign是指针赋值，不对引用计数操作，适用于基本数据类型如<code>NSInteger, int, float, struct</code>等值类型，不适用于引用类型。</li>
+<li>不同点：<br>weak，表明该属性定义了一种“非拥有关系” (nonowning relationship)。为属性设置新值时，设置方法既不保留新值，也不释放旧值。<br>assign也可以修饰对象，但是用assign修饰的对象在释放后，指针的地址还是存在的，也就是说指针并没有被置为nil，会造成众所周知的野指针异常。然而，assign修饰的基础数据类型(例如NSInteger等)和C数据类型(int, float, double, char)等一般分配在栈空间上，栈空间的内存会由系统自动处理，当分配的栈空间的内存没有被指针指向时就会被销毁，所以不会造成野指针异常。<br>weak比assign多了一个功能就是当属性所指向的对象消失的时候（也就是内存引用计数为0）会自动赋值为 nil，这样再向 weak修饰的属性发送消息就不会导致野指针操作crash。</li>
+<li>总结：<br>assign 适用于基本数据类型如int,float,struct等值类型，不适用于引用类型。因为值类型会被放入栈中，遵循先进后出原则，由系统负责管理栈内存。而引用类型会被放入堆中，需要自己手动管理内存或通过ARC管理。<br>weak适用于delegate等引用类型，不会导致野指针问题，也不会循环引用，非常安全。</li>
+</ul>
+<h4 id="7-iOS中weak的实现原理"><a href="#7-iOS中weak的实现原理" class="headerlink" title="7. iOS中weak的实现原理?"></a>7. iOS中weak的实现原理?</h4><p> 参考文章：<a href="http://www.cocoachina.com/ios/20170328/18962.html" target="_blank" rel="external">iOS 底层解析weak的实现原理（包含weak对象的初始化，引用，释放的分析）</a></p>
+<h4 id="8-NotificationCenter为什么要removeObserver-如何实现自动remove"><a href="#8-NotificationCenter为什么要removeObserver-如何实现自动remove" class="headerlink" title="8. NotificationCenter为什么要removeObserver? 如何实现自动remove?"></a>8. NotificationCenter为什么要removeObserver? 如何实现自动remove?</h4><p>首先NotificationCenter是一个单例类，通过<code>[NSNotificationCenter defaultCenter]</code>来获取单例对象。<br>它有三个核心函数和一个观察者数组：</p>
+<ul>
+<li>订阅消息： addObserver()。订阅感兴趣的消息。</li>
+<li>发布消息： postNotification()。发布消息。</li>
+<li>退订消息： removeObserver()。不感兴趣了，就退订。</li>
+<li>观察者数组： _observers</li>
+</ul>
+<p>Notification是一个单例类，通常在释放场景或者某个对象之前，都要取消场景或对象订阅的消息，否则，注册通知的类被销毁以后再当消息产生时，会因为对象不存在，即向野指针发送了消息，而产生一些意外的BUG。<br>实现自动<code>remove:</code>通过自释放机制，通过动态属性将<code>remove</code>转移给第三者解除耦合，达到自动实现remove</p>
+<h4 id="9-NSNotification、KVO、Delegate和Block的区别？"><a href="#9-NSNotification、KVO、Delegate和Block的区别？" class="headerlink" title="9. NSNotification、KVO、Delegate和Block的区别？"></a>9. NSNotification、KVO、Delegate和Block的区别？</h4><p>KVO就是cocoa框架实现的观察者模式，通过KVO可以监测一个值得变化，比如View的高度变化。是一对多的关系，一个值得变化会通知所有的观察者。一般使用场景是数据，需求是数据变化，比如股票价格变化，一般使用KVO（观察者模式）。<br>NSNotification是通知，也是一对多的使用场景。NSNotification的特点就是需要被观察者先主动发出通知，然后观察者注册监听后再来进行相应，比KVO多了发送通知的异步，但是其优点是监听不局限于属性的变化，还可以对多种多样的状态变化进行监听，监听范围广，使用也更灵活。<br>Notification一般是进行全局通知，是弱关联，消息发出后，不需要知道是谁发的也可以做出相应的反应，同理发消息的人也不需要知道接收的人也可以正常发出的消息。<br>Delegate是强关联，就是委托和代理双方互相知道，是一对一关系。<br>Block是delegate的另一种形式，是函数式编程的一种形式。使用场景跟delegate一样，相比delegate更灵活，而且比代理的实现更直观。</p>
+<h4 id="10-UIViewController的生命周期及iOS程序执行顺序？"><a href="#10-UIViewController的生命周期及iOS程序执行顺序？" class="headerlink" title="10. UIViewController的生命周期及iOS程序执行顺序？"></a>10. UIViewController的生命周期及iOS程序执行顺序？</h4><p>UIViewController中与其生命周期有关的几个函数如下：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//类的初始化方法</span></div><div class="line">+ (<span class="keyword">void</span>)initialize;</div><div class="line"><span class="comment">//对象初始化方法</span></div><div class="line">- (<span class="keyword">instancetype</span>)init;</div><div class="line"><span class="comment">//从归档初始化</span></div><div class="line">- (<span class="keyword">instancetype</span>)initWithCoder:(<span class="built_in">NSCoder</span> *)coder;</div><div class="line"><span class="comment">//加载视图</span></div><div class="line">-(<span class="keyword">void</span>)loadView;</div><div class="line"><span class="comment">//将要加载视图</span></div><div class="line">- (<span class="keyword">void</span>)viewDidLoad;</div><div class="line"><span class="comment">//将要布局子视图</span></div><div class="line">-(<span class="keyword">void</span>)viewWillLayoutSubviews;</div><div class="line"><span class="comment">//已经布局子视图</span></div><div class="line">-(<span class="keyword">void</span>)viewDidLayoutSubviews;</div><div class="line"><span class="comment">//内存警告</span></div><div class="line">- (<span class="keyword">void</span>)didReceiveMemoryWarning;</div><div class="line"><span class="comment">//已经展示</span></div><div class="line">-(<span class="keyword">void</span>)viewDidAppear:(<span class="built_in">BOOL</span>)animated;</div><div class="line"><span class="comment">//将要展示</span></div><div class="line">-(<span class="keyword">void</span>)viewWillAppear:(<span class="built_in">BOOL</span>)animated;</div><div class="line"><span class="comment">//将要消失</span></div><div class="line">-(<span class="keyword">void</span>)viewWillDisappear:(<span class="built_in">BOOL</span>)animated;</div><div class="line"><span class="comment">//已经消失</span></div><div class="line">-(<span class="keyword">void</span>)viewDidDisappear:(<span class="built_in">BOOL</span>)animated;</div><div class="line"><span class="comment">//被释放</span></div><div class="line">-(<span class="keyword">void</span>)dealloc;</div></pre></td></tr></table></figure></p>
+<p>除了<code>initialize,init</code>和<code>initWithCoder</code>不是存在所有对象的声明周期中，其他函数都会在UIViewController的声明周期中有序的被调用。那么具体的调用顺序是怎样的呢，最好的办法是实践一下，通过编号打印，结果如下：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">initialize <span class="comment">// initialize函数并不会每次创建对象都调用，只有在这个类第一次创建对象时才会调用，做一些类的准备工作，再次创建这个类的对象，initalize方法将不会被调用，对于这个类的子类，如果实现了initialize方法，在这个子类第一次创建对象时会调用自己的initalize方法，之后不会调用，如果没有实现，那么它的父类将替它再次调用一下自己的initialize方法，以后创建也都不会再调用。因此，如果我们有一些和这个相关的全局变量，可以在这里进行初始化。</span></div><div class="line">init <span class="comment">// init方法和initCoder方法相似，只是被调用的环境不一样，如果用代码进行初始化，会调用init，从nib文件或者归档进行初始化，会调用initCoder。</span></div><div class="line">loadView <span class="comment">// 开始加载视图的起始方法，除非手动调用，否则在ViewController的生命周期中没特殊情况只会被调用一次。</span></div><div class="line">viewDidLoad <span class="comment">// 这是是我们最常用的方法的，类中成员对象和变量的初始化我们都会放在这个方法中，在类创建后，无论视图的展现或消失，这个方法也是只会在将要布局时调用一次。</span></div><div class="line">viewWillAppear <span class="comment">// 视图将要展现时会调用</span></div><div class="line">viewWillLayoutSubviews <span class="comment">// 在viewWillAppear后调用，将要对子视图进行布局</span></div><div class="line">viewDidLayoutSubviews  <span class="comment">// 已经布局完成子视图</span></div><div class="line">viewDidAppare <span class="comment">// 视图完成显示时调用</span></div><div class="line">viewWillDisappear <span class="comment">// 视图将要消失时调用</span></div><div class="line">viewDidDisappear <span class="comment">// 视图已经消失时调用</span></div><div class="line">dealloc <span class="comment">// controller被释放时调用。</span></div></pre></td></tr></table></figure></p>
+<p>参考文章：<a href="https://my.oschina.net/u/2340880/blog/524564" target="_blank" rel="external">iOS对UIViewController生命周期和属性方法的解析</a></p>
+<p>说下遇到的一道选择题：如果页面A跳转到页面B，以下选项正确的是（）？<br>A、A页面的 viewDidDisappear 方法先调用；<br>B、B页面的 viewDidAppear 方法先调用；<br>C、不一定，都有可能；</p>
+<p>答案 我是选的B<br>不过准确的说应该分情况而定，经过实际测试发现如果是push跳转的话，执行顺序是<br>页面A - <code>[ViewControllerA viewDidDisappear:]</code><br>页面B - <code>[ViewControllerB viewDidAppear:]</code><br>如果是present跳转的话，执行顺序是<br>页面B - <code>[ViewControllerB viewDidAppear:]</code><br>页面A - <code>[ViewControllerA viewDidDisappear:]</code><br>如有不对，感谢纠正。</p>
+<h4 id="11-如何对下面数组中的元素去重（代码，伪代码，思路都可以）？"><a href="#11-如何对下面数组中的元素去重（代码，伪代码，思路都可以）？" class="headerlink" title="11. 如何对下面数组中的元素去重（代码，伪代码，思路都可以）？"></a>11. 如何对下面数组中的元素去重（代码，伪代码，思路都可以）？</h4><p><code>NSArray *array = @[@&quot;12-11&quot;, @&quot;12-11&quot;, @&quot;12-11&quot;, @&quot;12-12&quot;, @&quot;12-13&quot;, @&quot;12-12&quot;];</code></p>
+<p>1）利用<code>containsObject</code>判断<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSMutableArray</span> *mutArray = [<span class="built_in">NSMutableArray</span> array];</div><div class="line">   <span class="keyword">for</span> (<span class="built_in">NSString</span> *value <span class="keyword">in</span> array) &#123;</div><div class="line">       <span class="keyword">if</span> (![mutArray containsObject:value]) &#123;</div><div class="line">           [mutArray addObject:value];</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
+<p>2）利用NSSet自动去重特性<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSMutableSet</span> *mutSet = [<span class="built_in">NSMutableSet</span> set];</div><div class="line">   <span class="keyword">for</span> (<span class="built_in">NSString</span> *value <span class="keyword">in</span> array) &#123;</div><div class="line">       [mutSet addObject:value];</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
+<p>以上是自己写的两种方法，若有更好的答案感谢告知。</p>
+<h4 id="12-请问下面的代码会输出什么？为什么？"><a href="#12-请问下面的代码会输出什么？为什么？" class="headerlink" title="12. 请问下面的代码会输出什么？为什么？"></a>12. 请问下面的代码会输出什么？为什么？</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">ClassB</span> : <span class="title">ClassA</span></span></div><div class="line"></div><div class="line"><span class="keyword">@end</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">ClassB</span></span></div><div class="line"></div><div class="line">- (<span class="keyword">id</span>)init &#123;</div><div class="line">    <span class="keyword">self</span> = [<span class="keyword">super</span> init];</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>) &#123;</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, <span class="built_in">NSStringFromClass</span>([<span class="keyword">self</span> <span class="keyword">class</span>]));</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, <span class="built_in">NSStringFromClass</span>([<span class="keyword">super</span> <span class="keyword">class</span>]));</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+<p>两句输出语句均输出：ClassB<br>简单来说，self和super都是指向当前实例的，不同的是<code>[self class]</code>会在当前类的方法列表中去找class这个方法，<code>[super class]</code>会直接开始在当前类的父类中去找calss这个方法，两者在找不到的时候，都会继续向祖类查询class方法，最终到NSObject类。那么问题来了，由于我们在ClassA和ClassB中都没有去重写class这个方法，最终自然都会去执行NSObject中的class方法，结果也自然应该是一样的。至于为什么是ClassB，可以看看NSObject中class的实现：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">- (Class)<span class="keyword">class</span> &#123;</div><div class="line">    <span class="keyword">return</span> object_getClass(<span class="keyword">self</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>返回的都是self的类型，self此处正好就是ClassB，因此结果就会输出ClassB。<br>参考链接：<a href="https://github.com/BaiduHiDeviOS/iOS-puzzles/issues/1" target="_blank" rel="external">有关super和self的问题</a></p>
+<h4 id="13-说说你常使用的lldb调试命令？"><a href="#13-说说你常使用的lldb调试命令？" class="headerlink" title="13. 说说你常使用的lldb调试命令？"></a>13. 说说你常使用的lldb调试命令？</h4><p>LLDB是Xcode默认的调试器，它与LLVM编译器一起，带给我们更丰富的流程控制和数据检测的调试功能。平时用Xcode运行程序，实际走的都是LLDB。熟练使用LLDB，可以让debug事半功倍。<br>常用LLDB命令:</p>
+<ul>
+<li><p>expression<br>expression命令的作用是执行一个表达式，并将表达式返回的结果输出。可以实现2个功能：<br>  1) 执行某个表达式。 我们在代码运行过程中，可以通过执行某个表达式来动态改变程序运行的轨迹。 假如我们在运行过程中，突然想把self.view颜色改成红色，看看效果。我们不必写下代码，重新run，只需暂停程序，用expression改变颜色，再刷新一下界面，就能看到效果<br>  <img src="http://oo8l3jrvb.bkt.clouddn.com/expr_lldb.png" alt="image"></p>
+<p>  2) 将返回值输出。 也就是说我们可以通过expression来打印东西。 假如我们想打印self.view<br>  <img src="http://oo8l3jrvb.bkt.clouddn.com/expr2_lldb.png" alt="image"></p>
+</li>
+<li>p &amp; print &amp; call<br>print: 打印某个东西，可以是变量和表达式<br>p: 可以看做是print的简写<br>call: 调用某个方法</li>
+<li>po<br>OC里所有的对象都是用指针表示的，所以一般打印的时候，打印出来的是对象的指针，而不是对象本身。如果我们想打印对象。我们需要使用命令选项:-O。为了更方便的使用，LLDB为<code>expression -O</code> 定义了一个别名：po<blockquote>
+<p>还有其他很多命令选项，不过一般用得比较少，所以就不具体的一一介绍了，如果想了解，在LLDB控制台上输入：help expression即可查到expression所有的信息</p>
+</blockquote>
+</li>
+</ul>
+<p>该题图片内容来自：<a href="http://ios.jobbole.com/83393/" target="_blank" rel="external">熟练使用 LLDB，让你调试事半功倍</a></p>
+<h4 id="14-如下ViewB是ViewA的子视图，其中1-4的区域在父视图ViewA上，如何让ViewB的3-4区域也响应事件？"><a href="#14-如下ViewB是ViewA的子视图，其中1-4的区域在父视图ViewA上，如何让ViewB的3-4区域也响应事件？" class="headerlink" title="14. 如下ViewB是ViewA的子视图，其中1/4的区域在父视图ViewA上，如何让ViewB的3/4区域也响应事件？"></a>14. 如下ViewB是ViewA的子视图，其中1/4的区域在父视图ViewA上，如何让ViewB的3/4区域也响应事件？</h4><p><img src="http://oo8l3jrvb.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-05-14%20%E4%B8%8B%E5%8D%8812.06.32.png" alt="image"></p>
+<p>参考这里：<a href="https://snail-z.github.io/2017/05/13/Cocoa%20Touch中的响应者链/" target="_blank" rel="external">Cocoa Touch中的响应者链</a></p>
+<h4 id="15-谈谈你对MVVM与MVC的理解？"><a href="#15-谈谈你对MVVM与MVC的理解？" class="headerlink" title="15. 谈谈你对MVVM与MVC的理解？"></a>15. 谈谈你对MVVM与MVC的理解？</h4><h4 id="16-什么是Runloop？"><a href="#16-什么是Runloop？" class="headerlink" title="16. 什么是Runloop？"></a>16. 什么是Runloop？</h4>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag"># iOS</a>
+          
+            <a href="/tags/面试题/" rel="tag"># 面试题</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/13/Cocoa Touch中的响应者链/" rel="next" title="Cocoa Touch中的响应者链">
+                <i class="fa fa-chevron-left"></i> Cocoa Touch中的响应者链
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/05/13/iOS面试技术问题总结/"
+           data-title="iOS面试技术问题总结" data-url="http://note.snail-z.me/2017/05/13/iOS面试技术问题总结/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://raw.githubusercontent.com/snail-z/snail-z.github.io/master/uploads/avatar.png"
+               alt="Snail-z" />
+          <p class="site-author-name" itemprop="name">Snail-z</p>
+           
+              <p class="site-description motion-element" itemprop="description">Happy Wife Happy Life.</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/snail-z" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/ll5235?refer_flag=1005055010_" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://snail-z.github.io/" title="Home" target="_blank">Home</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.jianshu.com/u/0052b40ffd10" title="coding鸿" target="_blank">coding鸿</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-OC中-property的作用是什么？可以有哪些关键字修饰？"><span class="nav-number">1.</span> <span class="nav-text">1. OC中@property的作用是什么？可以有哪些关键字修饰？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-ARC下，不显示指定任何属性关键字时，默认的关键字都有哪些？"><span class="nav-number">2.</span> <span class="nav-text">2. ARC下，不显示指定任何属性关键字时，默认的关键字都有哪些？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-谈谈对-protocol的理解？-property能否在-protocol中使用？"><span class="nav-number">3.</span> <span class="nav-text">3. 谈谈对@protocol的理解？@property能否在@protocol中使用？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-通过Category给现有类添加的属性，可以直接使用吗？"><span class="nav-number">4.</span> <span class="nav-text">4. 通过Category给现有类添加的属性，可以直接使用吗？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-synthesize和-dynamic分别有什么作用？"><span class="nav-number">5.</span> <span class="nav-text">5. @synthesize和@dynamic分别有什么作用？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-说一说ARC下的assign与weak区别？"><span class="nav-number">6.</span> <span class="nav-text">6. 说一说ARC下的assign与weak区别？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-iOS中weak的实现原理"><span class="nav-number">7.</span> <span class="nav-text">7. iOS中weak的实现原理?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-NotificationCenter为什么要removeObserver-如何实现自动remove"><span class="nav-number">8.</span> <span class="nav-text">8. NotificationCenter为什么要removeObserver? 如何实现自动remove?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-NSNotification、KVO、Delegate和Block的区别？"><span class="nav-number">9.</span> <span class="nav-text">9. NSNotification、KVO、Delegate和Block的区别？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-UIViewController的生命周期及iOS程序执行顺序？"><span class="nav-number">10.</span> <span class="nav-text">10. UIViewController的生命周期及iOS程序执行顺序？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11-如何对下面数组中的元素去重（代码，伪代码，思路都可以）？"><span class="nav-number">11.</span> <span class="nav-text">11. 如何对下面数组中的元素去重（代码，伪代码，思路都可以）？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#12-请问下面的代码会输出什么？为什么？"><span class="nav-number">12.</span> <span class="nav-text">12. 请问下面的代码会输出什么？为什么？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#13-说说你常使用的lldb调试命令？"><span class="nav-number">13.</span> <span class="nav-text">13. 说说你常使用的lldb调试命令？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#14-如下ViewB是ViewA的子视图，其中1-4的区域在父视图ViewA上，如何让ViewB的3-4区域也响应事件？"><span class="nav-number">14.</span> <span class="nav-text">14. 如下ViewB是ViewA的子视图，其中1/4的区域在父视图ViewA上，如何让ViewB的3/4区域也响应事件？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#15-谈谈你对MVVM与MVC的理解？"><span class="nav-number">15.</span> <span class="nav-text">15. 谈谈你对MVVM与MVC的理解？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#16-什么是Runloop？"><span class="nav-number">16.</span> <span class="nav-text">16. 什么是Runloop？</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Snail-z</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"snail-z"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

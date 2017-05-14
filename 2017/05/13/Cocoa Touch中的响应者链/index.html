@@ -109,19 +109,33 @@
 
 
 
-<meta name="description" content="响应者链（Responder Chain）对于 iOS 设备用户来说，他们操作设备的方式主要有三种：触摸屏幕、晃动设备、通过遥控设施控制设备。对应的事件类型有以下三种：    触屏事件（Touch Event）    运动事件（Motion Event）    远端控制事件（Remote-Control Event）
-在iOS中，当发生事件响应时，由响应者链来对事件进行响应。所有事件响应的类都是">
+<meta name="description" content="了解Cocoa Touch中的响应者链之前，先通过下图了解一下有关UIView的继承关系：
+
+UIView继承自UIResponder , UIResponder继承自NSObject
+
+（上图是从我从网上找个一张关系图，如有侵权请及时告知）
+响应者链（Responder Chain）对于 iOS 设备用户来说，他们操作设备的方式主要有三种：触摸屏幕、晃动设备、通过遥控设施控制设备。对应的事件类型">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Cocoa Touch中的响应者链">
 <meta property="og:url" content="http://note.snail-z.me/2017/05/13/Cocoa Touch中的响应者链/index.html">
 <meta property="og:site_name" content="Snail-z Notes">
-<meta property="og:description" content="响应者链（Responder Chain）对于 iOS 设备用户来说，他们操作设备的方式主要有三种：触摸屏幕、晃动设备、通过遥控设施控制设备。对应的事件类型有以下三种：    触屏事件（Touch Event）    运动事件（Motion Event）    远端控制事件（Remote-Control Event）
-在iOS中，当发生事件响应时，由响应者链来对事件进行响应。所有事件响应的类都是">
-<meta property="og:updated_time" content="2017-05-13T08:23:37.000Z">
+<meta property="og:description" content="了解Cocoa Touch中的响应者链之前，先通过下图了解一下有关UIView的继承关系：
+
+UIView继承自UIResponder , UIResponder继承自NSObject
+
+（上图是从我从网上找个一张关系图，如有侵权请及时告知）
+响应者链（Responder Chain）对于 iOS 设备用户来说，他们操作设备的方式主要有三种：触摸屏幕、晃动设备、通过遥控设施控制设备。对应的事件类型">
+<meta property="og:image" content="http://oo8l3jrvb.bkt.clouddn.com/timg2.jpg">
+<meta property="og:updated_time" content="2017-05-13T16:19:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Cocoa Touch中的响应者链">
-<meta name="twitter:description" content="响应者链（Responder Chain）对于 iOS 设备用户来说，他们操作设备的方式主要有三种：触摸屏幕、晃动设备、通过遥控设施控制设备。对应的事件类型有以下三种：    触屏事件（Touch Event）    运动事件（Motion Event）    远端控制事件（Remote-Control Event）
-在iOS中，当发生事件响应时，由响应者链来对事件进行响应。所有事件响应的类都是">
+<meta name="twitter:description" content="了解Cocoa Touch中的响应者链之前，先通过下图了解一下有关UIView的继承关系：
+
+UIView继承自UIResponder , UIResponder继承自NSObject
+
+（上图是从我从网上找个一张关系图，如有侵权请及时告知）
+响应者链（Responder Chain）对于 iOS 设备用户来说，他们操作设备的方式主要有三种：触摸屏幕、晃动设备、通过遥控设施控制设备。对应的事件类型">
+<meta name="twitter:image" content="http://oo8l3jrvb.bkt.clouddn.com/timg2.jpg">
 
 
 
@@ -408,9 +422,12 @@
       
 
       
-        <h2 id="响应者链（Responder-Chain）"><a href="#响应者链（Responder-Chain）" class="headerlink" title="响应者链（Responder Chain）"></a>响应者链（Responder Chain）</h2><p>对于 iOS 设备用户来说，他们操作设备的方式主要有三种：触摸屏幕、晃动设备、通过遥控设施控制设备。对应的事件类型有以下三种：<br>    触屏事件（Touch Event）<br>    运动事件（Motion Event）<br>    远端控制事件（Remote-Control Event）</p>
-<p>在iOS中，当发生事件响应时，由响应者链来对事件进行响应。<br>所有事件响应的类都是 UIResponder 的子类，响应者链是一个由不同对象组成的层次结构，其中的每个对象将依次获得响应事件消息的机会。当发生事件时，事件首先被发送给第一响应者，第一响应者往往是事件发生的视图，也就是用户触摸屏幕的地方。事件将沿着响应者链一直向下传递，直到被接受并做出处理。一般来说，第一响应者是个视图对象或者其子类对象，当其被触摸后事件被交由它处理，如果它不处理，事件就会被传递给它的视图控制器对象 ViewController（如果存在），然后是它的父视图（superview）对象（如果存在），以此类推，直到顶层视图。接下来会沿着顶层视图（top view）到窗口（UIWindow 对象）再到程序（UIApplication 对象）。如果整个过程都没有响应这个事件，该事件就被丢弃。一般情况下，在响应者链中只要由对象处理事件，事件就停止传递。</p>
-<a id="more"></a>
+        <p>了解Cocoa Touch中的响应者链之前，先通过下图了解一下有关UIView的继承关系：<br><img src="http://oo8l3jrvb.bkt.clouddn.com/timg2.jpg" alt="image"></p>
+<blockquote>
+<p><code>UIView</code>继承自<code>UIResponder</code> , <code>UIResponder</code>继承自<code>NSObject</code></p>
+</blockquote>
+<p>（上图是从我从网上找个一张关系图，如有侵权请及时告知）</p>
+<h2 id="响应者链（Responder-Chain）"><a href="#响应者链（Responder-Chain）" class="headerlink" title="响应者链（Responder Chain）"></a>响应者链（Responder Chain）</h2><p>对于 iOS 设备用户来说，他们操作设备的方式主要有三种：触摸屏幕、晃动设备、通过遥控设施控制设备。对应的事件类型有以下三种：<br>    触屏事件（Touch Event）<br>    运动事件（Motion Event）<br>    远端控制事件（Remote-Control Event）<br><a id="more"></a><br>在iOS中，当发生事件响应时，由响应者链来对事件进行响应。<br>所有事件响应的类都是 UIResponder 的子类，响应者链是一个由不同对象组成的层次结构，其中的每个对象将依次获得响应事件消息的机会。当发生事件时，事件首先被发送给第一响应者，第一响应者往往是事件发生的视图，也就是用户触摸屏幕的地方。事件将沿着响应者链一直向下传递，直到被接受并做出处理。一般来说，第一响应者是个视图对象或者其子类对象，当其被触摸后事件被交由它处理，如果它不处理，事件就会被传递给它的视图控制器对象 ViewController（如果存在），然后是它的父视图（superview）对象（如果存在），以此类推，直到顶层视图。接下来会沿着顶层视图（top view）到窗口（UIWindow 对象）再到程序（UIApplication 对象）。如果整个过程都没有响应这个事件，该事件就被丢弃。一般情况下，在响应者链中只要由对象处理事件，事件就停止传递。</p>
 <h2 id="事件分发（Event-Delivery）"><a href="#事件分发（Event-Delivery）" class="headerlink" title="事件分发（Event Delivery）"></a>事件分发（Event Delivery）</h2><p>第一响应者（First responder）指的是当前接受触摸的响应者对象（通常是一个UIView对象），即表示当前该对象正在与用户交互，它是响应者链的开端。整个响应者链和事件分发的使命都是找出第一响应者。<br>iOS 系统检测到手指触摸 (Touch) 操作时会将其打包成一个 UIEvent 对象，并放入当前活动 Application 的事件队列，单例的 UIApplication 会从事件队列中取出触摸事件并传递给单例的 UIWindow 来处理，UIWindow 对象首先会使用 hitTest:withEvent:方法寻找此次 Touch 操作初始点所在的视图(View)，即需要将触摸事件传递给其处理的视图，这个过程称之为 hit-test view。<br><code>hitTest:withEvent:</code>方法的处理流程如下:</p>
 <ul>
 <li>首先调用当前视图的 <code>pointInside:withEvent:</code> :该方法用来判断点击事件发生的位置是否处于当前视图范围内，以确定用户是不是点击了当前视图，如果<code>pointInside:withEvent:</code>返回YES，则继续逐级调用，则向当前视图的所有子视图 (subviews) 发送<code>hitTest:withEvent:</code>消息，所有子视图的遍历顺序是从最顶层视图一直到到最底层视图，即从subviews数组的末尾向前遍历，直到有子视图返回非空对象或者全部子视图遍历完毕；</li>
@@ -479,6 +496,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/13/iOS面试技术问题总结/" rel="prev" title="iOS面试技术问题总结">
+                iOS面试技术问题总结 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -557,7 +578,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -579,7 +600,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
