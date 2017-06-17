@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="Happy Wife Happy Life.">
+  <meta name="keyword" content="undefined">
+  <title>
+    
+      Git 命令操作 | Snail-z Notes
+    
+  </title>
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/gitment.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="/js/qrious.js"></script>
+  <script src="/js/gitment.js"></script>
+</head>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Snail-z Notes</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="https://github.com/snail-z" class="item-link">Github</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="https://github.com/snail-z" class="menu-link">Github</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>Git 命令操作</h2>
+  <p class="post-date">2017-06-17</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body">
+  <article class="post-article">
+    <section class="markdown-content"><p>git config命令查看配置文件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git config -l</div></pre></td></tr></table></figure>
+<p>git工作流程<br><a id="more"></a></p>
+<ol>
+<li><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone [仓库地址]</div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch -a # 查看所有分支信息</div></pre></td></tr></table></figure>
+</li>
+<li><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout -b [本地分支名] [远端分支名]</div></pre></td></tr></table></figure>
+</li>
+<li><p>代码修改完之后，查看修改处不同</p>
+<ul>
+<li><p>查看仓库的状态</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git status</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><p>查看尚未暂存的文件更新了哪些部分（查看当前没有add 的内容修改）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git diff</div></pre></td></tr></table></figure>
+</li>
+<li><p>查看已经add 但还没有commit 的改动</p>
+   <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git diff --cached</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ol>
+<li><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git add .</div><div class="line">git commit -m<span class="string">"描述改动内容"</span></div></pre></td></tr></table></figure>
+<ul>
+<li><p>然后再检查提交情况</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git log [filename]  #可以看到fileName相关的commit记录</div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git log -p [filename] #可以显示每次提交的diff</div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git show commit-id [filename] #只看某次提交中的某个文件变化，可以直接加上fileName</div></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+</ul>
+</li>
+<li><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 将当前 loca_name 分支 push 到远端，命名为 new_name</span></div><div class="line">$ git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>去gitlab检查构建是否成功，然后提PR</p>
+</li>
+<li><p>删除本地分支和远端分支</p>
+</li>
+</ol>
+<hr>
+<h4 id="查看分支信息"><a href="#查看分支信息" class="headerlink" title="查看分支信息"></a>查看分支信息</h4><ul>
+<li><p>查看当前处在哪个分支（所有本地分支）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git branch</div></pre></td></tr></table></figure>
+</li>
+<li><p>查看所有分支（包括远程和本地）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git branch -a</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>查看所有远程（remote）的分支</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git branch -r</div></pre></td></tr></table></figure>
+</li>
+<li><p>查看所有分支的最后一个提交（commit）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git branch -va</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>查看远程分支的最后一个提交（commit）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git branch -vr</div></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+</ul>
+<h4 id="新建分支"><a href="#新建分支" class="headerlink" title="新建分支"></a>新建分支</h4><ul>
+<li><p>从当前分支新建一个分支，但依然停留在当前分支 （常用于：对当前分支做个备份）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git branch [branch-name]</div></pre></td></tr></table></figure>
+</li>
+<li><p>从指定远程分支，拉一个本地分支，并切换到该分支</p>
+</li>
+</ul>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 常用于：从远端 develop 拉一个 本地 feature/xxx 分支</span></div><div class="line">$ git checkout -b newBrach origin/master</div></pre></td></tr></table></figure>
+<p>  ​</p>
+<h4 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h4><ul>
+<li>当我们删除一个合并（merge）后的分支可以用git branch命令带参数<code>-d</code></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git branch -d hotfix</div><div class="line">Deleted branch hotfix (was <span class="number">3</span>a0874c).</div></pre></td></tr></table></figure>
+<ul>
+<li>如果分支已经有了新的提交且没有被合并（merge），那么将被提示错误信息，如果仍旧要删除这样的分支，你需要使用参数<code>-D</code> </li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git branch -D topic</div><div class="line">Deleted branch topic (was <span class="number">50590</span>b4).</div></pre></td></tr></table></figure>
+<h4 id="远程操作"><a href="#远程操作" class="headerlink" title="远程操作"></a>远程操作</h4><ul>
+<li>git clone</li>
+<li>git remote</li>
+<li>git fetch</li>
+<li>git pull</li>
+<li>git push</li>
+</ul>
+<h5 id="通过git-rebase修改commit-message"><a href="#通过git-rebase修改commit-message" class="headerlink" title="通过git rebase修改commit message"></a>通过git rebase修改commit message</h5><ol>
+<li><p>首先将远端你需要修改的分支拉倒本地，如果你的本地已经不存在这个分支了，执行命令:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout -b 本地分支名 远端分支名</div></pre></td></tr></table></figure>
+</li>
+<li><p>首先通过<code>git log</code>查看日志 然后找到需要修改message的那个commit的前1个commit id，比如id为 <code>c13c5f309deda4b34082811c4626b7ebbe790f9a</code>， 执行下面命令：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git rebase -i c13c5f309deda4b34082811c4626b7ebbe790f9a</div></pre></td></tr></table></figure>
+<p>之后进入到下面，会提示出很多不同命令：</p>
+<p><img src="http://oqebi7u13.bkt.clouddn.com/git-m_commit_msg01.png" alt="image"></p>
+</li>
+<li><p>然后进入编辑模式，将右上角的<code>pick</code>改为<code>reword</code> ，退出编辑模式，保存之后h会来到下面界面（如下图），然后就可以修改你的commit message了</p>
+<p><img src="http://oqebi7u13.bkt.clouddn.com/git-m_commit_msg02.png" alt="image"></p>
+</li>
+<li><p>保存退出后再在执行<code>git log</code>进行检查一遍，没有问题之后执行<code>git push -f</code>，这样就修改成功了。</p>
+</li>
+</ol>
+<h5 id="GitHub-的-Pull-Request-是指什么意思？"><a href="#GitHub-的-Pull-Request-是指什么意思？" class="headerlink" title="GitHub 的 Pull Request 是指什么意思？"></a><a href="https://www.zhihu.com/question/21682976" target="_blank" rel="external">GitHub 的 Pull Request 是指什么意思？</a></h5><ul>
+<li>当你想更正别人仓库里的错误时，要走一个流程：<ol>
+<li>先 fork 别人的仓库，相当于拷贝一份，相信我，不会有人直接让你改修原仓库的</li>
+<li>clone 到本地分支，做一些 bug fix</li>
+<li>发起 pull request 给原仓库，让他看到你修改的 bug</li>
+<li>原仓库 review 这个 bug，如果是正确的话，就会 merge 到他自己的项目中。至此，整个 pull request 的过程就结束了。</li>
+</ol>
+</li>
+</ul>
+<h3 id="资料："><a href="#资料：" class="headerlink" title="资料："></a>资料：</h3><p>Git远程版本回滚 <a href="http://blog.csdn.net/dushenzhi/article/details/50555254" target="_blank" rel="external">http://blog.csdn.net/dushenzhi/article/details/50555254</a></p>
+</section>
+    
+    <div id="comments"></div>
+  </article>
+</main>
+
+<script>
+  (function () {
+    var url = 'http://note.snail-z.me/2017/06/17/Git-命令操作/';
+    $('#article-banner').geopattern(url);
+    $('.header').removeClass('fixed-header');
+
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: url
+    });
+    
+    var gitmentConfig = "undefined";
+    if (gitmentConfig != "undefined") {
+      var gitment = new Gitment({
+        owner: "undefined",
+        repo: "undefined",
+        oauth: {
+          client_id: "undefined",
+          client_secret: "undefined"
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2017 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng/hexo-theme-vexo">vexo</a> 
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine == 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || '';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
+</html>

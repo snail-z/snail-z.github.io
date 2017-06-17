@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://note.snail-z.me/"/>
-  <updated>2017-05-14T09:31:48.000Z</updated>
+  <updated>2017-06-17T15:50:35.000Z</updated>
   <id>http://note.snail-z.me/</id>
   
   <author>
@@ -14,6 +14,141 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Git 命令操作</title>
+    <link href="http://note.snail-z.me/2017/06/17/Git-%E5%91%BD%E4%BB%A4%E6%93%8D%E4%BD%9C/"/>
+    <id>http://note.snail-z.me/2017/06/17/Git-命令操作/</id>
+    <published>2017-06-17T15:48:42.000Z</published>
+    <updated>2017-06-17T15:50:35.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>git config命令查看配置文件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git config -l</div></pre></td></tr></table></figure>
+<p>git工作流程<br><a id="more"></a></p>
+<ol>
+<li><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone [仓库地址]</div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch -a # 查看所有分支信息</div></pre></td></tr></table></figure>
+</li>
+<li><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout -b [本地分支名] [远端分支名]</div></pre></td></tr></table></figure>
+</li>
+<li><p>代码修改完之后，查看修改处不同</p>
+<ul>
+<li><p>查看仓库的状态</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git status</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><p>查看尚未暂存的文件更新了哪些部分（查看当前没有add 的内容修改）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git diff</div></pre></td></tr></table></figure>
+</li>
+<li><p>查看已经add 但还没有commit 的改动</p>
+   <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git diff --cached</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ol>
+<li><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git add .</div><div class="line">git commit -m<span class="string">"描述改动内容"</span></div></pre></td></tr></table></figure>
+<ul>
+<li><p>然后再检查提交情况</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git log [filename]  #可以看到fileName相关的commit记录</div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git log -p [filename] #可以显示每次提交的diff</div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git show commit-id [filename] #只看某次提交中的某个文件变化，可以直接加上fileName</div></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+</ul>
+</li>
+<li><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 将当前 loca_name 分支 push 到远端，命名为 new_name</span></div><div class="line">$ git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>去gitlab检查构建是否成功，然后提PR</p>
+</li>
+<li><p>删除本地分支和远端分支</p>
+</li>
+</ol>
+<hr>
+<h4 id="查看分支信息"><a href="#查看分支信息" class="headerlink" title="查看分支信息"></a>查看分支信息</h4><ul>
+<li><p>查看当前处在哪个分支（所有本地分支）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git branch</div></pre></td></tr></table></figure>
+</li>
+<li><p>查看所有分支（包括远程和本地）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git branch -a</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>查看所有远程（remote）的分支</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git branch -r</div></pre></td></tr></table></figure>
+</li>
+<li><p>查看所有分支的最后一个提交（commit）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git branch -va</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>查看远程分支的最后一个提交（commit）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git branch -vr</div></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+</ul>
+<h4 id="新建分支"><a href="#新建分支" class="headerlink" title="新建分支"></a>新建分支</h4><ul>
+<li><p>从当前分支新建一个分支，但依然停留在当前分支 （常用于：对当前分支做个备份）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git branch [branch-name]</div></pre></td></tr></table></figure>
+</li>
+<li><p>从指定远程分支，拉一个本地分支，并切换到该分支</p>
+</li>
+</ul>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 常用于：从远端 develop 拉一个 本地 feature/xxx 分支</span></div><div class="line">$ git checkout -b newBrach origin/master</div></pre></td></tr></table></figure>
+<p>  ​</p>
+<h4 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h4><ul>
+<li>当我们删除一个合并（merge）后的分支可以用git branch命令带参数<code>-d</code></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git branch -d hotfix</div><div class="line">Deleted branch hotfix (was <span class="number">3</span>a0874c).</div></pre></td></tr></table></figure>
+<ul>
+<li>如果分支已经有了新的提交且没有被合并（merge），那么将被提示错误信息，如果仍旧要删除这样的分支，你需要使用参数<code>-D</code> </li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git branch -D topic</div><div class="line">Deleted branch topic (was <span class="number">50590</span>b4).</div></pre></td></tr></table></figure>
+<h4 id="远程操作"><a href="#远程操作" class="headerlink" title="远程操作"></a>远程操作</h4><ul>
+<li>git clone</li>
+<li>git remote</li>
+<li>git fetch</li>
+<li>git pull</li>
+<li>git push</li>
+</ul>
+<h5 id="通过git-rebase修改commit-message"><a href="#通过git-rebase修改commit-message" class="headerlink" title="通过git rebase修改commit message"></a>通过git rebase修改commit message</h5><ol>
+<li><p>首先将远端你需要修改的分支拉倒本地，如果你的本地已经不存在这个分支了，执行命令:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout -b 本地分支名 远端分支名</div></pre></td></tr></table></figure>
+</li>
+<li><p>首先通过<code>git log</code>查看日志 然后找到需要修改message的那个commit的前1个commit id，比如id为 <code>c13c5f309deda4b34082811c4626b7ebbe790f9a</code>， 执行下面命令：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git rebase -i c13c5f309deda4b34082811c4626b7ebbe790f9a</div></pre></td></tr></table></figure>
+<p>之后进入到下面，会提示出很多不同命令：</p>
+<p><img src="http://oqebi7u13.bkt.clouddn.com/git-m_commit_msg01.png" alt="image"></p>
+</li>
+<li><p>然后进入编辑模式，将右上角的<code>pick</code>改为<code>reword</code> ，退出编辑模式，保存之后h会来到下面界面（如下图），然后就可以修改你的commit message了</p>
+<p><img src="http://oqebi7u13.bkt.clouddn.com/git-m_commit_msg02.png" alt="image"></p>
+</li>
+<li><p>保存退出后再在执行<code>git log</code>进行检查一遍，没有问题之后执行<code>git push -f</code>，这样就修改成功了。</p>
+</li>
+</ol>
+<h5 id="GitHub-的-Pull-Request-是指什么意思？"><a href="#GitHub-的-Pull-Request-是指什么意思？" class="headerlink" title="GitHub 的 Pull Request 是指什么意思？"></a><a href="https://www.zhihu.com/question/21682976" target="_blank" rel="external">GitHub 的 Pull Request 是指什么意思？</a></h5><ul>
+<li>当你想更正别人仓库里的错误时，要走一个流程：<ol>
+<li>先 fork 别人的仓库，相当于拷贝一份，相信我，不会有人直接让你改修原仓库的</li>
+<li>clone 到本地分支，做一些 bug fix</li>
+<li>发起 pull request 给原仓库，让他看到你修改的 bug</li>
+<li>原仓库 review 这个 bug，如果是正确的话，就会 merge 到他自己的项目中。至此，整个 pull request 的过程就结束了。</li>
+</ol>
+</li>
+</ul>
+<h3 id="资料："><a href="#资料：" class="headerlink" title="资料："></a>资料：</h3><p>Git远程版本回滚 <a href="http://blog.csdn.net/dushenzhi/article/details/50555254" target="_blank" rel="external">http://blog.csdn.net/dushenzhi/article/details/50555254</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;git config命令查看配置文件&lt;/p&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;git config -l&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;git工作流程&lt;br&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>iOS面试技术问题总结</title>
@@ -134,14 +269,15 @@
     <link href="http://note.snail-z.me/2017/05/13/Cocoa%20Touch%E4%B8%AD%E7%9A%84%E5%93%8D%E5%BA%94%E8%80%85%E9%93%BE/"/>
     <id>http://note.snail-z.me/2017/05/13/Cocoa Touch中的响应者链/</id>
     <published>2017-05-13T04:33:29.000Z</published>
-    <updated>2017-05-13T16:19:24.000Z</updated>
+    <updated>2017-06-17T15:39:43.000Z</updated>
     
     <content type="html"><![CDATA[<p>了解Cocoa Touch中的响应者链之前，先通过下图了解一下有关UIView的继承关系：<br><img src="http://oo8l3jrvb.bkt.clouddn.com/timg2.jpg" alt="image"></p>
 <blockquote>
 <p><code>UIView</code>继承自<code>UIResponder</code> , <code>UIResponder</code>继承自<code>NSObject</code></p>
 </blockquote>
+<a id="more"></a>
 <p>（上图是从我从网上找个一张关系图，如有侵权请及时告知）</p>
-<h2 id="响应者链（Responder-Chain）"><a href="#响应者链（Responder-Chain）" class="headerlink" title="响应者链（Responder Chain）"></a>响应者链（Responder Chain）</h2><p>对于 iOS 设备用户来说，他们操作设备的方式主要有三种：触摸屏幕、晃动设备、通过遥控设施控制设备。对应的事件类型有以下三种：<br>    触屏事件（Touch Event）<br>    运动事件（Motion Event）<br>    远端控制事件（Remote-Control Event）<br><a id="more"></a><br>在iOS中，当发生事件响应时，由响应者链来对事件进行响应。<br>所有事件响应的类都是 UIResponder 的子类，响应者链是一个由不同对象组成的层次结构，其中的每个对象将依次获得响应事件消息的机会。当发生事件时，事件首先被发送给第一响应者，第一响应者往往是事件发生的视图，也就是用户触摸屏幕的地方。事件将沿着响应者链一直向下传递，直到被接受并做出处理。一般来说，第一响应者是个视图对象或者其子类对象，当其被触摸后事件被交由它处理，如果它不处理，事件就会被传递给它的视图控制器对象 ViewController（如果存在），然后是它的父视图（superview）对象（如果存在），以此类推，直到顶层视图。接下来会沿着顶层视图（top view）到窗口（UIWindow 对象）再到程序（UIApplication 对象）。如果整个过程都没有响应这个事件，该事件就被丢弃。一般情况下，在响应者链中只要由对象处理事件，事件就停止传递。</p>
+<h2 id="响应者链（Responder-Chain）"><a href="#响应者链（Responder-Chain）" class="headerlink" title="响应者链（Responder Chain）"></a>响应者链（Responder Chain）</h2><p>对于 iOS 设备用户来说，他们操作设备的方式主要有三种：触摸屏幕、晃动设备、通过遥控设施控制设备。对应的事件类型有以下三种：<br>    触屏事件（Touch Event）<br>    运动事件（Motion Event）<br>    远端控制事件（Remote-Control Event）<br>在iOS中，当发生事件响应时，由响应者链来对事件进行响应。<br>所有事件响应的类都是 UIResponder 的子类，响应者链是一个由不同对象组成的层次结构，其中的每个对象将依次获得响应事件消息的机会。当发生事件时，事件首先被发送给第一响应者，第一响应者往往是事件发生的视图，也就是用户触摸屏幕的地方。事件将沿着响应者链一直向下传递，直到被接受并做出处理。一般来说，第一响应者是个视图对象或者其子类对象，当其被触摸后事件被交由它处理，如果它不处理，事件就会被传递给它的视图控制器对象 ViewController（如果存在），然后是它的父视图（superview）对象（如果存在），以此类推，直到顶层视图。接下来会沿着顶层视图（top view）到窗口（UIWindow 对象）再到程序（UIApplication 对象）。如果整个过程都没有响应这个事件，该事件就被丢弃。一般情况下，在响应者链中只要由对象处理事件，事件就停止传递。</p>
 <h2 id="事件分发（Event-Delivery）"><a href="#事件分发（Event-Delivery）" class="headerlink" title="事件分发（Event Delivery）"></a>事件分发（Event Delivery）</h2><p>第一响应者（First responder）指的是当前接受触摸的响应者对象（通常是一个UIView对象），即表示当前该对象正在与用户交互，它是响应者链的开端。整个响应者链和事件分发的使命都是找出第一响应者。<br>iOS 系统检测到手指触摸 (Touch) 操作时会将其打包成一个 UIEvent 对象，并放入当前活动 Application 的事件队列，单例的 UIApplication 会从事件队列中取出触摸事件并传递给单例的 UIWindow 来处理，UIWindow 对象首先会使用 hitTest:withEvent:方法寻找此次 Touch 操作初始点所在的视图(View)，即需要将触摸事件传递给其处理的视图，这个过程称之为 hit-test view。<br><code>hitTest:withEvent:</code>方法的处理流程如下:</p>
 <ul>
 <li>首先调用当前视图的 <code>pointInside:withEvent:</code> :该方法用来判断点击事件发生的位置是否处于当前视图范围内，以确定用户是不是点击了当前视图，如果<code>pointInside:withEvent:</code>返回YES，则继续逐级调用，则向当前视图的所有子视图 (subviews) 发送<code>hitTest:withEvent:</code>消息，所有子视图的遍历顺序是从最顶层视图一直到到最底层视图，即从subviews数组的末尾向前遍历，直到有子视图返回非空对象或者全部子视图遍历完毕；</li>
@@ -165,8 +301,6 @@
 &lt;blockquote&gt;
 &lt;p&gt;&lt;code&gt;UIView&lt;/code&gt;继承自&lt;code&gt;UIResponder&lt;/code&gt; , &lt;code&gt;UIResponder&lt;/code&gt;继承自&lt;code&gt;NSObject&lt;/code&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;（上图是从我从网上找个一张关系图，如有侵权请及时告知）&lt;/p&gt;
-&lt;h2 id=&quot;响应者链（Responder-Chain）&quot;&gt;&lt;a href=&quot;#响应者链（Responder-Chain）&quot; class=&quot;headerlink&quot; title=&quot;响应者链（Responder Chain）&quot;&gt;&lt;/a&gt;响应者链（Responder Chain）&lt;/h2&gt;&lt;p&gt;对于 iOS 设备用户来说，他们操作设备的方式主要有三种：触摸屏幕、晃动设备、通过遥控设施控制设备。对应的事件类型有以下三种：&lt;br&gt;    触屏事件（Touch Event）&lt;br&gt;    运动事件（Motion Event）&lt;br&gt;    远端控制事件（Remote-Control Event）&lt;br&gt;
     
     </summary>
     
