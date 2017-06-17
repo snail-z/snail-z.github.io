@@ -81,7 +81,7 @@ h2.article-head {
   margin-bottom: 0;
 }
 .article-head > a {
-  color: #000;
+  color: #34495e;
 }
 .article-head > a:hover {
   border-bottom: 2px solid #4682b4;
@@ -93,7 +93,7 @@ h2.article-head {
 }
 .article-summary {
   margin: 10px 0;
-  color: #000;
+  color: #34495e;
 }
 .more {
   font-weight: 600;
@@ -116,7 +116,7 @@ h2.article-head {
   margin: 0.4em 0;
   font-size: 2.2em;
   color: #fff;
-  text-shadow: 0 0 40px #000;
+  text-shadow: 0 0 40px #34495e;
   opacity: 0;
   transform: translateY(-20px);
   transition: all 0.4s;
@@ -230,7 +230,7 @@ h2.article-head {
   display: block;
   margin: 0;
   text-align: center;
-  color: #000;
+  color: #34495e;
 }
 .notice {
   font-size: 12px;
@@ -297,7 +297,7 @@ h2.article-head {
   background-color: #7f8c8d;
 }
 .fixed-header .item-link {
-  color: #000;
+  color: #34495e;
 }
 .header-container {
   max-width: 1200px;
@@ -441,7 +441,7 @@ h2.article-head {
   font-weight: 600;
 }
 .page-arrow {
-  color: #000;
+  color: #34495e;
 }
 .unvisible {
   visibility: hidden;
@@ -662,7 +662,7 @@ h2.article-head {
   border-radius: 50%;
 }
 .time-section .section-list .section-list-item .archive-title {
-  color: #000;
+  color: #34495e;
   transition: all 0.3s ease;
   font-size: 1.1em;
 }
