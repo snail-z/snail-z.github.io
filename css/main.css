@@ -185,7 +185,7 @@ th {
 }
 body {
   position: relative;
-  font-family: "Microsoft YaHei", Verdana, sans-serif;
+  font-family: "Monaco", Verdana, sans-serif;
   font-size: 16px;
   line-height: 2;
   color: #555;
@@ -827,7 +827,7 @@ pre .javascript .function {
 .btn:hover,
 .post-button .btn:hover {
   border-color: #222;
-  color: #222;
+  color: #fff;
   background: #fff;
 }
 .btn-bar {
@@ -1003,7 +1003,7 @@ pre .javascript .function {
 .site-subtitle {
   margin-top: 10px;
   font-size: 16px;
-  color: #555;
+  color: #fff;
 }
 .use-motion .brand {
   opacity: 0;
@@ -1687,7 +1687,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #8521ff;
+  background: #697c33;
 }
 .links-of-blogroll {
   font-size: 13px;
