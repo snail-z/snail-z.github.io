@@ -99,42 +99,42 @@
 <main class="app-body">
   <article class="post-article">
     <section class="markdown-content"><p>git config命令查看配置文件</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git config -l</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">git config -l</div></pre></td></tr></table></figure>
 <p>git工作流程<br><a id="more"></a></p>
 <ol>
-<li><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone [仓库地址]</div></pre></td></tr></table></figure>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch -a # 查看所有分支信息</div></pre></td></tr></table></figure>
+<li><figure class="highlight js"><table><tr><td class="code"><pre><div class="line">git clone [仓库地址]</div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="code"><pre><div class="line">git branch -a # 查看所有分支信息</div></pre></td></tr></table></figure>
 </li>
-<li><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout -b [本地分支名] [远端分支名]</div></pre></td></tr></table></figure>
+<li><figure class="highlight js"><table><tr><td class="code"><pre><div class="line">git checkout -b [本地分支名] [远端分支名]</div></pre></td></tr></table></figure>
 </li>
 <li><p>代码修改完之后，查看修改处不同</p>
 <ul>
 <li><p>查看仓库的状态</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git status</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">git status</div></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
 </ol>
 <ul>
 <li><p>查看尚未暂存的文件更新了哪些部分（查看当前没有add 的内容修改）</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git diff</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">git diff</div></pre></td></tr></table></figure>
 </li>
 <li><p>查看已经add 但还没有commit 的改动</p>
-   <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git diff --cached</div></pre></td></tr></table></figure>
+   <figure class="highlight js"><table><tr><td class="code"><pre><div class="line">git diff --cached</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <ol>
-<li><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git add .</div><div class="line">git commit -m<span class="string">"描述改动内容"</span></div></pre></td></tr></table></figure>
+<li><figure class="highlight js"><table><tr><td class="code"><pre><div class="line">git add .</div><div class="line">git commit -m<span class="string">"描述改动内容"</span></div></pre></td></tr></table></figure>
 <ul>
 <li><p>然后再检查提交情况</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git log [filename]  #可以看到fileName相关的commit记录</div></pre></td></tr></table></figure>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git log -p [filename] #可以显示每次提交的diff</div></pre></td></tr></table></figure>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git show commit-id [filename] #只看某次提交中的某个文件变化，可以直接加上fileName</div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="code"><pre><div class="line">git log [filename]  #可以看到fileName相关的commit记录</div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="code"><pre><div class="line">git log -p [filename] #可以显示每次提交的diff</div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="code"><pre><div class="line">git show commit-id [filename] #只看某次提交中的某个文件变化，可以直接加上fileName</div></pre></td></tr></table></figure>
 <p>​</p>
 </li>
 </ul>
 </li>
-<li><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 将当前 loca_name 分支 push 到远端，命名为 new_name</span></div><div class="line">$ git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;</div></pre></td></tr></table></figure>
+<li><figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 将当前 loca_name 分支 push 到远端，命名为 new_name</span></div><div class="line">$ git push &lt;远程主机名&gt; <span class="xml"><span class="tag">&lt;<span class="name">本地分支名</span>&gt;</span>:<span class="tag">&lt;<span class="name">远程分支名</span>&gt;</span></span></div></pre></td></tr></table></figure>
 </li>
 <li><p>去gitlab检查构建是否成功，然后提PR</p>
 </li>
@@ -144,43 +144,43 @@
 <hr>
 <h4 id="查看分支信息"><a href="#查看分支信息" class="headerlink" title="查看分支信息"></a>查看分支信息</h4><ul>
 <li><p>查看当前处在哪个分支（所有本地分支）</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git branch</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">$ git branch</div></pre></td></tr></table></figure>
 </li>
 <li><p>查看所有分支（包括远程和本地）</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git branch -a</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">$ git branch -a</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <ul>
 <li><p>查看所有远程（remote）的分支</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git branch -r</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">$ git branch -r</div></pre></td></tr></table></figure>
 </li>
 <li><p>查看所有分支的最后一个提交（commit）</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git branch -va</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">$ git branch -va</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <ul>
 <li><p>查看远程分支的最后一个提交（commit）</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git branch -vr</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">$ git branch -vr</div></pre></td></tr></table></figure>
 <p>​</p>
 </li>
 </ul>
 <h4 id="新建分支"><a href="#新建分支" class="headerlink" title="新建分支"></a>新建分支</h4><ul>
 <li><p>从当前分支新建一个分支，但依然停留在当前分支 （常用于：对当前分支做个备份）</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git branch [branch-name]</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">$ git branch [branch-name]</div></pre></td></tr></table></figure>
 </li>
 <li><p>从指定远程分支，拉一个本地分支，并切换到该分支</p>
 </li>
 </ul>
-  <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 常用于：从远端 develop 拉一个 本地 feature/xxx 分支</span></div><div class="line">$ git checkout -b newBrach origin/master</div></pre></td></tr></table></figure>
+  <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 常用于：从远端 develop 拉一个 本地 feature/xxx 分支</span></div><div class="line">$ git checkout -b newBrach origin/master</div></pre></td></tr></table></figure>
 <p>  ​</p>
 <h4 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h4><ul>
 <li>当我们删除一个合并（merge）后的分支可以用git branch命令带参数<code>-d</code></li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git branch -d hotfix</div><div class="line">Deleted branch hotfix (was <span class="number">3</span>a0874c).</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">$ git branch -d hotfix</div><div class="line">Deleted branch hotfix (was <span class="number">3</span>a0874c).</div></pre></td></tr></table></figure>
 <ul>
 <li>如果分支已经有了新的提交且没有被合并（merge），那么将被提示错误信息，如果仍旧要删除这样的分支，你需要使用参数<code>-D</code> </li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git branch -D topic</div><div class="line">Deleted branch topic (was <span class="number">50590</span>b4).</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">$ git branch -D topic</div><div class="line">Deleted branch topic (was <span class="number">50590</span>b4).</div></pre></td></tr></table></figure>
 <h4 id="远程操作"><a href="#远程操作" class="headerlink" title="远程操作"></a>远程操作</h4><ul>
 <li>git clone</li>
 <li>git remote</li>
@@ -190,10 +190,10 @@
 </ul>
 <h5 id="通过git-rebase修改commit-message"><a href="#通过git-rebase修改commit-message" class="headerlink" title="通过git rebase修改commit message"></a>通过git rebase修改commit message</h5><ol>
 <li><p>首先将远端你需要修改的分支拉倒本地，如果你的本地已经不存在这个分支了，执行命令:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout -b 本地分支名 远端分支名</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">git checkout -b 本地分支名 远端分支名</div></pre></td></tr></table></figure>
 </li>
 <li><p>首先通过<code>git log</code>查看日志 然后找到需要修改message的那个commit的前1个commit id，比如id为 <code>c13c5f309deda4b34082811c4626b7ebbe790f9a</code>， 执行下面命令：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git rebase -i c13c5f309deda4b34082811c4626b7ebbe790f9a</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">git rebase -i c13c5f309deda4b34082811c4626b7ebbe790f9a</div></pre></td></tr></table></figure>
 <p>之后进入到下面，会提示出很多不同命令：</p>
 <p><img src="http://oqebi7u13.bkt.clouddn.com/git-m_commit_msg01.png" alt="image"></p>
 </li>
@@ -284,7 +284,7 @@
   })
 </script>
 <script>
-  var hasLine = 'true';
+  var hasLine = 'false';
   async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
     $('figure pre').each(function(i, block) {
       var figure = $(this).parents('figure');

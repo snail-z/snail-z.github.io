@@ -100,7 +100,7 @@
       <div class="article-summary">
         
           <p>git config命令查看配置文件</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git config -l</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">git config -l</div></pre></td></tr></table></figure>
 <p>git工作流程<br>
         
       </div>
@@ -197,7 +197,7 @@
       
       <div class="article-summary">
         
-          <h2 id="UIScrollview上的UIPangesturerecognizer冲突"><a href="#UIScrollview上的UIPangesturerecognizer冲突" class="headerlink" title="UIScrollview上的UIPangesturerecognizer冲突"></a>UIScrollview上的UIPangesturerecognizer冲突</h2><p>在tableview里的cell的imageview上加个UIPangesturerecognizer会发现优先滚动imageview，tableView不响应滚动了，原因是tableview的实现也是用了UIPangesturerecognizer。解决方案如下：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 实现 UIGestureRecognizerDelegate</span></div><div class="line">- (<span class="built_in">BOOL</span>)gestureRecognizer:(<span class="built_in">UIGestureRecognizer</span> *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(<span class="built_in">UIGestureRecognizer</span> *)otherGestureRecognizer &#123;</div><div class="line">    <span class="keyword">return</span> <span class="literal">YES</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+          <h2 id="UIScrollview上的UIPangesturerecognizer冲突"><a href="#UIScrollview上的UIPangesturerecognizer冲突" class="headerlink" title="UIScrollview上的UIPangesturerecognizer冲突"></a>UIScrollview上的UIPangesturerecognizer冲突</h2><p>在tableview里的cell的imageview上加个UIPangesturerecognizer会发现优先滚动imageview，tableView不响应滚动了，原因是tableview的实现也是用了UIPangesturerecognizer。解决方案如下：<br><figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 实现 UIGestureRecognizerDelegate</span></div><div class="line">- (<span class="built_in">BOOL</span>)gestureRecognizer:(<span class="built_in">UIGestureRecognizer</span> *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(<span class="built_in">UIGestureRecognizer</span> *)otherGestureRecognizer &#123;</div><div class="line">    <span class="keyword">return</span> <span class="literal">YES</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
         
       </div>
       <a class="more" href="/2017/04/07/Objective-C笔记/">阅读全文</a>
@@ -244,7 +244,7 @@
   })
 </script>
 <script>
-  var hasLine = 'true';
+  var hasLine = 'false';
   async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
     $('figure pre').each(function(i, block) {
       var figure = $(this).parents('figure');

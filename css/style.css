@@ -477,12 +477,14 @@ h2.article-head {
 }
 .markdown-content p code,
 .article-summary p code {
-  background-color: #f8f8f8;
-  color: #e96900;
+  background-color: #d3d6d7;
+  color: #c03a31;
   padding: 3px 5px;
   margin: 0 2px;
   border-radius: 2px;
   white-space: nowrap;
+  font-size: 0.9em;
+  font-family: 'Monaco';
 }
 .markdown-content h1,
 .article-summary h1 {
