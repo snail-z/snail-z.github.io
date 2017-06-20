@@ -185,10 +185,10 @@ th {
 }
 body {
   position: relative;
-  font-family: "Monaco", Verdana, sans-serif;
-  font-size: 16px;
+  font-family: "Microsoft YaHei", Verdana, sans-serif;
+  font-size: 15px;
   line-height: 2;
-  color: #555;
+  color: #2d3e4f;
   background: #fff;
 }
 @media (max-width: 767px) {
@@ -216,7 +216,7 @@ h6 {
   padding: 0;
   font-weight: bold;
   line-height: 1.5;
-  font-family: 'Roboto Slab', 'Monda', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Monaco', 'Monaco', "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 h2,
 h3,
@@ -277,7 +277,7 @@ p {
   margin: 0 0 25px 0;
 }
 a {
-  color: #555;
+  color: #4682b4;
   text-decoration: none;
   border-bottom: 1px solid #999;
   word-wrap: break-word;
@@ -482,13 +482,13 @@ pre,
 }
 pre,
 code {
-  font-family: 'PT Mono', consolas, Menlo, "PingFang SC", "Microsoft YaHei", monospace;
+  font-family: 'Monaco', consolas, Menlo, "PingFang SC", "Microsoft YaHei", monospace;
 }
 code {
   padding: 2px 4px;
   word-wrap: break-word;
-  color: #555;
-  background: #eee;
+  color: #be3a31;
+  background: #ecf0f1;
   border-radius: 3px;
   font-size: 13px;
 }
@@ -834,7 +834,7 @@ pre .javascript .function {
   display: block;
   width: 22px;
   height: 2px;
-  background: #555;
+  background: #2d3e4f;
   border-radius: 1px;
 }
 .btn-bar+.btn-bar {
@@ -980,7 +980,7 @@ pre .javascript .function {
   display: inline-block;
   padding: 0 40px;
   color: #fff;
-  background: #222;
+  background: clean;
   border-bottom: none;
 }
 .brand:hover {
@@ -996,13 +996,13 @@ pre .javascript .function {
   display: inline-block;
   vertical-align: top;
   line-height: 36px;
-  font-size: 32px;
+  font-size: 35px;
   font-weight: normal;
-  font-family: 'PT Mono', 'Monda', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Microsoft YaHei', 'Monaco', "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 .site-subtitle {
   margin-top: 10px;
-  font-size: 16px;
+  font-size: 15px;
   color: #fff;
 }
 .use-motion .brand {
@@ -1086,7 +1086,7 @@ pre .javascript .function {
   opacity: 0;
 }
 .post-body {
-  font-family: 'Monda', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Microsoft YaHei', 'Monaco', "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 @media (max-width: 767px) {
   .post-body {
@@ -1104,7 +1104,7 @@ pre .javascript .function {
 .post-body .figure .caption {
   margin: 10px auto 15px;
   text-align: center;
-  font-size: 16px;
+  font-size: 15px;
   color: #999;
   font-weight: bold;
   line-height: 1;
@@ -1351,7 +1351,7 @@ pre .javascript .function {
 .posts-expand .post-meta {
   margin: 3px 0 60px 0;
   color: #999;
-  font-family: 'Monda', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: 'Microsoft YaHei', 'Monaco', "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 12px;
   text-align: center;
 }
@@ -1463,7 +1463,7 @@ pre .javascript .function {
   display: block;
   line-height: 25px;
   font-size: 14px;
-  color: #555;
+  color: #f00;
   border-bottom: none;
 }
 .post-nav-item a:hover {
@@ -1687,7 +1687,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #7ae29c;
+  background: #fff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2488,7 +2488,7 @@ embed {
   margin: 0 auto;
   padding: 5px;
   max-width: 150px;
-  background: #fff;
+  background: #f00;
 }
 @media (max-width: 767px) {
   .site-nav {
@@ -2535,6 +2535,6 @@ embed {
   display: inline-block;
 }
 #header {
-  background: url("http://oo8l3jrvb.bkt.clouddn.com/ww2.jpg");
+  background: url("http://oo8l3jrvb.bkt.clouddn.com/about-bg.jpg");
   background-size: cover;
 }
