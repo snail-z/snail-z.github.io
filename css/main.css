@@ -283,8 +283,8 @@ a {
   word-wrap: break-word;
 }
 a:hover {
-  color: #f00;
-  border-bottom-color: #f00;
+  color: #212931;
+  border-bottom-color: #212931;
 }
 blockquote {
   margin: 0;
@@ -815,8 +815,8 @@ pre .javascript .function {
   padding: 0 20px;
   font-size: 14px;
   color: #fff;
-  background: #f00;
-  border: 2px solid #f00;
+  background: #212931;
+  border: 2px solid #212931;
   text-decoration: none;
   border-radius: 0;
   transition-property: background-color;
@@ -826,7 +826,7 @@ pre .javascript .function {
 }
 .btn:hover,
 .post-button .btn:hover {
-  border-color: #f00;
+  border-color: #212931;
   color: #fff;
   background: #fff;
 }
@@ -879,7 +879,7 @@ pre .javascript .function {
 .pagination .prev:hover,
 .pagination .next:hover,
 .pagination .page-number:hover {
-  border-top-color: #f00;
+  border-top-color: #212931;
 }
 .pagination .space {
   padding: 0;
@@ -910,7 +910,7 @@ pre .javascript .function {
   .pagination .prev:hover,
   .pagination .next:hover,
   .pagination .page-number:hover {
-    border-bottom-color: #f00;
+    border-bottom-color: #212931;
   }
 }
 .comments {
@@ -931,7 +931,7 @@ pre .javascript .function {
   z-index: 1050;
   padding: 0 6px;
   width: 24px;
-  background: #f00;
+  background: #212931;
   font-size: 12px;
   opacity: 1;
   color: #fff;
@@ -964,7 +964,7 @@ pre .javascript .function {
 }
 .headband {
   height: 3px;
-  background: #f00;
+  background: #212931;
 }
 .site-meta {
   margin: 0;
@@ -1271,7 +1271,7 @@ pre .javascript .function {
   border-bottom-color: #666;
 }
 .posts-collapse .post-header:hover::before {
-  background: #f00;
+  background: #212931;
 }
 .posts-collapse .post-meta {
   position: absolute;
@@ -1469,7 +1469,7 @@ pre .javascript .function {
   border-bottom: none;
 }
 .post-nav-item a:hover {
-  color: #f00;
+  color: #212931;
   border-bottom: none;
 }
 .post-nav-item a:active {
@@ -1537,7 +1537,7 @@ pre .javascript .function {
   width: 0;
   z-index: 1040;
   box-shadow: inset 0 2px 6px #000;
-  background: #f00;
+  background: #212931;
   -webkit-transform: translateZ(0);
 }
 .sidebar a {
@@ -1570,7 +1570,7 @@ pre .javascript .function {
   width: 14px;
   height: 14px;
   padding: 5px;
-  background: #f00;
+  background: #212931;
   line-height: 0;
   z-index: 1050;
   cursor: pointer;
@@ -1604,7 +1604,7 @@ pre .javascript .function {
   padding: 2px;
   max-width: 96px;
   height: auto;
-  border: 2px solid #2d3e4f;
+  border: 2px solid #212931;
 }
 .site-author-name {
   margin: 5px 0 0;
@@ -1627,7 +1627,7 @@ pre .javascript .function {
 .site-state-item {
   display: inline-block;
   padding: 0 15px;
-  border-left: 1px solid #2d3e4f;
+  border-left: 1px solid #212931;
 }
 .site-state-item:first-child {
   border-left: none;
@@ -1689,7 +1689,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff8;
+  background: #f1c9ff;
 }
 .links-of-blogroll {
   font-size: 13px;
