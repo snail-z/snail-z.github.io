@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://note.snail-z.me/"/>
-  <updated>2017-07-31T13:19:27.000Z</updated>
+  <updated>2017-07-31T13:55:27.000Z</updated>
   <id>http://note.snail-z.me/</id>
   
   <author>
@@ -20,10 +20,10 @@
     <link href="http://note.snail-z.me/2017/07/31/Cocoapods%20-%20%E7%A7%81%E6%9C%89%E5%8C%96pod%E5%AE%9E%E8%B7%B5/"/>
     <id>http://note.snail-z.me/2017/07/31/Cocoapods - 私有化pod实践/</id>
     <published>2017-07-31T11:38:18.000Z</published>
-    <updated>2017-07-31T13:19:27.000Z</updated>
+    <updated>2017-07-31T13:55:27.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Spec仓库"><a href="#Spec仓库" class="headerlink" title="Spec仓库"></a>Spec仓库</h2><p>Spec是Pods索引库，所有公开的Pods都在这个里面，它实际是一个Git仓库 remote端在GitHub上，当使用了Cocoapods后他会被clone到本地的<code>~/.cocoapods/repos</code>目录下，进入到这个目录看到master文件夹就是这个官方的Spec Repo了。</p>
-<p>每次我们在执行<code>pod install</code>或者是<code>pod update</code>的时候都会自动更新这个spec里面的内容，拉取最新的数据回来。然后我们使用<code>pod search</code>的时候就是直接从这个里面进行查询的。</p>
+<p>每次我们在执行<code>pod install</code>或者是<code>pod update</code>的时候都会自动更新这个spec里面的内容，拉取最新的数据回来。然后我们使用<code>pod search</code>的时候就是直接从这个里面进行查询的。<a id="more"></a></p>
 <h2 id="向CocoaPods添加私有仓库"><a href="#向CocoaPods添加私有仓库" class="headerlink" title="向CocoaPods添加私有仓库"></a>向CocoaPods添加私有仓库</h2><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">pod repo add 仓库名 仓库地址</div><div class="line"></div><div class="line">// 示例 </div><div class="line">pod repo add MySpecs git@gitlab.xxxxx.com:hao01.zhang/MySpecs.git</div></pre></td></tr></table></figure>
 <p>可以通过 <code>cd ~/.cocoapods/repos</code> 这个目录里面检查是否创建好具体的私有库，添加成功之后可以通过<code>pod repo list</code>的命令查看</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">pod repo list</div></pre></td></tr></table></figure>
@@ -81,7 +81,8 @@
     
     <summary type="html">
     
-      &lt;h2 id=&quot;Spec仓库&quot;&gt;&lt;a href=&quot;#Spec仓库&quot; class=&quot;headerlink&quot; title=&quot;Spec仓库&quot;&gt;&lt;/a&gt;Spec仓库&lt;/h2&gt;&lt;p&gt;Spec是Pods索引库，所有公开的Pods都在这个里面，它实际是一个Git仓库 remote端在GitHu
+      &lt;h2 id=&quot;Spec仓库&quot;&gt;&lt;a href=&quot;#Spec仓库&quot; class=&quot;headerlink&quot; title=&quot;Spec仓库&quot;&gt;&lt;/a&gt;Spec仓库&lt;/h2&gt;&lt;p&gt;Spec是Pods索引库，所有公开的Pods都在这个里面，它实际是一个Git仓库 remote端在GitHub上，当使用了Cocoapods后他会被clone到本地的&lt;code&gt;~/.cocoapods/repos&lt;/code&gt;目录下，进入到这个目录看到master文件夹就是这个官方的Spec Repo了。&lt;/p&gt;
+&lt;p&gt;每次我们在执行&lt;code&gt;pod install&lt;/code&gt;或者是&lt;code&gt;pod update&lt;/code&gt;的时候都会自动更新这个spec里面的内容，拉取最新的数据回来。然后我们使用&lt;code&gt;pod search&lt;/code&gt;的时候就是直接从这个里面进行查询的。
     
     </summary>
     

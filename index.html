@@ -395,64 +395,15 @@
 
       
         
-          
-            <h2 id="Spec仓库"><a href="#Spec仓库" class="headerlink" title="Spec仓库"></a>Spec仓库</h2><p>Spec是Pods索引库，所有公开的Pods都在这个里面，它实际是一个Git仓库 remote端在GitHub上，当使用了Cocoapods后他会被clone到本地的<code>~/.cocoapods/repos</code>目录下，进入到这个目录看到master文件夹就是这个官方的Spec Repo了。</p>
-<p>每次我们在执行<code>pod install</code>或者是<code>pod update</code>的时候都会自动更新这个spec里面的内容，拉取最新的数据回来。然后我们使用<code>pod search</code>的时候就是直接从这个里面进行查询的。</p>
-<h2 id="向CocoaPods添加私有仓库"><a href="#向CocoaPods添加私有仓库" class="headerlink" title="向CocoaPods添加私有仓库"></a>向CocoaPods添加私有仓库</h2><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">pod repo add 仓库名 仓库地址</div><div class="line"></div><div class="line">// 示例 </div><div class="line">pod repo add MySpecs git@gitlab.xxxxx.com:hao01.zhang/MySpecs.git</div></pre></td></tr></table></figure>
-<p>可以通过 <code>cd ~/.cocoapods/repos</code> 这个目录里面检查是否创建好具体的私有库，添加成功之后可以通过<code>pod repo list</code>的命令查看</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">pod repo list</div></pre></td></tr></table></figure>
-<p>删除本地一个私有Spec Repo</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">pod repo remove MySpecs</div></pre></td></tr></table></figure>
-<p>更新本地一个私有Spec Repo</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">pod repo update MySpecs</div></pre></td></tr></table></figure>
-<h2 id="使用Cocoapods模板创建demo"><a href="#使用Cocoapods模板创建demo" class="headerlink" title="使用Cocoapods模板创建demo"></a>使用Cocoapods模板创建demo</h2><figure class="highlight js"><table><tr><td class="code"><pre><div class="line">pod lib create 组件名</div><div class="line"></div><div class="line"><span class="comment">// 示例</span></div><div class="line">pod lib create MyTest</div></pre></td></tr></table></figure>
-<p>接下来会有五步的交互:</p>
-<p><img src="http://oo8l3jrvb.bkt.clouddn.com/2017-07-20-podlibcreate_guide.png" alt="podlibcreate_guide"></p>
-<p>完成后项目会自动打开，然后替换pod下面的<code>Development Pods</code>下的<code>ReplaceMe.m</code>文件为你的源码组件</p>
-<p><img src="http://oo8l3jrvb.bkt.clouddn.com/2017-07-20-podReplaceMe.png" alt="podReplaceMe"></p>
-<p>代码文件放到<code>Classes</code>目录下，如果有资源文件则需要放到<code>Assets</code> 目录下。完成之后cd到example目录下执行pod update，重新打开工程就能看到你的源码文件了。</p>
-<h2 id="编写-podspec文件内容"><a href="#编写-podspec文件内容" class="headerlink" title="编写.podspec文件内容"></a>编写<strong>.podspec</strong>文件内容</h2><p>这是比较重要也比较容易写错的一步，示例podspec内容如下</p>
-<figure class="highlight ruby"><table><tr><td class="code"><pre><div class="line">Pod::Spec.new <span class="keyword">do</span> <span class="params">|s|</span></div><div class="line">  s.name         = <span class="string">'MyTestLib'</span> <span class="comment">#名称</span></div><div class="line">  s.version      = <span class="string">'0.1.0'</span>	<span class="comment">#版本号</span></div><div class="line">  s.summary      = <span class="string">"Just Testing"</span>  <span class="comment">#简短介绍，下面是详细介绍</span></div><div class="line">  s.description  = <span class="string">"This is a test file"</span> <span class="comment"># 详细介绍</span></div><div class="line"> </div><div class="line">  s.homepage     = <span class="string">'https://gitlab.xxxx.com/myspecs/MyTestLib'</span></div><div class="line">  <span class="comment"># 项目主页，这里要填写可以访问到的地址，不然验证不通过</span></div><div class="line">  </div><div class="line">  s.license      = &#123; <span class="symbol">:type</span> =&gt; <span class="string">'MIT'</span>, <span class="symbol">:file</span> =&gt; <span class="string">'LICENSE'</span> &#125; <span class="comment">#开源协议</span></div><div class="line">  s.author       = &#123; <span class="string">'zhanghao'</span> =&gt; <span class="string">'zhang60770@163.com'</span> &#125; <span class="comment">#作者信息</span></div><div class="line">  </div><div class="line">  s.source       = &#123; <span class="symbol">:git</span> =&gt; <span class="string">'https://gitlab.xxxx.com/myspecs/MyTestLib'</span>, <span class="symbol">:tag</span> =&gt; s.version.to_s &#125; </div><div class="line">  <span class="comment"># 项目地址，这里不支持ssh的地址，验证不通过，只支持HTTP和HTTPS，最好使用HTTPS</span></div><div class="line"></div><div class="line">  s.ios.deployment_target = <span class="string">'7.0'</span> <span class="comment">#运行需要的最低系统版本</span></div><div class="line"></div><div class="line">  <span class="comment"># s.source_files = 'Pod/*.&#123;h,m&#125;' </span></div><div class="line">  <span class="comment"># 代码源文件地址，**/*表示Classes目录及其子目录下所有文件，</span></div><div class="line">  <span class="comment"># 如果有多个目录下则用逗号分开，如果需要在项目中分组显示，这里也要做相应的设置</span></div><div class="line"></div><div class="line">  s.source_files = <span class="string">'MyTestLib/Classes/MyTestLib.h'</span></div><div class="line">  s.resource = <span class="string">'MyTestLib/Assets/*.plist'</span> <span class="comment"># 资源文件</span></div><div class="line"></div><div class="line">  <span class="comment"># 添加子spec</span></div><div class="line">  s.subspec <span class="string">'Core'</span> <span class="keyword">do</span> <span class="params">|ss|</span></div><div class="line">    ss.source_files = <span class="string">'MyTestLib/Classes/Core/**/*'</span></div><div class="line">    ss.public_header_files = <span class="string">'MyTestLib/Classes/Core/**/*.h'</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"></div><div class="line">  s.subspec <span class="string">'UIKit'</span> <span class="keyword">do</span> <span class="params">|ss|</span></div><div class="line">    ss.source_files = <span class="string">'MyTestLib/Classes/UIKit/**/*'</span></div><div class="line">    ss.public_header_files = <span class="string">'MyTestLib/Classes/UIKit/**/*.h'</span></div><div class="line">    ss.dependency <span class="string">'MyTestLib/Core'</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"></div><div class="line">  <span class="comment"># s.public_header_files = 'Pod/Classes/**/*.h'</span></div><div class="line">  <span class="comment"># s.frameworks = 'UIKit', 'MapKit'</span></div><div class="line">  <span class="comment"># s.dependency 'AFNetworking', '~&gt; 2.3'</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
-<p>编写好之后进行提交，并打tag，步骤如下：</p>
-<figure class="highlight"><table><tr><td class="code"><pre><div class="line">git add .</div><div class="line"></div><div class="line">git commit -s -m "First Commit of Lib"</div><div class="line"></div><div class="line">git remote add origin git@gitlab.com:xxxx/MyTest.git #关联远端仓库</div><div class="line"></div><div class="line">git push origin master #一般会push到临时分支然后提PR</div></pre></td></tr></table></figure>
-<p>添加对应的Tag</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">git tag -m <span class="string">"first release"</span> <span class="number">0.1</span><span class="number">.0</span></div><div class="line"></div><div class="line">git push --tags</div></pre></td></tr></table></figure>
-<h2 id="验证podspec文件的正确性"><a href="#验证podspec文件的正确性" class="headerlink" title="验证podspec文件的正确性"></a>验证podspec文件的正确性</h2><figure class="highlight js"><table><tr><td class="code"><pre><div class="line">pod spec lint 文件名称.podspec --verbose</div></pre></td></tr></table></figure>
-<p>忽略警告使用：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">pod lib lint --allow-warnings</div></pre></td></tr></table></figure>
-<h2 id="提交podspec文件到Spec库并使用"><a href="#提交podspec文件到Spec库并使用" class="headerlink" title="提交podspec文件到Spec库并使用"></a>提交podspec文件到Spec库并使用</h2><figure class="highlight js"><table><tr><td class="code"><pre><div class="line">pod repo push 仓库名 podspec文件名称.podspec</div></pre></td></tr></table></figure>
-<p>执行这步之前要确保对应本地私有库已添加成功，就是文章开始的第二段内容！<strong>向CocoaPods添加私有仓库</strong></p>
-<p>添加成功后可以通过<code>pod repo list</code>的命令查看。也可以搜索检验下是否成功：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">pod search 组件名</div></pre></td></tr></table></figure>
-<p>如果搜索不到，清离搜索缓存再试下</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">rm ~/Library/Caches/CocoaPods/search_index.json</div></pre></td></tr></table></figure>
-<p>使用私有pod，在个人项目中的Podfile中增加刚刚制作好的Pod</p>
-<figure class="highlight"><table><tr><td class="code"><pre><div class="line">source 'https://github.com/CocoaPods/Specs.git' #公有库的索引源</div><div class="line">source 'https://gitlab.xxxx.com/hao.zhang/MyTestLib.git' #私有库的索引源地址</div><div class="line"></div><div class="line">platform :ios, "8.0"</div><div class="line"></div><div class="line">target 'Test' do</div><div class="line">	pod 'MyTestLib', '~&gt; 0.1.0'</div><div class="line">end</div></pre></td></tr></table></figure>
-<p>保存后执行<code>pod install</code>，就可以去项目中使用了</p>
-<h2 id="问题整理"><a href="#问题整理" class="headerlink" title="问题整理"></a>问题整理</h2><ol>
-<li><p>The URL  is not reachable.</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">- WARN | url: The URL (https:<span class="comment">//gitlab.inin88.com/hao01.zhang) is not reachable.</span></div></pre></td></tr></table></figure>
-<p>原因是<code>s.homepage</code>设置的不正确</p>
-<p>参考：<a href="https://github.com/CocoaPods/CocoaPods/issues/1998" target="_blank" rel="external">https://github.com/CocoaPods/CocoaPods/issues/1998</a></p>
-</li>
-<li><p>如下图中所示</p>
-<p><img src="http://oo8l3jrvb.bkt.clouddn.com/2017-07-20-podsetup01.png" alt="podsetup01"></p>
-<p><img src="http://oo8l3jrvb.bkt.clouddn.com/2017-07-20-podsetup02.png" alt="podsetup02">    </p>
-<p>以上两个问题解决方案：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">sudo rm -fr ~/.cocoapods/repos/master &amp;&amp; pod setup</div></pre></td></tr></table></figure>
-<p>记得先备份下本地master的repo，以防万一更不下来，如果更新成功后还是不能引用所有库，可能是仓库访问地址有问题，将https换成ssh试试！</p>
-<p>​</p>
-</li>
-</ol>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a href="https://guides.cocoapods.org/making/private-cocoapods.html" target="_blank" rel="external">https://guides.cocoapods.org/making/private-cocoapods.html</a></li>
-<li><a href="http://blog.devzeng.com/blog/ios-cocoapods-private-repo.html" target="_blank" rel="external">在iOS项目中使用CocoaPods私有库</a></li>
-<li><a href="http://www.jianshu.com/p/ddc2490bff9f" target="_blank" rel="external">如何创建私有 CocoaPods 仓库</a></li>
-<li><a href="http://guides.cocoapods.org/making/private-cocoapods.html" target="_blank" rel="external">Private Pods</a></li>
-<li><a href="http://blog.wtlucky.com/blog/2015/02/26/create-private-podspec/" target="_blank" rel="external">使用Cocoapods创建私有podspec</a></li>
-</ul>
-
-          
+          <h2 id="Spec仓库"><a href="#Spec仓库" class="headerlink" title="Spec仓库"></a>Spec仓库</h2><p>Spec是Pods索引库，所有公开的Pods都在这个里面，它实际是一个Git仓库 remote端在GitHub上，当使用了Cocoapods后他会被clone到本地的<code>~/.cocoapods/repos</code>目录下，进入到这个目录看到master文件夹就是这个官方的Spec Repo了。</p>
+<p>每次我们在执行<code>pod install</code>或者是<code>pod update</code>的时候都会自动更新这个spec里面的内容，拉取最新的数据回来。然后我们使用<code>pod search</code>的时候就是直接从这个里面进行查询的。
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/31/Cocoapods - 私有化pod实践/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>

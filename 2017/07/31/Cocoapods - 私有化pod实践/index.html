@@ -116,7 +116,7 @@
 <meta property="og:image" content="http://oo8l3jrvb.bkt.clouddn.com/2017-07-20-podReplaceMe.png">
 <meta property="og:image" content="http://oo8l3jrvb.bkt.clouddn.com/2017-07-20-podsetup01.png">
 <meta property="og:image" content="http://oo8l3jrvb.bkt.clouddn.com/2017-07-20-podsetup02.png">
-<meta property="og:updated_time" content="2017-07-31T13:19:27.000Z">
+<meta property="og:updated_time" content="2017-07-31T13:55:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Cocoapods - 私有化pod实践">
 <meta name="twitter:description" content="Spec仓库Spec是Pods索引库，所有公开的Pods都在这个里面，它实际是一个Git仓库 remote端在GitHub上，当使用了Cocoapods后他会被clone到本地的~/.cocoapods/repos目录下，进入到这个目录看到master文件夹就是这个官方的Spec Repo了。
@@ -399,7 +399,7 @@
 
       
         <h2 id="Spec仓库"><a href="#Spec仓库" class="headerlink" title="Spec仓库"></a>Spec仓库</h2><p>Spec是Pods索引库，所有公开的Pods都在这个里面，它实际是一个Git仓库 remote端在GitHub上，当使用了Cocoapods后他会被clone到本地的<code>~/.cocoapods/repos</code>目录下，进入到这个目录看到master文件夹就是这个官方的Spec Repo了。</p>
-<p>每次我们在执行<code>pod install</code>或者是<code>pod update</code>的时候都会自动更新这个spec里面的内容，拉取最新的数据回来。然后我们使用<code>pod search</code>的时候就是直接从这个里面进行查询的。</p>
+<p>每次我们在执行<code>pod install</code>或者是<code>pod update</code>的时候都会自动更新这个spec里面的内容，拉取最新的数据回来。然后我们使用<code>pod search</code>的时候就是直接从这个里面进行查询的。<a id="more"></a></p>
 <h2 id="向CocoaPods添加私有仓库"><a href="#向CocoaPods添加私有仓库" class="headerlink" title="向CocoaPods添加私有仓库"></a>向CocoaPods添加私有仓库</h2><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">pod repo add 仓库名 仓库地址</div><div class="line"></div><div class="line">// 示例 </div><div class="line">pod repo add MySpecs git@gitlab.xxxxx.com:hao01.zhang/MySpecs.git</div></pre></td></tr></table></figure>
 <p>可以通过 <code>cd ~/.cocoapods/repos</code> 这个目录里面检查是否创建好具体的私有库，添加成功之后可以通过<code>pod repo list</code>的命令查看</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">pod repo list</div></pre></td></tr></table></figure>
