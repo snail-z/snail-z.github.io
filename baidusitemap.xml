@@ -4,8 +4,32 @@
 
     
   <url>
-    <loc>http://note.snail-z.me/2017/07/31/%E7%A7%81%E6%9C%89%E5%8C%96%20pod%20%E4%B9%8B%E8%B7%AF/</loc>
-    <lastmod>2017-07-31T13:14:48.000Z</lastmod>
+    <loc>http://note.snail-z.me/2017/06/17/Git-%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2017-07-31T13:54:25.000Z</lastmod>
+    <data>
+        <display>
+        <title>Git-命令使用笔记</title>
+        <pubTime>2017-06-17T15:48:42.000Z</pubTime>
+        
+        <tag>iOS</tag>
+         
+        <tag>Objective-C</tag>
+         
+        <tag>Git</tag>
+         
+         
+           
+             
+              <breadCrumb title="技术" url="http://note.snail-z.me/categories/%E6%8A%80%E6%9C%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://note.snail-z.me/2017/07/31/Cocoapods%20-%20%E7%A7%81%E6%9C%89%E5%8C%96pod%E5%AE%9E%E8%B7%B5/</loc>
+    <lastmod>2017-07-31T13:19:27.000Z</lastmod>
     <data>
         <display>
         <title>Cocoapods - 私有化pod实践</title>
@@ -14,6 +38,10 @@
         <tag>iOS</tag>
          
         <tag>Objective-C</tag>
+         
+        <tag>Git</tag>
+         
+        <tag>Cocoapods</tag>
          
          
            
@@ -44,21 +72,6 @@
              
               <breadCrumb title="技术" url="http://note.snail-z.me/categories/%E6%8A%80%E6%9C%AF/"/>
           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://note.snail-z.me/2017/06/17/Git-%E5%91%BD%E4%BB%A4%E6%93%8D%E4%BD%9C/</loc>
-    <lastmod>2017-06-17T15:50:35.000Z</lastmod>
-    <data>
-        <display>
-        <title>Git 命令操作</title>
-        <pubTime>2017-06-17T15:48:42.000Z</pubTime>
-        
-         
-           
         </display>
     </data>
     </url>

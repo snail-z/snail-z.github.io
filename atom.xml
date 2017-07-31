@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://note.snail-z.me/"/>
-  <updated>2017-07-31T13:14:48.000Z</updated>
+  <updated>2017-07-31T13:19:27.000Z</updated>
   <id>http://note.snail-z.me/</id>
   
   <author>
@@ -17,10 +17,10 @@
   
   <entry>
     <title>Cocoapods - 私有化pod实践</title>
-    <link href="http://note.snail-z.me/2017/07/31/%E7%A7%81%E6%9C%89%E5%8C%96%20pod%20%E4%B9%8B%E8%B7%AF/"/>
-    <id>http://note.snail-z.me/2017/07/31/私有化 pod 之路/</id>
+    <link href="http://note.snail-z.me/2017/07/31/Cocoapods%20-%20%E7%A7%81%E6%9C%89%E5%8C%96pod%E5%AE%9E%E8%B7%B5/"/>
+    <id>http://note.snail-z.me/2017/07/31/Cocoapods - 私有化pod实践/</id>
     <published>2017-07-31T11:38:18.000Z</published>
-    <updated>2017-07-31T13:14:48.000Z</updated>
+    <updated>2017-07-31T13:19:27.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Spec仓库"><a href="#Spec仓库" class="headerlink" title="Spec仓库"></a>Spec仓库</h2><p>Spec是Pods索引库，所有公开的Pods都在这个里面，它实际是一个Git仓库 remote端在GitHub上，当使用了Cocoapods后他会被clone到本地的<code>~/.cocoapods/repos</code>目录下，进入到这个目录看到master文件夹就是这个官方的Spec Repo了。</p>
 <p>每次我们在执行<code>pod install</code>或者是<code>pod update</code>的时候都会自动更新这个spec里面的内容，拉取最新的数据回来。然后我们使用<code>pod search</code>的时候就是直接从这个里面进行查询的。</p>
@@ -92,60 +92,47 @@
     
       <category term="Objective-C" scheme="http://note.snail-z.me/tags/Objective-C/"/>
     
+      <category term="Git" scheme="http://note.snail-z.me/tags/Git/"/>
+    
+      <category term="Cocoapods" scheme="http://note.snail-z.me/tags/Cocoapods/"/>
+    
   </entry>
   
   <entry>
-    <title>Git 命令操作</title>
-    <link href="http://note.snail-z.me/2017/06/17/Git-%E5%91%BD%E4%BB%A4%E6%93%8D%E4%BD%9C/"/>
-    <id>http://note.snail-z.me/2017/06/17/Git-命令操作/</id>
+    <title>Git-命令使用笔记</title>
+    <link href="http://note.snail-z.me/2017/06/17/Git-%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/"/>
+    <id>http://note.snail-z.me/2017/06/17/Git-命令使用笔记/</id>
     <published>2017-06-17T15:48:42.000Z</published>
-    <updated>2017-06-17T15:50:35.000Z</updated>
+    <updated>2017-07-31T13:54:25.000Z</updated>
     
-    <content type="html"><![CDATA[<p>git config命令查看配置文件</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">git config -l</div></pre></td></tr></table></figure>
-<p>git工作流程<br><a id="more"></a></p>
-<ol>
-<li><figure class="highlight js"><table><tr><td class="code"><pre><div class="line">git clone [仓库地址]</div></pre></td></tr></table></figure>
-<figure class="highlight"><table><tr><td class="code"><pre><div class="line">git branch -a # 查看所有分支信息</div></pre></td></tr></table></figure>
+    <content type="html"><![CDATA[<h2 id="Git工作流程"><a href="#Git工作流程" class="headerlink" title="Git工作流程"></a>Git工作流程</h2><ol>
+<li><p>克隆仓库，创建本地分支</p>
+<figure class="highlight"><table><tr><td class="code"><pre><div class="line">git clone [仓库地址]</div><div class="line"></div><div class="line">git branch test # 创建test分支</div><div class="line"></div><div class="line">git branch -a # 查看所有分支信息</div></pre></td></tr></table></figure>
 </li>
-<li><figure class="highlight js"><table><tr><td class="code"><pre><div class="line">git checkout -b [本地分支名] [远端分支名]</div></pre></td></tr></table></figure>
+<li><p>创建并检出到该分支</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git checkout -b 本地分支名</div></pre></td></tr></table></figure>
 </li>
-<li><p>代码修改完之后，查看修改处不同</p>
-<ul>
-<li><p>查看仓库的状态</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">git status</div></pre></td></tr></table></figure>
+<li><p>查看仓库状态<a id="more"></a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git status</div></pre></td></tr></table></figure>
+<p>查看尚未暂存的文件更新了哪些部分（查看当前没有add 的内容修改）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git diff</div></pre></td></tr></table></figure>
+<p>查看已经add 但还没有commit 的改动</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git diff --cached</div></pre></td></tr></table></figure>
 </li>
-</ul>
-</li>
-</ol>
-<ul>
-<li><p>查看尚未暂存的文件更新了哪些部分（查看当前没有add 的内容修改）</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">git diff</div></pre></td></tr></table></figure>
-</li>
-<li><p>查看已经add 但还没有commit 的改动</p>
-   <figure class="highlight js"><table><tr><td class="code"><pre><div class="line">git diff --cached</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<ol>
-<li><figure class="highlight js"><table><tr><td class="code"><pre><div class="line">git add .</div><div class="line">git commit -m<span class="string">"描述改动内容"</span></div></pre></td></tr></table></figure>
-<ul>
-<li><p>然后再检查提交情况</p>
+<li><p>提交改动</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">git add .</div><div class="line">git commit -m<span class="string">"描述改动内容"</span></div></pre></td></tr></table></figure>
+<p>然后再检查提交情况</p>
 <figure class="highlight"><table><tr><td class="code"><pre><div class="line">git log [filename]  #可以看到fileName相关的commit记录</div></pre></td></tr></table></figure>
 <figure class="highlight"><table><tr><td class="code"><pre><div class="line">git log -p [filename] #可以显示每次提交的diff</div></pre></td></tr></table></figure>
 <figure class="highlight"><table><tr><td class="code"><pre><div class="line">git show commit-id [filename] #只看某次提交中的某个文件变化，可以直接加上fileName</div></pre></td></tr></table></figure>
-<p>​</p>
 </li>
-</ul>
+<li><p>推到远端</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">// 将当前 loca_name 分支 push 到远端，命名为 new_name</div><div class="line">$ git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;</div></pre></td></tr></table></figure>
 </li>
-<li><figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 将当前 loca_name 分支 push 到远端，命名为 new_name</span></div><div class="line">$ git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;</div></pre></td></tr></table></figure>
-</li>
-<li><p>去gitlab检查构建是否成功，然后提PR</p>
-</li>
-<li><p>删除本地分支和远端分支</p>
+<li><p>去gitlab检查构建是否成功，然后提PR ；并删除本地分支和远端分支</p>
 </li>
 </ol>
-<hr>
-<h4 id="查看分支信息"><a href="#查看分支信息" class="headerlink" title="查看分支信息"></a>查看分支信息</h4><ul>
+<h2 id="查看分支信息"><a href="#查看分支信息" class="headerlink" title="查看分支信息"></a>查看分支信息</h2><ul>
 <li><p>查看当前处在哪个分支（所有本地分支）</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line">$ git branch</div></pre></td></tr></table></figure>
 </li>
@@ -164,19 +151,17 @@
 <ul>
 <li><p>查看远程分支的最后一个提交（commit）</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line">$ git branch -vr</div></pre></td></tr></table></figure>
-<p>​</p>
 </li>
 </ul>
-<h4 id="新建分支"><a href="#新建分支" class="headerlink" title="新建分支"></a>新建分支</h4><ul>
+<h2 id="新建分支"><a href="#新建分支" class="headerlink" title="新建分支"></a>新建分支</h2><ul>
 <li><p>从当前分支新建一个分支，但依然停留在当前分支 （常用于：对当前分支做个备份）</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line">$ git branch [branch-name]</div></pre></td></tr></table></figure>
 </li>
 <li><p>从指定远程分支，拉一个本地分支，并切换到该分支</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 常用于：从远端 develop 拉一个 本地 feature/xxx 分支</span></div><div class="line">$ git checkout -b newBrach origin/master</div></pre></td></tr></table></figure>
 </li>
 </ul>
-  <figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 常用于：从远端 develop 拉一个 本地 feature/xxx 分支</span></div><div class="line">$ git checkout -b newBrach origin/master</div></pre></td></tr></table></figure>
-<p>  ​</p>
-<h4 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h4><ul>
+<h2 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h2><ul>
 <li>当我们删除一个合并（merge）后的分支可以用git branch命令带参数<code>-d</code></li>
 </ul>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line">$ git branch -d hotfix</div><div class="line">Deleted branch hotfix (was <span class="number">3</span>a0874c).</div></pre></td></tr></table></figure>
@@ -184,14 +169,8 @@
 <li>如果分支已经有了新的提交且没有被合并（merge），那么将被提示错误信息，如果仍旧要删除这样的分支，你需要使用参数<code>-D</code> </li>
 </ul>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line">$ git branch -D topic</div><div class="line">Deleted branch topic (was <span class="number">50590</span>b4).</div></pre></td></tr></table></figure>
-<h4 id="远程操作"><a href="#远程操作" class="headerlink" title="远程操作"></a>远程操作</h4><ul>
-<li>git clone</li>
-<li>git remote</li>
-<li>git fetch</li>
-<li>git pull</li>
-<li>git push</li>
-</ul>
-<h5 id="通过git-rebase修改commit-message"><a href="#通过git-rebase修改commit-message" class="headerlink" title="通过git rebase修改commit message"></a>通过git rebase修改commit message</h5><ol>
+<h2 id="远程操作"><a href="#远程操作" class="headerlink" title="远程操作"></a>远程操作</h2><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">- git clone</div><div class="line">- git remote</div><div class="line">- git fetch</div><div class="line">- git pull</div><div class="line">- git push</div></pre></td></tr></table></figure>
+<h2 id="通过git-rebase修改commit-message"><a href="#通过git-rebase修改commit-message" class="headerlink" title="通过git rebase修改commit message"></a>通过git rebase修改commit message</h2><ol>
 <li><p>首先将远端你需要修改的分支拉倒本地，如果你的本地已经不存在这个分支了，执行命令:</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line">git checkout -b 本地分支名 远端分支名</div></pre></td></tr></table></figure>
 </li>
@@ -206,7 +185,20 @@
 <li><p>保存退出后再在执行<code>git log</code>进行检查一遍，没有问题之后执行<code>git push -f</code>，这样就修改成功了。</p>
 </li>
 </ol>
-<h5 id="GitHub-的-Pull-Request-是指什么意思？"><a href="#GitHub-的-Pull-Request-是指什么意思？" class="headerlink" title="GitHub 的 Pull Request 是指什么意思？"></a><a href="https://www.zhihu.com/question/21682976" target="_blank" rel="external">GitHub 的 Pull Request 是指什么意思？</a></h5><ul>
+<blockquote>
+<p>other: <code>git config -l  # Git config命令查看配置文件</code></p>
+</blockquote>
+<h2 id="解决冲突"><a href="#解决冲突" class="headerlink" title="解决冲突"></a>解决冲突</h2><p>从远程仓库里拉取一条本地不存在的分支：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git checkout -b 本地分支名 origin/远程分支名</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git rebase origin/develop</div></pre></td></tr></table></figure>
+<p>解决冲突完成之后</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git rebase --continue</div></pre></td></tr></table></figure>
+<p>如果报错：You must edit all merge conflicts and then mark them as resolved using git add 执行</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git add .</div></pre></td></tr></table></figure>
+<p>修改 message   </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git commit --amend</div></pre></td></tr></table></figure>
+<h2 id="放弃本地修改"><a href="#放弃本地修改" class="headerlink" title="放弃本地修改"></a>放弃本地修改</h2><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git checkout . #本地所有修改的。没有的提交的，都返回到原来的状态</div><div class="line">git stash #把所有没有提交的修改暂存到stash里面。可用git stash pop回复。</div><div class="line">git reset --hard HASH #返回到某个节点，不保留修改。</div><div class="line">git reset --soft HASH #返回到某个节点。保留修改</div></pre></td></tr></table></figure>
+<h2 id="GitHub-的-Pull-Request-是指什么意思？"><a href="#GitHub-的-Pull-Request-是指什么意思？" class="headerlink" title="GitHub 的 Pull Request 是指什么意思？"></a><a href="https://www.zhihu.com/question/21682976" target="_blank" rel="external">GitHub 的 Pull Request 是指什么意思？</a></h2><ul>
 <li>当你想更正别人仓库里的错误时，要走一个流程：<ol>
 <li>先 fork 别人的仓库，相当于拷贝一份，相信我，不会有人直接让你改修原仓库的</li>
 <li>clone 到本地分支，做一些 bug fix</li>
@@ -215,17 +207,49 @@
 </ol>
 </li>
 </ul>
-<h3 id="资料："><a href="#资料：" class="headerlink" title="资料："></a>资料：</h3><p>Git远程版本回滚 <a href="http://blog.csdn.net/dushenzhi/article/details/50555254" target="_blank" rel="external">http://blog.csdn.net/dushenzhi/article/details/50555254</a></p>
+<h2 id="问题整理"><a href="#问题整理" class="headerlink" title="问题整理"></a>问题整理</h2><ol>
+<li><p>error: unpack failed: unpack-objects abnormal exit</p>
+<p>原因是git库权限的问题，解决方案：在git库目录下执行</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">sudo chown -R</div></pre></td></tr></table></figure>
+</li>
+<li><p>获取git线上仓库代码报这个错误:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">zhangzhi@moke:~/code/ktsg-api$ git pull</div><div class="line">You have not concluded your merge (MERGE_HEAD exists).</div><div class="line">Please, commit your changes before you can merge.</div></pre></td></tr></table></figure>
+<p>错误可能是因为在你以前pull下来的代码没有自动合并导致的.</p>
+<p>有2个解决办法:</p>
+<p>1.保留你本地的修改，合并后记得一定要提交这个本地的合并然后在获取线上仓库<code>git pull</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git merge --abort</div><div class="line"></div><div class="line">git reset --merge</div></pre></td></tr></table></figure>
+<p>2.down下线上代码版本,抛弃本地的修改</p>
+<p>不建议这样做,但是如果你本地修改不大,或者自己有一份备份留存,可以直接用线上最新版本覆盖到本地</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">git fetch --all</div><div class="line"></div><div class="line">git reset --hard origin/master</div><div class="line"></div><div class="line">git fetch</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h2><ul>
+<li><a href="http://blog.csdn.net/dushenzhi/article/details/50555254" target="_blank" rel="external">Git远程版本回滚</a></li>
+<li><a href="https://github.com/jaywcjlove/handbook/blob/master/other/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B8%85%E5%8D%95.md" target="_blank" rel="external"> jaywcjlove —— Git常用命令清单</a></li>
+</ul>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;git config命令查看配置文件&lt;/p&gt;
-&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;git config -l&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;git工作流程&lt;br&gt;
+      &lt;h2 id=&quot;Git工作流程&quot;&gt;&lt;a href=&quot;#Git工作流程&quot; class=&quot;headerlink&quot; title=&quot;Git工作流程&quot;&gt;&lt;/a&gt;Git工作流程&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;克隆仓库，创建本地分支&lt;/p&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;git clone [仓库地址]&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;git branch test # 创建test分支&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;git branch -a # 查看所有分支信息&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;创建并检出到该分支&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;git checkout -b 本地分支名&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;查看仓库状态
     
     </summary>
     
+      <category term="技术" scheme="http://note.snail-z.me/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="iOS" scheme="http://note.snail-z.me/tags/iOS/"/>
+    
+      <category term="Objective-C" scheme="http://note.snail-z.me/tags/Objective-C/"/>
+    
+      <category term="Git" scheme="http://note.snail-z.me/tags/Git/"/>
     
   </entry>
   
