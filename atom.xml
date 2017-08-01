@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://note.snail-z.me/"/>
-  <updated>2017-07-31T13:55:27.000Z</updated>
+  <updated>2017-07-31T13:56:15.000Z</updated>
   <id>http://note.snail-z.me/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://note.snail-z.me/2017/07/31/Cocoapods%20-%20%E7%A7%81%E6%9C%89%E5%8C%96pod%E5%AE%9E%E8%B7%B5/"/>
     <id>http://note.snail-z.me/2017/07/31/Cocoapods - 私有化pod实践/</id>
     <published>2017-07-31T11:38:18.000Z</published>
-    <updated>2017-07-31T13:55:27.000Z</updated>
+    <updated>2017-07-31T13:56:15.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Spec仓库"><a href="#Spec仓库" class="headerlink" title="Spec仓库"></a>Spec仓库</h2><p>Spec是Pods索引库，所有公开的Pods都在这个里面，它实际是一个Git仓库 remote端在GitHub上，当使用了Cocoapods后他会被clone到本地的<code>~/.cocoapods/repos</code>目录下，进入到这个目录看到master文件夹就是这个官方的Spec Repo了。</p>
 <p>每次我们在执行<code>pod install</code>或者是<code>pod update</code>的时候都会自动更新这个spec里面的内容，拉取最新的数据回来。然后我们使用<code>pod search</code>的时候就是直接从这个里面进行查询的。<a id="more"></a></p>
@@ -760,7 +760,7 @@
     <link href="http://note.snail-z.me/2017/03/15/Hexo%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E7%AC%94%E8%AE%B0/"/>
     <id>http://note.snail-z.me/2017/03/15/Hexo静态博客搭建笔记/</id>
     <published>2017-03-15T14:59:29.000Z</published>
-    <updated>2017-03-18T14:44:12.000Z</updated>
+    <updated>2017-08-01T14:57:06.000Z</updated>
     
     <content type="html"><![CDATA[<p><a href="https://hexo.io" target="_blank" rel="external">Hexo</a> 是一个基于 <a href="https://nodejs.org/en/" target="_blank" rel="external">Node.js</a> 的静态博客程序，可以方便的生成静态网页托管在 <a href="https://github.com/" target="_blank" rel="external">GitHub</a> 和 <a href="https://www.heroku.com/" target="_blank" rel="external">Heroku</a> 上。作者是来自台湾的 <a href="https://github.com/hexojs/hexo" target="_blank" rel="external">tommy351</a>。<br>关于hexo静态网页搭建过程本文不再赘述，网上教程很多，本篇末尾也有相应的网络链接供参考。本文只是简单记录下使用hexo中的一些问题和需求更改。<br><a id="more"></a></p>
 <h3 id="关联Github仓库"><a href="#关联Github仓库" class="headerlink" title="关联Github仓库:"></a>关联Github仓库:</h3><p>在hexo根目录下的 _config.yml 文件配置，末尾添加如下信息<br><figure class="highlight ruby"><table><tr><td class="code"><pre><div class="line"><span class="symbol">deploy:</span></div><div class="line">  <span class="symbol">type:</span> git</div><div class="line">  <span class="symbol">repository:</span> <span class="comment"># 你的 GitHub 仓库地址，别忘了加上 .git （我的是https://github.com/snail-z/snail-z.github.io.git）</span></div><div class="line">  <span class="symbol">branch:</span> master</div></pre></td></tr></table></figure></p>
@@ -824,6 +824,7 @@
 <li><a href="https://www.fengyu.info/blog/2016/06/30/hexo-theme-next-modify/" target="_blank" rel="external">Hexo Next主题修改与优化 – 基础篇</a></li>
 <li><a href="http://www.wuxubj.cn/2016/08/Hexo-nexT-build-personal-blog/" target="_blank" rel="external">Hexo+nexT主题搭建个人博客</a></li>
 <li><a href="https://github.com/iissnan/hexo-theme-next/wiki" target="_blank" rel="external">hexo-theme-next wiki</a></li>
+<li><a href="https://maxchendt.github.io/Blog/20161007NextSet.html" target="_blank" rel="external">NexT 主题私人定制</a></li>
 </ul>
 ]]></content>
     
