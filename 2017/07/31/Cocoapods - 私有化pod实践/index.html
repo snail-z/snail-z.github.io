@@ -116,7 +116,7 @@
 <meta property="og:image" content="http://oo8l3jrvb.bkt.clouddn.com/2017-07-20-podReplaceMe.png">
 <meta property="og:image" content="http://oo8l3jrvb.bkt.clouddn.com/2017-07-20-podsetup01.png">
 <meta property="og:image" content="http://oo8l3jrvb.bkt.clouddn.com/2017-07-20-podsetup02.png">
-<meta property="og:updated_time" content="2017-08-03T16:17:40.000Z">
+<meta property="og:updated_time" content="2017-08-03T16:19:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Cocoapods - 私有化pod实践">
 <meta name="twitter:description" content="Spec仓库Spec是Pods索引库，所有公开的Pods都在这个里面，它实际是一个Git仓库 remote端在GitHub上，当使用了Cocoapods后他会被clone到本地的~/.cocoapods/repos目录下，进入到这个目录看到master文件夹就是这个官方的Spec Repo了。
@@ -450,8 +450,7 @@
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line">pod trunk me</div></pre></td></tr></table></figure>
 <p>最后通过终端push对应的podspec，完成开源项目支持Cocoapods的最后一步</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line">pod trunk push spec文件名.podspec</div><div class="line"></div><div class="line"><span class="comment">// 如果需要忽略警告</span></div><div class="line">pod trunk push spec文件名.podspec --allow-warnings</div></pre></td></tr></table></figure>
-<p>… 更新本地pod依赖库 <code>pod setup</code></p>
-<p>​</p>
+<p>… 更新本地pod依赖库 <code>pod setup</code> ，然后就可以搜索到了…</p>
 </li>
 </ol>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
