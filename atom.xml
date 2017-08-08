@@ -107,6 +107,70 @@
   </entry>
   
   <entry>
+    <title>iOS原生UIWebView与JS交互</title>
+    <link href="http://note.snail-z.me/2017/07/25/iOS%E5%8E%9F%E7%94%9FUIWebView%E4%B8%8EJS%E4%BA%A4%E4%BA%92/"/>
+    <id>http://note.snail-z.me/2017/07/25/iOS原生UIWebView与JS交互/</id>
+    <published>2017-07-25T13:55:28.000Z</published>
+    <updated>2017-08-08T13:58:17.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>​    </p>
+<p>​    在iOS开发中，H5的嵌入可以通过UIWebView或者WKWebView。这两个都是继承UIView，来加载web数据的类。WKWebView是在iOS8苹果新推出的，加载速度快，占用内存较少，优点明显。但考虑到需要兼容iOS7以上版本，所以本篇主要说UIWebView的交互开发，后续会研究WKWebView和JavaScriptCore 的使用。</p>
+<a id="more"></a>
+<p>​     iOS平台JS与Native的交互需要遵循一定的协议，JS可以调用Native方法，其中方法可以是有参数的。Native也可以调用JS的方法，也是可以带参数的。</p>
+<p>​    本文主要讲利用 <a href="https://github.com/marcuswestin/WebViewJavascriptBridge" target="_blank" rel="external">WebViewJavascriptBridge</a> 实现交互操作的解决方案，它能帮助我们优雅的实现OC与JS的交互, 非常方便简洁。</p>
+<p>​    WebViewJavascriptBridge顾名思义，就相当于一座桥梁，两端连接了Obj-C和JavaScript。它提供了OC和JS互调的方法接口，方法在互调之前，我们需要向对方注册我们的方法列表。下面就开始实际操作</p>
+<h3 id="JS调用Native："><a href="#JS调用Native：" class="headerlink" title="JS调用Native："></a>JS调用Native：</h3><blockquote>
+<p>什么是js调用native?</p>
+<p>简单来说就是通过js调用本地代码，举个例子来说就是在网页中有一个登录按钮，点击登录按钮，,具体的登录功能是由OC端实现的，即登录功能实现需要我们在工程里有一个类似loginMethod的函数去具体操作。</p>
+</blockquote>
+<p>​    原理是在UIWebView的代理方法中截取网页重定向字符串，字符串如果符合特定的格式(可以利用正则表达式去检查)，就解析字符串，获取方法以及参数，然后再调用Native的方法。</p>
+<p>下面是 WebViewJavascriptBridge 的使用 ：</p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 启用日志记录</span></div><div class="line">[WebViewJavascriptBridge enableLogging];</div><div class="line">    </div><div class="line"><span class="comment">// 初始化WebViewJavascriptBridge</span></div><div class="line">_bridge = [WebViewJavascriptBridge bridgeForWebView:_webView];</div><div class="line">    </div><div class="line"><span class="comment">// `setWebViewDelegate`这个方法，可以将UIWebView的代理，从_webViewBridge中再传递出来，所以不需要为UIWebView设置代理</span></div><div class="line">[_bridge setWebViewDelegate:<span class="keyword">self</span>];</div></pre></td></tr></table></figure>
+<p>添加JS 要调用的 Native 功能，注册的 handler 是供 JS调用 Native 使用的，在JS中调用了 <code>bridge.callHandler(&#39;scanClick&#39;)</code> 方法将数据传给OC端，它将触发OC端 <code>bridge registerHandler:@&quot;scanClick&quot;</code>方法中的回调，如下：</p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line">[_bridge registerHandler:<span class="string">@"scanClick"</span> handler:^(<span class="keyword">id</span> data, WVJBResponseCallback responseCallback) &#123;</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"---------------------扫一扫-------------------------"</span>);</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"data is : %@"</span>, data);</div><div class="line">        <span class="built_in">NSString</span> *scanResult = <span class="string">@"http://www.baidu.com"</span>;</div><div class="line">        <span class="comment">// 将结果返回给JS</span></div><div class="line">        responseCallback(scanResult);</div><div class="line">    &#125;];</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">scanClick</span>(<span class="params"></span>) </span>&#123;</div><div class="line">	WebViewJavascriptBridge.callHandler(<span class="string">'scanClick'</span>, &#123;<span class="string">'foo'</span>: <span class="string">'bar'</span>&#125;, <span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123;</div><div class="line">		alert(<span class="string">'扫描结果:'</span> + response);</div><div class="line">		<span class="built_in">document</span>.getElementById(<span class="string">"returnValue"</span>).value = response;</div><div class="line">	&#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Native调用JS："><a href="#Native调用JS：" class="headerlink" title="Native调用JS："></a>Native调用JS：</h3><blockquote>
+<p>和JS调用OC的流程大致一样，还是需要与网页编写人员约定出一个事件名，然后在网页里面先注册这样一个事件并把实现体写好，等到我们OC去触发这个事件(比如点击按钮)就会去网页里面找到这个事件的实现体并执行。</p>
+</blockquote>
+<p>  iOS可以通过stringByEvaluatingJavaScriptFromString：方法直接调用html的JS方法。</p>
+<p>下面是 WebViewJavascriptBridge 的使用 ，在OC端调用<code>callHandler:@&quot;testJSFunction&quot;</code>将数据传给JS，它将触发JS端注册的<code>bridge.registerHandler(&#39;testJSFunction&#39;)</code>方法中的回调</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">setupWebViewJavascriptBridge(<span class="function"><span class="keyword">function</span>(<span class="params">bridge</span>) </span>&#123;</div><div class="line">                 bridge.registerHandler(<span class="string">'testJSFunction'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data, responseCallback</span>) </span>&#123;</div><div class="line">                    alert(<span class="string">'JS方法被调用:'</span> + data);</div><div class="line">                    responseCallback(<span class="string">'js执行过~~~'</span>);</div><div class="line">                 &#125;)</div><div class="line">            &#125;)</div></pre></td></tr></table></figure>
+<p>OC端调用</p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 如果不需要参数，不需要回调，可使用这个</span></div><div class="line">[_bridge callHandler:<span class="string">@"testJSFunction"</span>];</div><div class="line">    </div><div class="line"><span class="comment">// 如果需要参数，不需要回调，使用这个</span></div><div class="line">[_bridge callHandler:<span class="string">@"testJSFunction"</span> data:<span class="string">@"一个字符串"</span>];</div><div class="line">    </div><div class="line"><span class="comment">// 如果既需要参数，又需要回调，使用这个</span></div><div class="line">[_bridge callHandler:<span class="string">@"testJSFunction"</span> data:<span class="string">@"一个字符串"</span> responseCallback:^(<span class="keyword">id</span> responseData) &#123;</div><div class="line">	<span class="built_in">NSLog</span>(<span class="string">@"调用完JS后的回调：%@"</span>, responseData);</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
+<blockquote>
+<p>注：对于以上使用的监听方法名要和JS开发的人员约定好，必须保持一致。</p>
+</blockquote>
+<h3 id="模板替换"><a href="#模板替换" class="headerlink" title="模板替换"></a>模板替换</h3><p>在加载html时替换模版中的<strong>特殊字符串</strong>，截取一部分模板文件代码如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">&lt;div id=<span class="string">"contentDiv"</span> style=<span class="string">"padding:10px;word-break:break-all;"</span>&gt;</div><div class="line">	<span class="xml"><span class="comment">&lt;!--body--&gt;</span></span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>替换模板文件中的 <!--body--> 然后插入 body 位置</p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="built_in">NSRegularExpression</span> *regexBody = [<span class="built_in">NSRegularExpression</span> regularExpressionWithPattern:<span class="string">@"&lt;!--body--&gt;"</span> options:<span class="number">0</span> error:<span class="literal">nil</span>];</div><div class="line">   htmlString = [regexBody stringByReplacingMatchesInString:htmlString options:<span class="number">0</span> range:<span class="built_in">NSMakeRange</span>(<span class="number">0</span>, htmlString.length) withTemplate:bodyStr];</div></pre></td></tr></table></figure>
+<p>以上就是使用 <code>WebViewJavascriptBridge</code> 进行UIWebView与JS的交互的实际例子。</p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li><a href="https://github.com/Haley-Wong/JS_OC" target="_blank" rel="external">JS与原生OC互相调用Demo</a></li>
+<li><a href="http://www.cocoachina.com/ios/20170414/19059.html" target="_blank" rel="external">iOS与H5的交互 - WKWebView</a></li>
+<li><a href="http://kittenyang.com/webview-javascript-bridge/" target="_blank" rel="external">UIWebView与JS的深度交互</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;​    &lt;/p&gt;
+&lt;p&gt;​    在iOS开发中，H5的嵌入可以通过UIWebView或者WKWebView。这两个都是继承UIView，来加载web数据的类。WKWebView是在iOS8苹果新推出的，加载速度快，占用内存较少，优点明显。但考虑到需要兼容iOS7以上版本，所以本篇主要说UIWebView的交互开发，后续会研究WKWebView和JavaScriptCore 的使用。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://note.snail-z.me/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="iOS" scheme="http://note.snail-z.me/tags/iOS/"/>
+    
+      <category term="Objective-C" scheme="http://note.snail-z.me/tags/Objective-C/"/>
+    
+      <category term="JS" scheme="http://note.snail-z.me/tags/JS/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Git-命令使用笔记</title>
     <link href="http://note.snail-z.me/2017/06/17/Git-%E5%91%BD%E4%BB%A4%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/"/>
     <id>http://note.snail-z.me/2017/06/17/Git-命令使用笔记/</id>
