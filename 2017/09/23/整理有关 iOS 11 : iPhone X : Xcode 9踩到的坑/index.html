@@ -104,23 +104,17 @@
 
 
 
-<meta name="description" content="1. 升级Xcode 9后本地图片不能正确的显示 ？ 最近更新到Xcode9后，发现本地的图片都不能正常显示，后来发现如果是直接拉入到工程，Bundle Reources 里面并没有该资源图片，于是又手动添加了一遍，问题解决。如下 ：
-
-2. 由于iPhone X的状态栏结构发生了变化，此时利用系统状态栏判断网络状态的话会发生crash，如下UIApplication *app = [UIAppl">
+<meta name="description" content="1. 升级Xcode 9后本地图片不能正确的显示 ？ 最近更新到Xcode9后，发现本地的图片都不能正常显示，后来发现如果是直接拉入到工程，Bundle Reources 里面并没有该资源图片，于是又手动添加了一遍，问题解决。如下 ：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="整理有关 iOS 11 / iPhone X / Xcode 9踩到的坑">
 <meta property="og:url" content="http://note.snail-z.me/2017/09/23/整理有关 iOS 11 : iPhone X : Xcode 9踩到的坑/index.html">
 <meta property="og:site_name" content="Snail-z Notes">
-<meta property="og:description" content="1. 升级Xcode 9后本地图片不能正确的显示 ？ 最近更新到Xcode9后，发现本地的图片都不能正常显示，后来发现如果是直接拉入到工程，Bundle Reources 里面并没有该资源图片，于是又手动添加了一遍，问题解决。如下 ：
-
-2. 由于iPhone X的状态栏结构发生了变化，此时利用系统状态栏判断网络状态的话会发生crash，如下UIApplication *app = [UIAppl">
+<meta property="og:description" content="1. 升级Xcode 9后本地图片不能正确的显示 ？ 最近更新到Xcode9后，发现本地的图片都不能正常显示，后来发现如果是直接拉入到工程，Bundle Reources 里面并没有该资源图片，于是又手动添加了一遍，问题解决。如下 ：">
 <meta property="og:image" content="http://oo8l3jrvb.bkt.clouddn.com/170921_image1.png">
-<meta property="og:updated_time" content="2017-10-08T14:27:56.000Z">
+<meta property="og:updated_time" content="2017-10-08T14:32:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="整理有关 iOS 11 / iPhone X / Xcode 9踩到的坑">
-<meta name="twitter:description" content="1. 升级Xcode 9后本地图片不能正确的显示 ？ 最近更新到Xcode9后，发现本地的图片都不能正常显示，后来发现如果是直接拉入到工程，Bundle Reources 里面并没有该资源图片，于是又手动添加了一遍，问题解决。如下 ：
-
-2. 由于iPhone X的状态栏结构发生了变化，此时利用系统状态栏判断网络状态的话会发生crash，如下UIApplication *app = [UIAppl">
+<meta name="twitter:description" content="1. 升级Xcode 9后本地图片不能正确的显示 ？ 最近更新到Xcode9后，发现本地的图片都不能正常显示，后来发现如果是直接拉入到工程，Bundle Reources 里面并没有该资源图片，于是又手动添加了一遍，问题解决。如下 ：">
 <meta name="twitter:image" content="http://oo8l3jrvb.bkt.clouddn.com/170921_image1.png">
 
 
@@ -399,8 +393,9 @@
 
       
         <h4 id="1-升级Xcode-9后本地图片不能正确的显示-？"><a href="#1-升级Xcode-9后本地图片不能正确的显示-？" class="headerlink" title="1. 升级Xcode 9后本地图片不能正确的显示 ？"></a>1. 升级Xcode 9后本地图片不能正确的显示 ？</h4><p> 最近更新到Xcode9后，发现本地的图片都不能正常显示，后来发现如果是直接拉入到工程，Bundle Reources 里面并没有该资源图片，于是又手动添加了一遍，问题解决。如下 ：</p>
+<a id="more"></a>
 <p><img src="http://oo8l3jrvb.bkt.clouddn.com/170921_image1.png" alt="image"></p>
-<h4 id="2-由于iPhone-X的状态栏结构发生了变化，此时利用系统状态栏判断网络状态的话会发生crash，如下"><a href="#2-由于iPhone-X的状态栏结构发生了变化，此时利用系统状态栏判断网络状态的话会发生crash，如下" class="headerlink" title="2. 由于iPhone X的状态栏结构发生了变化，此时利用系统状态栏判断网络状态的话会发生crash，如下"></a>2. 由于iPhone X的状态栏结构发生了变化，此时利用系统状态栏判断网络状态的话会发生crash，如下</h4><figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="built_in">UIApplication</span> *app = [<span class="built_in">UIApplicationsharedApplication</span>];</div><div class="line"><span class="built_in">NSArray</span> *children = [[[appvalueForKeyPath:<span class="string">@"statusBar"</span>] valueForKeyPath:<span class="string">@"foregroundView"</span>] subviews];</div><div class="line"><span class="comment">// .... 该方法在 iPhone X 上会crash</span></div></pre></td></tr></table></figure>
+<h4 id="2-由于iPhone-X的状态栏结构发生了变化，此时利用系统状态栏判断网络状态的话会发生crash，如下"><a href="#2-由于iPhone-X的状态栏结构发生了变化，此时利用系统状态栏判断网络状态的话会发生crash，如下" class="headerlink" title="2. 由于iPhone X的状态栏结构发生了变化，此时利用系统状态栏判断网络状态的话会发生crash，如下"></a>2. 由于iPhone X的状态栏结构发生了变化，此时利用系统状态栏判断网络状态的话会发生crash，如下</h4><figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="built_in">UIApplication</span> *app = [<span class="built_in">UIApplicationsharedApplication</span>];</div><div class="line"></div><div class="line"><span class="comment">// .... 该方法在 iPhone X 上会crash</span></div><div class="line"><span class="built_in">NSArray</span> *children = [[[appvalueForKeyPath:<span class="string">@"statusBar"</span>] valueForKeyPath:<span class="string">@"foregroundView"</span>] subviews];</div></pre></td></tr></table></figure>
 <p>改用ios 7 之后推出的<code>currentRadioAccessTechnology</code>来判断当前的网络，需要使用到系统</p>
 <p> <code>import &lt;CoreTelephony/CTTelephonyNetworkInfo.h&gt;</code> 框架里的内容。或者改用 <strong>Reachability</strong>来判断</p>
 <figure class="highlight objc"><table><tr><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)networkStatus &#123;</div><div class="line">    <span class="built_in">NSArray</span> *typeStrings2G = @[<span class="built_in">CTRadioAccessTechnologyEdge</span>,</div><div class="line">                               <span class="built_in">CTRadioAccessTechnologyGPRS</span>,</div><div class="line">                               <span class="built_in">CTRadioAccessTechnologyCDMA1x</span>];</div><div class="line">    </div><div class="line">    <span class="built_in">NSArray</span> *typeStrings3G = @[<span class="built_in">CTRadioAccessTechnologyHSDPA</span>,</div><div class="line">                               <span class="built_in">CTRadioAccessTechnologyWCDMA</span>,</div><div class="line">                               <span class="built_in">CTRadioAccessTechnologyHSUPA</span>,</div><div class="line">                               <span class="built_in">CTRadioAccessTechnologyCDMAEVDORev0</span>,</div><div class="line">                               <span class="built_in">CTRadioAccessTechnologyCDMAEVDORevA</span>,</div><div class="line">                               <span class="built_in">CTRadioAccessTechnologyCDMAEVDORevB</span>,</div><div class="line">                               <span class="built_in">CTRadioAccessTechnologyeHRPD</span>];</div><div class="line">    </div><div class="line">    <span class="built_in">NSArray</span> *typeStrings4G = @[<span class="built_in">CTRadioAccessTechnologyLTE</span>];</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> ([[[<span class="built_in">UIDevice</span> currentDevice] systemVersion] floatValue] &gt;= <span class="number">7.0</span>) &#123;</div><div class="line">        <span class="built_in">CTTelephonyNetworkInfo</span> *teleInfo= [[<span class="built_in">CTTelephonyNetworkInfo</span> alloc] init];</div><div class="line">        <span class="built_in">NSString</span> *accessString = teleInfo.currentRadioAccessTechnology;</div><div class="line">        <span class="keyword">if</span> ([typeStrings4G containsObject:accessString]) &#123;</div><div class="line">            <span class="built_in">NSLog</span>(<span class="string">@"4G网络"</span>);</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> ([typeStrings3G containsObject:accessString]) &#123;</div><div class="line">            <span class="built_in">NSLog</span>(<span class="string">@"3G网络"</span>);</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> ([typeStrings2G containsObject:accessString]) &#123;</div><div class="line">            <span class="built_in">NSLog</span>(<span class="string">@"2G网络"</span>);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="built_in">NSLog</span>(<span class="string">@"未知网络"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"未知网络"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
