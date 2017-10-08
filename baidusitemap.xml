@@ -4,8 +4,38 @@
 
     
   <url>
+    <loc>http://note.snail-z.me/2017/09/23/%E6%95%B4%E7%90%86%E6%9C%89%E5%85%B3%20iOS%2011%20:%20iPhone%20X%20:%20Xcode%209%E8%B8%A9%E5%88%B0%E7%9A%84%E5%9D%91/</loc>
+    <lastmod>2017-10-08T14:27:56.000Z</lastmod>
+    <data>
+        <display>
+        <title>整理有关 iOS 11 / iPhone X / Xcode 9踩到的坑</title>
+        <pubTime>2017-09-23T14:24:43.000Z</pubTime>
+        
+        <tag>iOS</tag>
+         
+        <tag>Objective-C</tag>
+         
+        <tag>适配</tag>
+         
+        <tag>Xcode 9</tag>
+         
+        <tag>iOS 11</tag>
+         
+        <tag>iPhone X</tag>
+         
+         
+           
+             
+              <breadCrumb title="技术" url="http://note.snail-z.me/categories/%E6%8A%80%E6%9C%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://note.snail-z.me/2017/07/25/iOS%E5%8E%9F%E7%94%9FUIWebView%E4%B8%8EJS%E4%BA%A4%E4%BA%92/</loc>
-    <lastmod>2017-08-08T13:58:17.000Z</lastmod>
+    <lastmod>2017-08-08T14:19:42.000Z</lastmod>
     <data>
         <display>
         <title>iOS原生UIWebView与JS交互</title>
