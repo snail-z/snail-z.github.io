@@ -4,6 +4,82 @@
 
     
   <url>
+    <loc>http://note.snail-z.me/2017/08/18/Sublime%20Text3%20-%20%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE/</loc>
+    <lastmod>2019-09-23T14:33:51.584Z</lastmod>
+    <data>
+        <display>
+        <title>Sublime Text3 - 常用配置</title>
+        <pubTime>2017-08-18T14:35:40.000Z</pubTime>
+        
+        <tag>Sublime Text</tag>
+         
+        <tag>Tools</tag>
+         
+         
+           
+             
+              <breadCrumb title="技术" url="http://note.snail-z.me/categories/%E6%8A%80%E6%9C%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://note.snail-z.me/2017/03/19/iOS%20AutoLayout%E4%B9%8B%20-%20NSLayoutConstraint/</loc>
+    <lastmod>2019-09-23T14:33:03.891Z</lastmod>
+    <data>
+        <display>
+        <title>iOS AutoLayout之 - NSLayoutConstraint</title>
+        <pubTime>2017-03-19T08:15:03.000Z</pubTime>
+        
+        <tag>iOS</tag>
+         
+        <tag>Objective-C</tag>
+         
+        <tag>AutoLayout</tag>
+         
+         
+           
+             
+              <breadCrumb title="技术" url="http://note.snail-z.me/categories/%E6%8A%80%E6%9C%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://note.snail-z.me/2017/09/23/%E6%95%B4%E7%90%86%E6%9C%89%E5%85%B3iOS11:iPhoneX:Xcode9%E8%B8%A9%E5%88%B0%E7%9A%84%E5%9D%91/</loc>
+    <lastmod>2019-09-23T14:24:13.128Z</lastmod>
+    <data>
+        <display>
+        <title>整理有关iOS11/iPhoneX/Xcode9踩到的坑</title>
+        <pubTime>2017-09-23T14:24:43.000Z</pubTime>
+        
+        <tag>iOS</tag>
+         
+        <tag>Objective-C</tag>
+         
+        <tag>适配</tag>
+         
+        <tag>Xcode 9</tag>
+         
+        <tag>iOS 11</tag>
+         
+        <tag>iPhone X</tag>
+         
+         
+           
+             
+              <breadCrumb title="技术" url="http://note.snail-z.me/categories/%E6%8A%80%E6%9C%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://note.snail-z.me/2019/09/23/iOS13%E9%80%82%E9%85%8D%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2019-09-23T14:20:15.469Z</lastmod>
     <data>
@@ -74,58 +150,6 @@
 
     
   <url>
-    <loc>http://note.snail-z.me/2017/08/18/Sublime%20Text3%20-%20%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE/</loc>
-    <lastmod>2017-10-08T14:42:42.000Z</lastmod>
-    <data>
-        <display>
-        <title>Sublime Text3 - 常用配置</title>
-        <pubTime>2017-08-18T14:35:40.000Z</pubTime>
-        
-        <tag>Sublime Text</tag>
-         
-        <tag>Tools</tag>
-         
-         
-           
-             
-              <breadCrumb title="技术" url="http://note.snail-z.me/categories/%E6%8A%80%E6%9C%AF/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://note.snail-z.me/2017/09/23/%E6%95%B4%E7%90%86%E6%9C%89%E5%85%B3%20iOS%2011%20:%20iPhone%20X%20:%20Xcode%209%E8%B8%A9%E5%88%B0%E7%9A%84%E5%9D%91/</loc>
-    <lastmod>2017-10-08T14:32:06.000Z</lastmod>
-    <data>
-        <display>
-        <title>整理有关 iOS 11 / iPhone X / Xcode 9踩到的坑</title>
-        <pubTime>2017-09-23T14:24:43.000Z</pubTime>
-        
-        <tag>iOS</tag>
-         
-        <tag>Objective-C</tag>
-         
-        <tag>适配</tag>
-         
-        <tag>Xcode 9</tag>
-         
-        <tag>iOS 11</tag>
-         
-        <tag>iPhone X</tag>
-         
-         
-           
-             
-              <breadCrumb title="技术" url="http://note.snail-z.me/categories/%E6%8A%80%E6%9C%AF/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://note.snail-z.me/2017/07/25/iOS%E5%8E%9F%E7%94%9FUIWebView%E4%B8%8EJS%E4%BA%A4%E4%BA%92/</loc>
     <lastmod>2017-08-08T14:19:42.000Z</lastmod>
     <data>
@@ -182,30 +206,6 @@
         <tag>Objective-C</tag>
          
         <tag>Git</tag>
-         
-         
-           
-             
-              <breadCrumb title="技术" url="http://note.snail-z.me/categories/%E6%8A%80%E6%9C%AF/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://note.snail-z.me/2017/03/19/iOS%20AutoLayout%E4%B9%8B%20-%20NSLayoutConstraint/</loc>
-    <lastmod>2017-06-17T23:23:49.000Z</lastmod>
-    <data>
-        <display>
-        <title>iOS AutoLayout之 - NSLayoutConstraint</title>
-        <pubTime>2017-03-19T08:15:03.000Z</pubTime>
-        
-        <tag>iOS</tag>
-         
-        <tag>Objective-C</tag>
-         
-        <tag>AutoLayout</tag>
          
          
            
