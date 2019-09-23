@@ -1689,7 +1689,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #d5ff8b;
+  background: #4f2d21;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2537,6 +2537,6 @@ embed {
   display: inline-block;
 }
 #header {
-  background: url("http://oo8l3jrvb.bkt.clouddn.com/backsss.jpg");
+  background: url("../images/background-header3.jpg");
   background-size: cover;
 }
