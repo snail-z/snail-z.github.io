@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://note.snail-z.me/"/>
-  <updated>2017-10-08T14:32:06.000Z</updated>
+  <updated>2019-09-23T14:13:12.672Z</updated>
   <id>http://note.snail-z.me/</id>
   
   <author>
@@ -14,6 +14,85 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>iOS13适配</title>
+    <link href="http://note.snail-z.me/2019/09/23/iOS13%E9%80%82%E9%85%8D%E7%AC%94%E8%AE%B0/"/>
+    <id>http://note.snail-z.me/2019/09/23/iOS13适配笔记/</id>
+    <published>2019-09-23T14:09:31.000Z</published>
+    <updated>2019-09-23T14:13:12.672Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="1-获取状态栏"><a href="#1-获取状态栏" class="headerlink" title="1. 获取状态栏"></a>1. 获取状态栏</h4><p>项目中有通过StatusBar来获取手机当前状态，但是在iOS 13中会崩溃，调试了一下发现是通过KVC获取<code>UIApplication</code>的<code>statusBar</code>属性造成的。iOS13新增加了<code>UIStatusBarManager</code>相关的类，可以通过获取程序window进而获取到UIStatusBarManager。 <a id="more"></a></p>
+<p>然后通过Runtime获取到<code>UIStatusBarManager</code>的属性列表及方法列表：</p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line">properties is: &#123;</div><div class="line">    <span class="string">"_scene"</span> = <span class="string">"&lt;UIWindowScene: 0x7f9505407e70; scene = &lt;FBSSceneImpl: 0x6000021f8680; identifier: sceneID:PsychokinesisTeam.iOS-Test-default&gt;; persistentIdentifier = 392A053A-1C6B-4A42-AB98-59AB3ADFB290; activationState = UISceneActivationStateForegroundActive; settingsCanvas = &lt;UIWindowScene: 0x7f9505407e70&gt;; windows = (\n    \"&lt;UIWindow: 0x7f9505411180; frame = (0 0; 414 896); hidden = YES; gestureRecognizers = &lt;NSArray: 0x6000001a5f20&gt;; layer = &lt;UIWindowLayer: 0x600000ff5ae0&gt;&gt;\",\n    \"&lt;UIWindow: 0x7f95054066a0; frame = (0 0; 414 896); gestureRecognizers = &lt;NSArray: 0x600000192280&gt;; layer = &lt;UIWindowLayer: 0x600000fd9f80&gt;&gt;\",\n    \"&lt;UIWindow: 0x7f950541f400; frame = (0 0; 414 896); hidden = YES; gestureRecognizers = &lt;NSArray: 0x600000199590&gt;; layer = &lt;UIWindowLayer: 0x600000fdb7c0&gt;&gt;\",\n    \"&lt;UITextEffectsWindow: 0x7f950550b3a0; frame = (0 0; 414 896); opaque = NO; autoresize = W+H; layer = &lt;UIWindowLayer: 0x600000fac380&gt;&gt;\"\n)&gt;"</span>;</div><div class="line">    debugDescription = <span class="string">"&lt;UIStatusBarManager: 0x600001a92900&gt;"</span>;</div><div class="line">    debugMenuHandler = <span class="string">"&lt;null&gt;"</span>;</div><div class="line">    description = <span class="string">"&lt;UIStatusBarManager: 0x600001a92900&gt;"</span>;</div><div class="line">    hash = <span class="number">105553144129792</span>;</div><div class="line">    inStatusBarFadeAnimation = <span class="number">0</span>;</div><div class="line">    localStatusBars = <span class="string">"&lt;null&gt;"</span>;</div><div class="line">    statusBarAlpha = <span class="number">1</span>;</div><div class="line">    statusBarFrame = <span class="string">"NSRect: &#123;&#123;0, 0&#125;, &#123;414, 44&#125;&#125;"</span>;</div><div class="line">    statusBarHeight = <span class="number">44</span>;</div><div class="line">    statusBarHidden = <span class="number">0</span>;</div><div class="line">    statusBarPartStyles =     &#123;</div><div class="line">        leadingPartIdentifier = <span class="number">4</span>;</div><div class="line">        trailingPartIdentifier = <span class="number">4</span>;</div><div class="line">    &#125;;</div><div class="line">    statusBarStyle = <span class="number">3</span>;</div><div class="line">    superclass = <span class="built_in">NSObject</span>;</div><div class="line">    windowScene = <span class="string">"&lt;UIWindowScene: 0x7f9505407e70; scene = &lt;FBSSceneImpl: 0x6000021f8680; identifier: sceneID:PsychokinesisTeam.iOS-Test-default&gt;; persistentIdentifier = 392A053A-1C6B-4A42-AB98-59AB3ADFB290; activationState = UISceneActivationStateForegroundActive; settingsCanvas = &lt;UIWindowScene: 0x7f9505407e70&gt;; windows = (\n    \"&lt;UIWindow: 0x7f9505411180; frame = (0 0; 414 896); hidden = YES; gestureRecognizers = &lt;NSArray: 0x6000001a5f20&gt;; layer = &lt;UIWindowLayer: 0x600000ff5ae0&gt;&gt;\",\n    \"&lt;UIWindow: 0x7f95054066a0; frame = (0 0; 414 896); gestureRecognizers = &lt;NSArray: 0x600000192280&gt;; layer = &lt;UIWindowLayer: 0x600000fd9f80&gt;&gt;\",\n    \"&lt;UIWindow: 0x7f950541f400; frame = (0 0; 414 896); hidden = YES; gestureRecognizers = &lt;NSArray: 0x600000199590&gt;; layer = &lt;UIWindowLayer: 0x600000fdb7c0&gt;&gt;\",\n    \"&lt;UITextEffectsWindow: 0x7f950550b3a0; frame = (0 0; 414 896); opaque = NO; autoresize = W+H; layer = &lt;UIWindowLayer: 0x600000fac380&gt;&gt;\"\n)&gt;"</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">methods is: (</div><div class="line">    <span class="string">".cxx_destruct"</span>,</div><div class="line">    windowScene,</div><div class="line">    statusBarFrame,</div><div class="line">    <span class="string">"_setScene:"</span>,</div><div class="line">    <span class="string">"initWithScene:"</span>,</div><div class="line">    <span class="string">"_scene"</span>,</div><div class="line">    <span class="string">"_settingsDiffActionsForScene:"</span>,</div><div class="line">    <span class="string">"setWindowScene:"</span>,</div><div class="line"> isStatusBarHidden,</div><div class="line">    statusBarStyle,</div><div class="line"> statusBarHeight,</div><div class="line">    <span class="string">"setDebugMenuHandler:"</span>,</div><div class="line"> <span class="string">"handleTapAction:"</span>,</div><div class="line">    <span class="string">"_updateAlpha"</span>,</div><div class="line"> statusBarHidden,</div><div class="line">    statusBarPartStyles,</div><div class="line"> statusBarAlpha,</div><div class="line">    <span class="string">"defaultStatusBarHeightInOrientation:"</span>,</div><div class="line">    updateStatusBarAppearance,</div><div class="line">    updateLocalStatusBars,</div><div class="line">    setupForSingleLocalStatusBar,</div><div class="line"> <span class="string">"statusBarFrameForStatusBarHeight:"</span>,</div><div class="line">    <span class="string">"updateStatusBarAppearanceWithAnimationParameters:"</span>,</div><div class="line">    <span class="string">"_updateStatusBarAppearanceWithClientSettings:transitionContext:animationParameters:"</span>,</div><div class="line">    <span class="string">"_updateVisibilityForWindow:targetOrientation:animationParameters:"</span>,</div><div class="line">    <span class="string">"_updateStyleForWindow:animationParameters:"</span>,</div><div class="line">    <span class="string">"_visibilityChangedWithOriginalOrientation:targetOrientation:animationParameters:"</span>,</div><div class="line">    <span class="string">"activateLocalStatusBar:"</span>,</div><div class="line">    <span class="string">"_updateLocalStatusBar:"</span>,</div><div class="line">    <span class="string">"_handleScrollToTopAtXPosition:"</span>,</div><div class="line">    <span class="string">"_adjustedLocationForXPosition:"</span>,</div><div class="line">    <span class="string">"updateStatusBarAppearanceWithClientSettings:transitionContext:"</span>,</div><div class="line">    <span class="string">"deactivateLocalStatusBar:"</span>,</div><div class="line">    createLocalStatusBar,</div><div class="line">    localStatusBars,</div><div class="line">    <span class="string">"setLocalStatusBars:"</span>,</div><div class="line">    isInStatusBarFadeAnimation,</div><div class="line">    debugMenuHandler</div><div class="line">)</div></pre></td></tr></table></figure>
+<p>可以看到有几个与statusBar相关的属性和方法，最总尝试了很多次，只有通过<code>createLocalStatusBar</code>可以获取到<code>_UIStatusBarLocalView</code></p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line">&lt;_UIStatusBarLocalView: <span class="number">0x7fe86261d780</span>; frame = (<span class="number">0</span> <span class="number">0</span>; <span class="number">414</span> <span class="number">44</span>); layer = &lt;<span class="built_in">CALayer</span>: <span class="number">0x600000c3b4c0</span>&gt;&gt;</div></pre></td></tr></table></figure>
+<p>然后通过KVC进而获取到<code>UIStatusBar_Modern</code></p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line">[obj valueForKeyPath:<span class="string">@"statusBar"</span>];</div><div class="line"></div><div class="line">&lt;<span class="built_in">UIStatusBar_Modern</span>: <span class="number">0x7fe862702cf0</span>; frame = (<span class="number">0</span> <span class="number">0</span>; <span class="number">414</span> <span class="number">44</span>); autoresize = W+H; layer = &lt;<span class="built_in">CALayer</span>: <span class="number">0x600000c50780</span>&gt;&gt;</div></pre></td></tr></table></figure>
+<p>最终拿到了statusBar，详细代码如下：</p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line">+ (<span class="keyword">nullable</span> <span class="built_in">UIView</span> *)getUIStatusBar &#123;</div><div class="line">    <span class="keyword">if</span> (@available(iOS <span class="number">13.0</span>, *)) &#123;</div><div class="line">        <span class="built_in">UIStatusBarManager</span> *statusBarManager = [<span class="built_in">UIApplication</span> sharedApplication].keyWindow.windowScene.statusBarManager;</div><div class="line">        SEL aSelector = <span class="built_in">NSSelectorFromString</span>(<span class="string">@"createLocalStatusBar"</span>);</div><div class="line">        <span class="keyword">if</span> ([statusBarManager respondsToSelector:aSelector]) &#123;</div><div class="line">            <span class="built_in">UIView</span> *_localView = ((<span class="keyword">id</span>(*)(<span class="keyword">id</span>, SEL))objc_msgSend)(statusBarManager, aSelector);</div><div class="line">            <span class="keyword">return</span> [_localView valueForKeyPath:<span class="string">@"statusBar"</span>];</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="literal">nil</span>;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="built_in">UIApplication</span> *application = [<span class="built_in">UIApplication</span> sharedApplication];</div><div class="line">        <span class="keyword">return</span> [application valueForKeyPath:<span class="string">@"statusBar"</span>];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>通过上述方法运行后获取statusBar再次出现崩溃，查看到相关信息如下：</p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line">- [<span class="built_in">UIView</span> setAnimationsEnabled:] being called from a background thread. Performing any operation from a background thread on <span class="built_in">UIView</span> or a subclass is not supported and may result <span class="keyword">in</span> unexpected and insidious behavior. </div><div class="line">- This application is modifying the autolayout engine from a background thread after the engine was accessed from the main thread. This can lead to engine corruption and weird crashes.</div></pre></td></tr></table></figure>
+<p>猜想可能是调用<code>createLocalStatusBar</code>方法时有UI的创建或者动画，而此时的调用可能是在子线程里操作的，所以增加了线程判断再去获取statusBar，最终解决问题：</p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line">__block <span class="keyword">id</span> statusBar = <span class="literal">nil</span>;</div><div class="line"><span class="keyword">if</span> ([<span class="built_in">NSThread</span>.currentThread isMainThread]) &#123;</div><div class="line">	statusBar = [<span class="keyword">self</span> getUIStatusBar];</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">	<span class="built_in">dispatch_sync</span>(dispatch_get_main_queue(), ^&#123;</div><div class="line">		statusBar = [<span class="keyword">self</span> getUIStatusBar];</div><div class="line">	&#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>以上方法调用了一些系统私有方法，还不晓得上线审核是否会被拒。</p>
+<h4 id="2-暗黑模式适配"><a href="#2-暗黑模式适配" class="headerlink" title="2. 暗黑模式适配"></a>2. 暗黑模式适配</h4><ul>
+<li><h5 id="全局关闭暗黑模式"><a href="#全局关闭暗黑模式" class="headerlink" title="全局关闭暗黑模式"></a>全局关闭暗黑模式</h5></li>
+</ul>
+<ol>
+<li>在Info.plist 文件中，添加<code>UIUserInterfaceStyle</code> key为 <code>User Interface Style</code> 类型为String，</li>
+<li>将<code>UIUserInterfaceStyle</code> key 的值设置为 <code>Light</code></li>
+</ol>
+<ul>
+<li><h5 id="单个界面不遵循暗黑模式"><a href="#单个界面不遵循暗黑模式" class="headerlink" title="单个界面不遵循暗黑模式"></a>单个界面不遵循暗黑模式</h5></li>
+</ul>
+<ol>
+<li><p>UIViewController与UIView 都新增了一个属性 <code>overrideUserInterfaceStyle</code></p>
+</li>
+<li><p>将<code>overrideUserInterfaceStyle</code></p>
+<p>设置为对应的模式，则强制限制该元素与其子元素以设置的模式进行展示，不跟随系统模式改变进行改变</p>
+<ol>
+<li>设置 ViewController 的该属性，将会影响视图控制器的视图和子视图控制器采用该样式</li>
+<li>设置 View 的该属性，将会影响视图及其所有子视图采用该样式</li>
+<li>设置 Window 的该属性， 将会影响窗口中的所有内容都采用样式，包括根视图控制器和在该窗口中显示内容的所有演示控制器（UIPresentationController）</li>
+</ol>
+</li>
+</ol>
+<ul>
+<li><h5 id="适配暗黑模式"><a href="#适配暗黑模式" class="headerlink" title="适配暗黑模式"></a>适配暗黑模式</h5></li>
+</ul>
+<p>目前全局禁止了暗黑模式，部分页面还需要等UI设计下暗黑模式的效果。</p>
+<ol>
+<li>TODO</li>
+</ol>
+<p>暗黑模式的适配可以参考<a href="https://www.jianshu.com/p/e6616e44cf60" target="_blank" rel="external">这里</a></p>
+<h4 id="3-UITextField设置placeholder颜色"><a href="#3-UITextField设置placeholder颜色" class="headerlink" title="3. UITextField设置placeholder颜色"></a>3. UITextField设置placeholder颜色</h4><figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-attr">[textField setValue:aColor forKeyPath:@"_placeholderLabel.textColor”]</span>;</div></pre></td></tr></table></figure>
+<p>iOS 13中通过KVC设置占位文本颜色会崩溃，详细信息如下：</p>
+<figure class="highlight"><table><tr><td class="code"><pre><div class="line">*** Terminating app due to uncaught exception 'NSGenericException', reason: 'Access to UITextField's _placeholderLabel ivar is prohibited. This is an application bug'</div></pre></td></tr></table></figure>
+<p>提示该方法已经被禁止使用，可以改成使用<code>attributedPlaceholder</code>来设置：</p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="built_in">NSString</span> *placeholderText = <span class="string">@"请输入..."</span>;</div><div class="line"><span class="built_in">NSMutableAttributedString</span> *attributedText = [[<span class="built_in">NSMutableAttributedString</span> alloc] initWithString:placeholderText];</div><div class="line">[attributedText addAttribute:<span class="built_in">NSForegroundColorAttributeName</span> value:[<span class="built_in">UIColor</span> lightGrayColor] range:<span class="built_in">NSMakeRange</span>(<span class="number">0</span>, placeholderText.length)];</div><div class="line"><span class="keyword">self</span>.textField.attributedPlaceholder = attributedText;</div></pre></td></tr></table></figure>
+<h4 id="4-模态跳转ModalPresent"><a href="#4-模态跳转ModalPresent" class="headerlink" title="4. 模态跳转ModalPresent"></a>4. 模态跳转ModalPresent</h4><p>iOS 13系统下修改了模态跳转样式，苹果可能是想与push页面有侧滑手势一样，增加了下滑手势，个人感觉体验不错，交互样式也有提升，不用再自己手写转场动画了。当然如果想改成老样式，可以手动改成<code>UIModalPresentationOverFullScreen</code>，不过个人推荐使用iOS 13新增加的枚举值<code>UIModalPresentationAutomatic</code>，使用系统推荐的模态样式：</p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line">NextViewController *vc = [NextViewController new];</div><div class="line"><span class="keyword">if</span> (@available(iOS <span class="number">13.0</span>, *)) &#123;</div><div class="line">	vc.modalPresentationStyle = <span class="built_in">UIModalPresentationAutomatic</span>;</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">	vc.modalPresentationStyle = <span class="built_in">UIModalPresentationOverFullScreen</span>;</div><div class="line">&#125;</div><div class="line">[<span class="keyword">self</span> presentViewController:vc animated:<span class="literal">YES</span> completion:<span class="literal">NULL</span>];</div></pre></td></tr></table></figure>
+<p>默认情况下不设置即是pageSheet样式，当然除 <code>UISearchController</code> 和 <code>UIAlertController</code> 因自身业务的特殊性不同外，其余的视图控制器均为此展示样式。</p>
+<p>还要记得配置window支持暗黑模式，不然window背景色是白色看不出分层次效果：</p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="keyword">self</span>.window = [[<span class="built_in">UIWindow</span> alloc] initWithFrame:<span class="built_in">UIScreen</span>.mainScreen.bounds];</div><div class="line"><span class="keyword">if</span> (@available(iOS <span class="number">13.0</span>, *)) &#123;</div><div class="line">	<span class="keyword">self</span>.window.backgroundColor = [<span class="built_in">UIColor</span> systemBackgroundColor];</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">	<span class="keyword">self</span>.window.backgroundColor = [<span class="built_in">UIColor</span> whiteColor];</div><div class="line">&#125;</div><div class="line"><span class="keyword">self</span>.window.rootViewController = <span class="keyword">self</span>.rootVC;</div><div class="line">[<span class="keyword">self</span>.window makeKeyAndVisible];</div></pre></td></tr></table></figure>
+<p><em>对于iOS 13的体会就是，交互好了，性能提升了，替开发者做的事情也越来越多了。</em></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;1-获取状态栏&quot;&gt;&lt;a href=&quot;#1-获取状态栏&quot; class=&quot;headerlink&quot; title=&quot;1. 获取状态栏&quot;&gt;&lt;/a&gt;1. 获取状态栏&lt;/h4&gt;&lt;p&gt;项目中有通过StatusBar来获取手机当前状态，但是在iOS 13中会崩溃，调试了一下发现是通过KVC获取&lt;code&gt;UIApplication&lt;/code&gt;的&lt;code&gt;statusBar&lt;/code&gt;属性造成的。iOS13新增加了&lt;code&gt;UIStatusBarManager&lt;/code&gt;相关的类，可以通过获取程序window进而获取到UIStatusBarManager。
+    
+    </summary>
+    
+      <category term="技术" scheme="http://note.snail-z.me/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="iOS" scheme="http://note.snail-z.me/tags/iOS/"/>
+    
+      <category term="Objective-C" scheme="http://note.snail-z.me/tags/Objective-C/"/>
+    
+  </entry>
   
   <entry>
     <title>整理有关 iOS 11 / iPhone X / Xcode 9踩到的坑</title>
@@ -113,7 +192,7 @@
     <link href="http://note.snail-z.me/2017/07/31/Cocoapods%20-%20%E7%A7%81%E6%9C%89%E5%8C%96pod%E5%AE%9E%E8%B7%B5/"/>
     <id>http://note.snail-z.me/2017/07/31/Cocoapods - 私有化pod实践/</id>
     <published>2017-07-31T11:38:18.000Z</published>
-    <updated>2017-08-03T16:19:18.000Z</updated>
+    <updated>2018-11-03T01:53:44.571Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Spec仓库"><a href="#Spec仓库" class="headerlink" title="Spec仓库"></a>Spec仓库</h2><p>Spec是Pods索引库，所有公开的Pods都在这个里面，它实际是一个Git仓库 remote端在GitHub上，当使用了Cocoapods后他会被clone到本地的<code>~/.cocoapods/repos</code>目录下，进入到这个目录看到master文件夹就是这个官方的Spec Repo了。</p>
 <p>每次我们在执行<code>pod install</code>或者是<code>pod update</code>的时候都会自动更新这个spec里面的内容，拉取最新的数据回来。然后我们使用<code>pod search</code>的时候就是直接从这个里面进行查询的。<a id="more"></a></p>
@@ -162,10 +241,20 @@
 <p>记得先备份下本地master的repo，以防万一更不下来，如果更新成功后还是不能引用所有库，可能是仓库访问地址有问题，将https换成ssh试试！</p>
 <p>​</p>
 <hr>
+<p><strong>发布代码到CocoaPods(Trunk方式)</strong></p>
 <p>另：其实让自己的组件在github也能支持pod，跟这些步骤几乎是一致的，只是最后的sepc文件需要传到官方的specs里，可以通过Trunk推送给Cocoapods服务器，如下：</p>
-<p>首先向trunk服务器查询自己的注册信息</p>
+<ol>
+<li>首先向trunk服务器查询自己的注册信息</li>
+</ol>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line">pod trunk me</div></pre></td></tr></table></figure>
-<p>最后通过终端push对应的podspec，完成开源项目支持Cocoapods的最后一步</p>
+<ol>
+<li>若没有注册，需要注册trunk账号</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">pod trunk register 邮箱地址 用户名 -verbose</div></pre></td></tr></table></figure>
+<p>该指令会发送一封验证邮件到你的邮箱，在邮箱里直接点击链接完成注册即可；然后重复步骤1查看注册结构</p>
+<ol>
+<li>最后通过终端push对应的podspec，完成开源项目支持Cocoapods的最后一步</li>
+</ol>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line">pod trunk push spec文件名.podspec</div><div class="line"></div><div class="line"><span class="comment">// 如果需要忽略警告</span></div><div class="line">pod trunk push spec文件名.podspec --allow-warnings</div></pre></td></tr></table></figure>
 <p>… 更新本地pod依赖库 <code>pod setup</code> ，然后就可以搜索到了…</p>
 </li>
@@ -636,7 +725,7 @@
     <link href="http://note.snail-z.me/2017/04/07/Objective-C%E7%AC%94%E8%AE%B0/"/>
     <id>http://note.snail-z.me/2017/04/07/Objective-C笔记/</id>
     <published>2017-04-07T13:56:56.000Z</published>
-    <updated>2017-05-13T04:35:01.000Z</updated>
+    <updated>2019-03-01T07:59:52.145Z</updated>
     
     <content type="html"><![CDATA[<h2 id="UIScrollview上的UIPangesturerecognizer冲突"><a href="#UIScrollview上的UIPangesturerecognizer冲突" class="headerlink" title="UIScrollview上的UIPangesturerecognizer冲突"></a>UIScrollview上的UIPangesturerecognizer冲突</h2><p>在tableview里的cell的imageview上加个UIPangesturerecognizer会发现优先滚动imageview，tableView不响应滚动了，原因是tableview的实现也是用了UIPangesturerecognizer。解决方案如下：<br><figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 实现 UIGestureRecognizerDelegate</span></div><div class="line">- (<span class="built_in">BOOL</span>)gestureRecognizer:(<span class="built_in">UIGestureRecognizer</span> *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(<span class="built_in">UIGestureRecognizer</span> *)otherGestureRecognizer &#123;</div><div class="line">    <span class="keyword">return</span> <span class="literal">YES</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <a id="more"></a>
@@ -665,6 +754,8 @@
 <p>去掉分割线 <code>_tableView.separatorStyle = UITableViewCellSeparatorStyleNone;</code></p>
 <h2 id="Frame布局时使用CGRectInset设置左右、上下边距"><a href="#Frame布局时使用CGRectInset设置左右、上下边距" class="headerlink" title="Frame布局时使用CGRectInset设置左右、上下边距"></a>Frame布局时使用CGRectInset设置左右、上下边距</h2><figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="built_in">UIView</span> *aView = [[<span class="built_in">UIView</span> alloc] initWithFrame:<span class="built_in">CGRectInset</span>(<span class="keyword">self</span>.view.bounds, <span class="number">10</span>, <span class="number">100</span>)];</div><div class="line">aView.backgroundColor = [<span class="built_in">UIColor</span> orangeColor];</div><div class="line">[<span class="keyword">self</span>.view addSubview:aView];</div></pre></td></tr></table></figure>
 <h2 id="PCH文件配置"><a href="#PCH文件配置" class="headerlink" title="PCH文件配置"></a>PCH文件配置</h2><p>如图：在Build Settings内搜索<code>prefix header</code><br><img src="http://oo8l3jrvb.bkt.clouddn.com/pch%20configuration.png" width="550px" height="330px"><br>然后修改为<code>$(SRCROOT)/Mydemo/MydemoPrefixHeader.pch</code><br>其中<code>Mydemo</code>对应project name, <code>MydemoPrefixHeader.pch</code>对应PCH file</p>
+<h2 id="SDK出现libc-abi-dylib-terminating"><a href="#SDK出现libc-abi-dylib-terminating" class="headerlink" title="SDK出现libc++abi.dylib: terminating"></a>SDK出现libc++abi.dylib: terminating</h2><p>SDK出现libc++abi.dylib: terminating with uncaught exception of type NSException  的问题解决方法：</p>
+<p>工程文件中选择Build Setting，在”Other Linker Flags”中加入”-Objc -all_load”  </p>
 <h2 id="查找在数组中NSNumber的最大值和最小值"><a href="#查找在数组中NSNumber的最大值和最小值" class="headerlink" title="查找在数组中NSNumber的最大值和最小值"></a>查找在数组中NSNumber的最大值和最小值</h2><p>参考：<br><a href="http://stackoverflow.com/questions/15931112/finding-the-smallest-and-biggest-value-in-nsarray-of-nsnumbers" target="_blank" rel="external">http://stackoverflow.com/questions/15931112/finding-the-smallest-and-biggest-value-in-nsarray-of-nsnumbers</a></p>
 <figure class="highlight objc"><table><tr><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)sample &#123;</div><div class="line">    </div><div class="line">    <span class="built_in">NSArray</span> *array = @[@<span class="number">8.091</span>, @<span class="number">0.31</span>, @<span class="number">10.55</span>, @<span class="number">50.5</span>, @<span class="number">5.50</span>, @<span class="number">0.31</span>];</div><div class="line">    </div><div class="line">    <span class="built_in">NSNumber</span> *maxValue = [array valueForKeyPath:<span class="string">@"@max.self"</span>];</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"maxValue - %@"</span>, maxValue); <span class="comment">// maxValue - 50.5</span></div><div class="line">    </div><div class="line">    <span class="built_in">NSNumber</span> *minValue = [array valueForKeyPath:<span class="string">@"@min.self"</span>];</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"minValue - %@"</span>, minValue); <span class="comment">// minValue - 0.31</span></div><div class="line">    </div><div class="line">    <span class="built_in">NSInteger</span> index = [array indexOfObject:minValue];</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"index - %lu"</span>, index); <span class="comment">// index - 1</span></div><div class="line">    <span class="comment">// 从输出可以看到当有重复值时，获取的index是在靠前位置的</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 ]]></content>

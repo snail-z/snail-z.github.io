@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://note.snail-z.me/2019/09/23/iOS13%E9%80%82%E9%85%8D%E7%AC%94%E8%AE%B0/</loc>
+    
+    <lastmod>2019-09-23T14:13:12.672Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://note.snail-z.me/2017/04/07/Objective-C%E7%AC%94%E8%AE%B0/</loc>
+    
+    <lastmod>2019-03-01T07:59:52.145Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://note.snail-z.me/2017/07/31/Cocoapods%20-%20%E7%A7%81%E6%9C%89%E5%8C%96pod%E5%AE%9E%E8%B7%B5/</loc>
+    
+    <lastmod>2018-11-03T01:53:44.571Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://note.snail-z.me/2017/08/18/Sublime%20Text3%20-%20%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE/</loc>
     
     <lastmod>2017-10-08T14:42:42.000Z</lastmod>
@@ -19,13 +40,6 @@
     <loc>http://note.snail-z.me/2017/07/25/iOS%E5%8E%9F%E7%94%9FUIWebView%E4%B8%8EJS%E4%BA%A4%E4%BA%92/</loc>
     
     <lastmod>2017-08-08T14:19:42.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://note.snail-z.me/2017/07/31/Cocoapods%20-%20%E7%A7%81%E6%9C%89%E5%8C%96pod%E5%AE%9E%E8%B7%B5/</loc>
-    
-    <lastmod>2017-08-03T16:19:18.000Z</lastmod>
     
   </url>
   
@@ -75,13 +89,6 @@
     <loc>http://note.snail-z.me/2017/03/16/2017%E6%88%91%E5%9C%A8%E5%8C%97%E4%BA%AC/</loc>
     
     <lastmod>2017-05-13T04:39:49.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://note.snail-z.me/2017/04/07/Objective-C%E7%AC%94%E8%AE%B0/</loc>
-    
-    <lastmod>2017-05-13T04:35:01.000Z</lastmod>
     
   </url>
   

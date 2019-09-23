@@ -116,7 +116,7 @@
 <meta property="og:image" content="http://oo8l3jrvb.bkt.clouddn.com/2017-07-20-podReplaceMe.png">
 <meta property="og:image" content="http://oo8l3jrvb.bkt.clouddn.com/2017-07-20-podsetup01.png">
 <meta property="og:image" content="http://oo8l3jrvb.bkt.clouddn.com/2017-07-20-podsetup02.png">
-<meta property="og:updated_time" content="2017-08-03T16:19:18.000Z">
+<meta property="og:updated_time" content="2018-11-03T01:53:44.571Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Cocoapods - 私有化pod实践">
 <meta name="twitter:description" content="Spec仓库Spec是Pods索引库，所有公开的Pods都在这个里面，它实际是一个Git仓库 remote端在GitHub上，当使用了Cocoapods后他会被clone到本地的~/.cocoapods/repos目录下，进入到这个目录看到master文件夹就是这个官方的Spec Repo了。
@@ -445,10 +445,20 @@
 <p>记得先备份下本地master的repo，以防万一更不下来，如果更新成功后还是不能引用所有库，可能是仓库访问地址有问题，将https换成ssh试试！</p>
 <p>​</p>
 <hr>
+<p><strong>发布代码到CocoaPods(Trunk方式)</strong></p>
 <p>另：其实让自己的组件在github也能支持pod，跟这些步骤几乎是一致的，只是最后的sepc文件需要传到官方的specs里，可以通过Trunk推送给Cocoapods服务器，如下：</p>
-<p>首先向trunk服务器查询自己的注册信息</p>
+<ol>
+<li>首先向trunk服务器查询自己的注册信息</li>
+</ol>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line">pod trunk me</div></pre></td></tr></table></figure>
-<p>最后通过终端push对应的podspec，完成开源项目支持Cocoapods的最后一步</p>
+<ol>
+<li>若没有注册，需要注册trunk账号</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">pod trunk register 邮箱地址 用户名 -verbose</div></pre></td></tr></table></figure>
+<p>该指令会发送一封验证邮件到你的邮箱，在邮箱里直接点击链接完成注册即可；然后重复步骤1查看注册结构</p>
+<ol>
+<li>最后通过终端push对应的podspec，完成开源项目支持Cocoapods的最后一步</li>
+</ol>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line">pod trunk push spec文件名.podspec</div><div class="line"></div><div class="line"><span class="comment">// 如果需要忽略警告</span></div><div class="line">pod trunk push spec文件名.podspec --allow-warnings</div></pre></td></tr></table></figure>
 <p>… 更新本地pod依赖库 <code>pod setup</code> ，然后就可以搜索到了…</p>
 </li>
@@ -599,7 +609,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -724,7 +734,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

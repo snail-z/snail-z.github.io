@@ -111,7 +111,7 @@
 <meta property="og:site_name" content="Snail-z Notes">
 <meta property="og:description" content="UIScrollview上的UIPangesturerecognizer冲突在tableview里的cell的imageview上加个UIPangesturerecognizer会发现优先滚动imageview，tableView不响应滚动了，原因是tableview的实现也是用了UIPangesturerecognizer。解决方案如下：// 实现 UIGestureRecognizerDele">
 <meta property="og:image" content="http://oo8l3jrvb.bkt.clouddn.com/pch%20configuration.png">
-<meta property="og:updated_time" content="2017-05-13T04:35:01.000Z">
+<meta property="og:updated_time" content="2019-03-01T07:59:52.145Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Objective-C笔记">
 <meta name="twitter:description" content="UIScrollview上的UIPangesturerecognizer冲突在tableview里的cell的imageview上加个UIPangesturerecognizer会发现优先滚动imageview，tableView不响应滚动了，原因是tableview的实现也是用了UIPangesturerecognizer。解决方案如下：// 实现 UIGestureRecognizerDele">
@@ -419,6 +419,8 @@
 <p>去掉分割线 <code>_tableView.separatorStyle = UITableViewCellSeparatorStyleNone;</code></p>
 <h2 id="Frame布局时使用CGRectInset设置左右、上下边距"><a href="#Frame布局时使用CGRectInset设置左右、上下边距" class="headerlink" title="Frame布局时使用CGRectInset设置左右、上下边距"></a>Frame布局时使用CGRectInset设置左右、上下边距</h2><figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="built_in">UIView</span> *aView = [[<span class="built_in">UIView</span> alloc] initWithFrame:<span class="built_in">CGRectInset</span>(<span class="keyword">self</span>.view.bounds, <span class="number">10</span>, <span class="number">100</span>)];</div><div class="line">aView.backgroundColor = [<span class="built_in">UIColor</span> orangeColor];</div><div class="line">[<span class="keyword">self</span>.view addSubview:aView];</div></pre></td></tr></table></figure>
 <h2 id="PCH文件配置"><a href="#PCH文件配置" class="headerlink" title="PCH文件配置"></a>PCH文件配置</h2><p>如图：在Build Settings内搜索<code>prefix header</code><br><img src="http://oo8l3jrvb.bkt.clouddn.com/pch%20configuration.png" width="550px" height="330px"><br>然后修改为<code>$(SRCROOT)/Mydemo/MydemoPrefixHeader.pch</code><br>其中<code>Mydemo</code>对应project name, <code>MydemoPrefixHeader.pch</code>对应PCH file</p>
+<h2 id="SDK出现libc-abi-dylib-terminating"><a href="#SDK出现libc-abi-dylib-terminating" class="headerlink" title="SDK出现libc++abi.dylib: terminating"></a>SDK出现libc++abi.dylib: terminating</h2><p>SDK出现libc++abi.dylib: terminating with uncaught exception of type NSException  的问题解决方法：</p>
+<p>工程文件中选择Build Setting，在”Other Linker Flags”中加入”-Objc -all_load”  </p>
 <h2 id="查找在数组中NSNumber的最大值和最小值"><a href="#查找在数组中NSNumber的最大值和最小值" class="headerlink" title="查找在数组中NSNumber的最大值和最小值"></a>查找在数组中NSNumber的最大值和最小值</h2><p>参考：<br><a href="http://stackoverflow.com/questions/15931112/finding-the-smallest-and-biggest-value-in-nsarray-of-nsnumbers" target="_blank" rel="external">http://stackoverflow.com/questions/15931112/finding-the-smallest-and-biggest-value-in-nsarray-of-nsnumbers</a></p>
 <figure class="highlight objc"><table><tr><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)sample &#123;</div><div class="line">    </div><div class="line">    <span class="built_in">NSArray</span> *array = @[@<span class="number">8.091</span>, @<span class="number">0.31</span>, @<span class="number">10.55</span>, @<span class="number">50.5</span>, @<span class="number">5.50</span>, @<span class="number">0.31</span>];</div><div class="line">    </div><div class="line">    <span class="built_in">NSNumber</span> *maxValue = [array valueForKeyPath:<span class="string">@"@max.self"</span>];</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"maxValue - %@"</span>, maxValue); <span class="comment">// maxValue - 50.5</span></div><div class="line">    </div><div class="line">    <span class="built_in">NSNumber</span> *minValue = [array valueForKeyPath:<span class="string">@"@min.self"</span>];</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"minValue - %@"</span>, minValue); <span class="comment">// minValue - 0.31</span></div><div class="line">    </div><div class="line">    <span class="built_in">NSInteger</span> index = [array indexOfObject:minValue];</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"index - %lu"</span>, index); <span class="comment">// index - 1</span></div><div class="line">    <span class="comment">// 从输出可以看到当有重复值时，获取的index是在靠前位置的</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
@@ -556,7 +558,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -658,7 +660,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#UIScrollview上的UIPangesturerecognizer冲突"><span class="nav-number">1.</span> <span class="nav-text">UIScrollview上的UIPangesturerecognizer冲突</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CGRect函数"><span class="nav-number">2.</span> <span class="nav-text">CGRect函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为视图某个角添加圆角"><span class="nav-number">3.</span> <span class="nav-text">为视图某个角添加圆角</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置UITableView的分割线顶头"><span class="nav-number">4.</span> <span class="nav-text">设置UITableView的分割线顶头</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Frame布局时使用CGRectInset设置左右、上下边距"><span class="nav-number">5.</span> <span class="nav-text">Frame布局时使用CGRectInset设置左右、上下边距</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PCH文件配置"><span class="nav-number">6.</span> <span class="nav-text">PCH文件配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查找在数组中NSNumber的最大值和最小值"><span class="nav-number">7.</span> <span class="nav-text">查找在数组中NSNumber的最大值和最小值</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#UIScrollview上的UIPangesturerecognizer冲突"><span class="nav-number">1.</span> <span class="nav-text">UIScrollview上的UIPangesturerecognizer冲突</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CGRect函数"><span class="nav-number">2.</span> <span class="nav-text">CGRect函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为视图某个角添加圆角"><span class="nav-number">3.</span> <span class="nav-text">为视图某个角添加圆角</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置UITableView的分割线顶头"><span class="nav-number">4.</span> <span class="nav-text">设置UITableView的分割线顶头</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Frame布局时使用CGRectInset设置左右、上下边距"><span class="nav-number">5.</span> <span class="nav-text">Frame布局时使用CGRectInset设置左右、上下边距</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PCH文件配置"><span class="nav-number">6.</span> <span class="nav-text">PCH文件配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SDK出现libc-abi-dylib-terminating"><span class="nav-number">7.</span> <span class="nav-text">SDK出现libc++abi.dylib: terminating</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查找在数组中NSNumber的最大值和最小值"><span class="nav-number">8.</span> <span class="nav-text">查找在数组中NSNumber的最大值和最小值</span></a></li></ol></div>
             
 
           </div>
@@ -681,7 +683,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
