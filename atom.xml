@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://note.snail-z.me/"/>
-  <updated>2019-09-23T14:13:12.672Z</updated>
+  <updated>2019-09-23T14:20:15.469Z</updated>
   <id>http://note.snail-z.me/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>iOS13适配</title>
+    <title>iOS13适配笔记</title>
     <link href="http://note.snail-z.me/2019/09/23/iOS13%E9%80%82%E9%85%8D%E7%AC%94%E8%AE%B0/"/>
     <id>http://note.snail-z.me/2019/09/23/iOS13适配笔记/</id>
     <published>2019-09-23T14:09:31.000Z</published>
-    <updated>2019-09-23T14:13:12.672Z</updated>
+    <updated>2019-09-23T14:20:15.469Z</updated>
     
     <content type="html"><![CDATA[<h4 id="1-获取状态栏"><a href="#1-获取状态栏" class="headerlink" title="1. 获取状态栏"></a>1. 获取状态栏</h4><p>项目中有通过StatusBar来获取手机当前状态，但是在iOS 13中会崩溃，调试了一下发现是通过KVC获取<code>UIApplication</code>的<code>statusBar</code>属性造成的。iOS13新增加了<code>UIStatusBarManager</code>相关的类，可以通过获取程序window进而获取到UIStatusBarManager。 <a id="more"></a></p>
 <p>然后通过Runtime获取到<code>UIStatusBarManager</code>的属性列表及方法列表：</p>
