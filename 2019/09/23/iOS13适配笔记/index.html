@@ -104,16 +104,19 @@
 
 
 
-<meta name="description" content="1. 获取状态栏项目中有通过StatusBar来获取手机当前状态，但是在iOS 13中会崩溃，调试了一下发现是通过KVC获取UIApplication的statusBar属性造成的。iOS13新增加了UIStatusBarManager相关的类，可以通过获取程序window进而获取到UIStatusBarManager。">
+<meta name="description" content="1. 获取状态栏项目中有通过StatusBar来获取手机当前状态，但是在iOS 13中会崩溃，调试了一下发现是通过KVC获取UIApplication的statusBar属性造成的。iOS13新增加了UIStatusBarManager相关的类，可以通过获取程序window进而获取到UIStatusBarManager。
+然后通过Runtime获取到UIStatusBarManager的属性列表及">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS13适配笔记">
+<meta property="og:title" content="iOS 13适配笔记">
 <meta property="og:url" content="http://note.snail-z.me/2019/09/23/iOS13适配笔记/index.html">
 <meta property="og:site_name" content="Snail-z Notes">
-<meta property="og:description" content="1. 获取状态栏项目中有通过StatusBar来获取手机当前状态，但是在iOS 13中会崩溃，调试了一下发现是通过KVC获取UIApplication的statusBar属性造成的。iOS13新增加了UIStatusBarManager相关的类，可以通过获取程序window进而获取到UIStatusBarManager。">
-<meta property="og:updated_time" content="2019-09-23T14:20:15.469Z">
+<meta property="og:description" content="1. 获取状态栏项目中有通过StatusBar来获取手机当前状态，但是在iOS 13中会崩溃，调试了一下发现是通过KVC获取UIApplication的statusBar属性造成的。iOS13新增加了UIStatusBarManager相关的类，可以通过获取程序window进而获取到UIStatusBarManager。
+然后通过Runtime获取到UIStatusBarManager的属性列表及">
+<meta property="og:updated_time" content="2019-09-25T06:33:41.878Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS13适配笔记">
-<meta name="twitter:description" content="1. 获取状态栏项目中有通过StatusBar来获取手机当前状态，但是在iOS 13中会崩溃，调试了一下发现是通过KVC获取UIApplication的statusBar属性造成的。iOS13新增加了UIStatusBarManager相关的类，可以通过获取程序window进而获取到UIStatusBarManager。">
+<meta name="twitter:title" content="iOS 13适配笔记">
+<meta name="twitter:description" content="1. 获取状态栏项目中有通过StatusBar来获取手机当前状态，但是在iOS 13中会崩溃，调试了一下发现是通过KVC获取UIApplication的statusBar属性造成的。iOS13新增加了UIStatusBarManager相关的类，可以通过获取程序window进而获取到UIStatusBarManager。
+然后通过Runtime获取到UIStatusBarManager的属性列表及">
 
 
 
@@ -147,7 +150,7 @@
 
 
 
-  <title> iOS13适配笔记 | Snail-z Notes </title>
+  <title> iOS 13适配笔记 | Snail-z Notes </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -307,7 +310,7 @@
             
             
               
-                iOS13适配笔记
+                iOS 13适配笔记
               
             
           </h1>
@@ -322,7 +325,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-23T22:09:31+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-23T21:56:56+08:00">
                 2019-09-23
               </time>
             
@@ -390,8 +393,9 @@
       
 
       
-        <h4 id="1-获取状态栏"><a href="#1-获取状态栏" class="headerlink" title="1. 获取状态栏"></a>1. 获取状态栏</h4><p>项目中有通过StatusBar来获取手机当前状态，但是在iOS 13中会崩溃，调试了一下发现是通过KVC获取<code>UIApplication</code>的<code>statusBar</code>属性造成的。iOS13新增加了<code>UIStatusBarManager</code>相关的类，可以通过获取程序window进而获取到UIStatusBarManager。 <a id="more"></a></p>
+        <h4 id="1-获取状态栏"><a href="#1-获取状态栏" class="headerlink" title="1. 获取状态栏"></a>1. 获取状态栏</h4><p>项目中有通过StatusBar来获取手机当前状态，但是在iOS 13中会崩溃，调试了一下发现是通过KVC获取<code>UIApplication</code>的<code>statusBar</code>属性造成的。iOS13新增加了<code>UIStatusBarManager</code>相关的类，可以通过获取程序window进而获取到UIStatusBarManager。</p>
 <p>然后通过Runtime获取到<code>UIStatusBarManager</code>的属性列表及方法列表：</p>
+<a id="more"></a>
 <figure class="highlight objc"><table><tr><td class="code"><pre><div class="line">properties is: &#123;</div><div class="line">    <span class="string">"_scene"</span> = <span class="string">"&lt;UIWindowScene: 0x7f9505407e70; scene = &lt;FBSSceneImpl: 0x6000021f8680; identifier: sceneID:PsychokinesisTeam.iOS-Test-default&gt;; persistentIdentifier = 392A053A-1C6B-4A42-AB98-59AB3ADFB290; activationState = UISceneActivationStateForegroundActive; settingsCanvas = &lt;UIWindowScene: 0x7f9505407e70&gt;; windows = (\n    \"&lt;UIWindow: 0x7f9505411180; frame = (0 0; 414 896); hidden = YES; gestureRecognizers = &lt;NSArray: 0x6000001a5f20&gt;; layer = &lt;UIWindowLayer: 0x600000ff5ae0&gt;&gt;\",\n    \"&lt;UIWindow: 0x7f95054066a0; frame = (0 0; 414 896); gestureRecognizers = &lt;NSArray: 0x600000192280&gt;; layer = &lt;UIWindowLayer: 0x600000fd9f80&gt;&gt;\",\n    \"&lt;UIWindow: 0x7f950541f400; frame = (0 0; 414 896); hidden = YES; gestureRecognizers = &lt;NSArray: 0x600000199590&gt;; layer = &lt;UIWindowLayer: 0x600000fdb7c0&gt;&gt;\",\n    \"&lt;UITextEffectsWindow: 0x7f950550b3a0; frame = (0 0; 414 896); opaque = NO; autoresize = W+H; layer = &lt;UIWindowLayer: 0x600000fac380&gt;&gt;\"\n)&gt;"</span>;</div><div class="line">    debugDescription = <span class="string">"&lt;UIStatusBarManager: 0x600001a92900&gt;"</span>;</div><div class="line">    debugMenuHandler = <span class="string">"&lt;null&gt;"</span>;</div><div class="line">    description = <span class="string">"&lt;UIStatusBarManager: 0x600001a92900&gt;"</span>;</div><div class="line">    hash = <span class="number">105553144129792</span>;</div><div class="line">    inStatusBarFadeAnimation = <span class="number">0</span>;</div><div class="line">    localStatusBars = <span class="string">"&lt;null&gt;"</span>;</div><div class="line">    statusBarAlpha = <span class="number">1</span>;</div><div class="line">    statusBarFrame = <span class="string">"NSRect: &#123;&#123;0, 0&#125;, &#123;414, 44&#125;&#125;"</span>;</div><div class="line">    statusBarHeight = <span class="number">44</span>;</div><div class="line">    statusBarHidden = <span class="number">0</span>;</div><div class="line">    statusBarPartStyles =     &#123;</div><div class="line">        leadingPartIdentifier = <span class="number">4</span>;</div><div class="line">        trailingPartIdentifier = <span class="number">4</span>;</div><div class="line">    &#125;;</div><div class="line">    statusBarStyle = <span class="number">3</span>;</div><div class="line">    superclass = <span class="built_in">NSObject</span>;</div><div class="line">    windowScene = <span class="string">"&lt;UIWindowScene: 0x7f9505407e70; scene = &lt;FBSSceneImpl: 0x6000021f8680; identifier: sceneID:PsychokinesisTeam.iOS-Test-default&gt;; persistentIdentifier = 392A053A-1C6B-4A42-AB98-59AB3ADFB290; activationState = UISceneActivationStateForegroundActive; settingsCanvas = &lt;UIWindowScene: 0x7f9505407e70&gt;; windows = (\n    \"&lt;UIWindow: 0x7f9505411180; frame = (0 0; 414 896); hidden = YES; gestureRecognizers = &lt;NSArray: 0x6000001a5f20&gt;; layer = &lt;UIWindowLayer: 0x600000ff5ae0&gt;&gt;\",\n    \"&lt;UIWindow: 0x7f95054066a0; frame = (0 0; 414 896); gestureRecognizers = &lt;NSArray: 0x600000192280&gt;; layer = &lt;UIWindowLayer: 0x600000fd9f80&gt;&gt;\",\n    \"&lt;UIWindow: 0x7f950541f400; frame = (0 0; 414 896); hidden = YES; gestureRecognizers = &lt;NSArray: 0x600000199590&gt;; layer = &lt;UIWindowLayer: 0x600000fdb7c0&gt;&gt;\",\n    \"&lt;UITextEffectsWindow: 0x7f950550b3a0; frame = (0 0; 414 896); opaque = NO; autoresize = W+H; layer = &lt;UIWindowLayer: 0x600000fac380&gt;&gt;\"\n)&gt;"</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">methods is: (</div><div class="line">    <span class="string">".cxx_destruct"</span>,</div><div class="line">    windowScene,</div><div class="line">    statusBarFrame,</div><div class="line">    <span class="string">"_setScene:"</span>,</div><div class="line">    <span class="string">"initWithScene:"</span>,</div><div class="line">    <span class="string">"_scene"</span>,</div><div class="line">    <span class="string">"_settingsDiffActionsForScene:"</span>,</div><div class="line">    <span class="string">"setWindowScene:"</span>,</div><div class="line"> isStatusBarHidden,</div><div class="line">    statusBarStyle,</div><div class="line"> statusBarHeight,</div><div class="line">    <span class="string">"setDebugMenuHandler:"</span>,</div><div class="line"> <span class="string">"handleTapAction:"</span>,</div><div class="line">    <span class="string">"_updateAlpha"</span>,</div><div class="line"> statusBarHidden,</div><div class="line">    statusBarPartStyles,</div><div class="line"> statusBarAlpha,</div><div class="line">    <span class="string">"defaultStatusBarHeightInOrientation:"</span>,</div><div class="line">    updateStatusBarAppearance,</div><div class="line">    updateLocalStatusBars,</div><div class="line">    setupForSingleLocalStatusBar,</div><div class="line"> <span class="string">"statusBarFrameForStatusBarHeight:"</span>,</div><div class="line">    <span class="string">"updateStatusBarAppearanceWithAnimationParameters:"</span>,</div><div class="line">    <span class="string">"_updateStatusBarAppearanceWithClientSettings:transitionContext:animationParameters:"</span>,</div><div class="line">    <span class="string">"_updateVisibilityForWindow:targetOrientation:animationParameters:"</span>,</div><div class="line">    <span class="string">"_updateStyleForWindow:animationParameters:"</span>,</div><div class="line">    <span class="string">"_visibilityChangedWithOriginalOrientation:targetOrientation:animationParameters:"</span>,</div><div class="line">    <span class="string">"activateLocalStatusBar:"</span>,</div><div class="line">    <span class="string">"_updateLocalStatusBar:"</span>,</div><div class="line">    <span class="string">"_handleScrollToTopAtXPosition:"</span>,</div><div class="line">    <span class="string">"_adjustedLocationForXPosition:"</span>,</div><div class="line">    <span class="string">"updateStatusBarAppearanceWithClientSettings:transitionContext:"</span>,</div><div class="line">    <span class="string">"deactivateLocalStatusBar:"</span>,</div><div class="line">    createLocalStatusBar,</div><div class="line">    localStatusBars,</div><div class="line">    <span class="string">"setLocalStatusBars:"</span>,</div><div class="line">    isInStatusBarFadeAnimation,</div><div class="line">    debugMenuHandler</div><div class="line">)</div></pre></td></tr></table></figure>
 <p>可以看到有几个与statusBar相关的属性和方法，最总尝试了很多次，只有通过<code>createLocalStatusBar</code>可以获取到<code>_UIStatusBarLocalView</code></p>
 <figure class="highlight objc"><table><tr><td class="code"><pre><div class="line">&lt;_UIStatusBarLocalView: <span class="number">0x7fe86261d780</span>; frame = (<span class="number">0</span> <span class="number">0</span>; <span class="number">414</span> <span class="number">44</span>); layer = &lt;<span class="built_in">CALayer</span>: <span class="number">0x600000c3b4c0</span>&gt;&gt;</div></pre></td></tr></table></figure>
@@ -434,16 +438,20 @@
 <li>TODO</li>
 </ol>
 <p>暗黑模式的适配可以参考<a href="https://www.jianshu.com/p/e6616e44cf60" target="_blank" rel="external">这里</a></p>
-<h4 id="3-UITextField设置placeholder颜色"><a href="#3-UITextField设置placeholder颜色" class="headerlink" title="3. UITextField设置placeholder颜色"></a>3. UITextField设置placeholder颜色</h4><figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-attr">[textField setValue:aColor forKeyPath:@"_placeholderLabel.textColor”]</span>;</div></pre></td></tr></table></figure>
+<h4 id="3-UITextField设置placeholder颜色"><a href="#3-UITextField设置placeholder颜色" class="headerlink" title="3. UITextField设置placeholder颜色"></a>3. UITextField设置placeholder颜色</h4><figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-attr">[textField setValue:aColor forKeyPath:@"_placeholderLabel.textColor"]</span>;</div></pre></td></tr></table></figure>
 <p>iOS 13中通过KVC设置占位文本颜色会崩溃，详细信息如下：</p>
 <figure class="highlight"><table><tr><td class="code"><pre><div class="line">*** Terminating app due to uncaught exception 'NSGenericException', reason: 'Access to UITextField's _placeholderLabel ivar is prohibited. This is an application bug'</div></pre></td></tr></table></figure>
 <p>提示该方法已经被禁止使用，可以改成使用<code>attributedPlaceholder</code>来设置：</p>
 <figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="built_in">NSString</span> *placeholderText = <span class="string">@"请输入..."</span>;</div><div class="line"><span class="built_in">NSMutableAttributedString</span> *attributedText = [[<span class="built_in">NSMutableAttributedString</span> alloc] initWithString:placeholderText];</div><div class="line">[attributedText addAttribute:<span class="built_in">NSForegroundColorAttributeName</span> value:[<span class="built_in">UIColor</span> lightGrayColor] range:<span class="built_in">NSMakeRange</span>(<span class="number">0</span>, placeholderText.length)];</div><div class="line"><span class="keyword">self</span>.textField.attributedPlaceholder = attributedText;</div></pre></td></tr></table></figure>
+<p>上面的代码比较多，如果项目中使用KVC方式赋值颜色的地方比较多，修改后的代码会比较冗余。为此我为<code>UITextField</code>写了一个分类，不用写其它多余代码，一行代码即可搞定，在老代码KVC赋值的地方相应替换为：</p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="comment">// [textField setValue:aColor forKeyPath:@"_placeholderLabel.textColor"]; 替换成下面这行代码</span></div><div class="line">textField.pk_placeholderColor = aColor;</div></pre></td></tr></table></figure>
+<p>分类详细代码如下：</p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">UITextField</span> (<span class="title">PKPlaceholder</span>)</span></div><div class="line"></div><div class="line"><span class="comment">/** 设置占位文本颜色 */</span></div><div class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>, <span class="keyword">nullable</span>) <span class="built_in">UIColor</span> *pk_placeholderColor;</div><div class="line"></div><div class="line"><span class="keyword">@end</span></div><div class="line">  </div><div class="line">  </div><div class="line"><span class="keyword">static</span> <span class="keyword">void</span> *<span class="built_in">UITextFieldAssociatedPKPlaceholderKey</span> = &amp;<span class="built_in">UITextFieldAssociatedPKPlaceholderKey</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">UITextField</span> (<span class="title">PKPlaceholder</span>)</span></div><div class="line"></div><div class="line">- (<span class="built_in">UIColor</span> *)pk_placeholderColor &#123;</div><div class="line">    <span class="keyword">return</span> objc_getAssociatedObject(<span class="keyword">self</span>, _cmd);</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)setPk_placeholderColor:(<span class="built_in">UIColor</span> *)pk_placeholderColor &#123;</div><div class="line">    <span class="built_in">NSString</span> *placeholder = <span class="keyword">self</span>.placeholder;</div><div class="line">    <span class="keyword">if</span> (placeholder) &#123;</div><div class="line">        <span class="built_in">NSMutableAttributedString</span> *attriText = [[<span class="built_in">NSMutableAttributedString</span> alloc] initWithString:placeholder];</div><div class="line">        [attriText addAttribute:<span class="built_in">NSForegroundColorAttributeName</span> value:pk_placeholderColor range:<span class="built_in">NSMakeRange</span>(<span class="number">0</span>, placeholder.length)];</div><div class="line">        <span class="keyword">self</span>.attributedPlaceholder = attriText;</div><div class="line">    &#125;</div><div class="line">    objc_setAssociatedObject(<span class="keyword">self</span>, <span class="keyword">@selector</span>(pk_placeholderColor), pk_placeholderColor, OBJC_ASSOCIATION_RETAIN_NONATOMIC);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="meta">#pragma clang diagnostic push</span></div><div class="line"><span class="meta">#pragma clang diagnostic ignored <span class="meta-string">"-Wobjc-protocol-method-implementation"</span></span></div><div class="line"></div><div class="line">- (<span class="built_in">NSString</span> *)placeholder &#123;</div><div class="line">    <span class="built_in">NSString</span> *placeholderText = objc_getAssociatedObject(<span class="keyword">self</span>, <span class="built_in">UITextFieldAssociatedPKPlaceholderKey</span>);</div><div class="line">    <span class="keyword">if</span> (placeholderText) <span class="keyword">return</span> placeholderText;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">self</span>.attributedPlaceholder.string;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)setPlaceholder:(<span class="built_in">NSString</span> *)placeholder &#123;</div><div class="line">    objc_setAssociatedObject(<span class="keyword">self</span>, <span class="built_in">UITextFieldAssociatedPKPlaceholderKey</span>, placeholder, OBJC_ASSOCIATION_RETAIN_NONATOMIC);</div><div class="line">    <span class="built_in">UIColor</span> *placeholderClolor = objc_getAssociatedObject(<span class="keyword">self</span>, <span class="keyword">@selector</span>(pk_placeholderColor));</div><div class="line">    <span class="keyword">if</span> (placeholderClolor &amp;&amp; placeholder) &#123;</div><div class="line">        <span class="keyword">self</span>.attributedPlaceholder = [[<span class="built_in">NSMutableAttributedString</span> alloc] initWithString:placeholder];</div><div class="line">        [<span class="keyword">self</span> setPk_placeholderColor:placeholderClolor];</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="meta">#pragma clang diagnostic pop</span></div><div class="line"></div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
 <h4 id="4-模态跳转ModalPresent"><a href="#4-模态跳转ModalPresent" class="headerlink" title="4. 模态跳转ModalPresent"></a>4. 模态跳转ModalPresent</h4><p>iOS 13系统下修改了模态跳转样式，苹果可能是想与push页面有侧滑手势一样，增加了下滑手势，个人感觉体验不错，交互样式也有提升，不用再自己手写转场动画了。当然如果想改成老样式，可以手动改成<code>UIModalPresentationOverFullScreen</code>，不过个人推荐使用iOS 13新增加的枚举值<code>UIModalPresentationAutomatic</code>，使用系统推荐的模态样式：</p>
 <figure class="highlight objc"><table><tr><td class="code"><pre><div class="line">NextViewController *vc = [NextViewController new];</div><div class="line"><span class="keyword">if</span> (@available(iOS <span class="number">13.0</span>, *)) &#123;</div><div class="line">	vc.modalPresentationStyle = <span class="built_in">UIModalPresentationAutomatic</span>;</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">	vc.modalPresentationStyle = <span class="built_in">UIModalPresentationOverFullScreen</span>;</div><div class="line">&#125;</div><div class="line">[<span class="keyword">self</span> presentViewController:vc animated:<span class="literal">YES</span> completion:<span class="literal">NULL</span>];</div></pre></td></tr></table></figure>
 <p>默认情况下不设置即是pageSheet样式，当然除 <code>UISearchController</code> 和 <code>UIAlertController</code> 因自身业务的特殊性不同外，其余的视图控制器均为此展示样式。</p>
-<p>还要记得配置window支持暗黑模式，不然window背景色是白色看不出分层次效果：</p>
-<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="keyword">self</span>.window = [[<span class="built_in">UIWindow</span> alloc] initWithFrame:<span class="built_in">UIScreen</span>.mainScreen.bounds];</div><div class="line"><span class="keyword">if</span> (@available(iOS <span class="number">13.0</span>, *)) &#123;</div><div class="line">	<span class="keyword">self</span>.window.backgroundColor = [<span class="built_in">UIColor</span> systemBackgroundColor];</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">	<span class="keyword">self</span>.window.backgroundColor = [<span class="built_in">UIColor</span> whiteColor];</div><div class="line">&#125;</div><div class="line"><span class="keyword">self</span>.window.rootViewController = <span class="keyword">self</span>.rootVC;</div><div class="line">[<span class="keyword">self</span>.window makeKeyAndVisible];</div></pre></td></tr></table></figure>
+<p>如果项目中禁止了全局暗黑模式，但还想使用pageSheet样式，还要记得配置下window的颜色，不然弹出后window背景色是白色看不出分层次效果：</p>
+<figure class="highlight objc"><table><tr><td class="code"><pre><div class="line"><span class="keyword">self</span>.window = [[<span class="built_in">UIWindow</span> alloc] initWithFrame:<span class="built_in">UIScreen</span>.mainScreen.bounds];</div><div class="line"><span class="keyword">if</span> (@available(iOS <span class="number">13.0</span>, *)) &#123;</div><div class="line">	<span class="keyword">self</span>.window.backgroundColor = [<span class="built_in">UIColor</span> systemBackgroundColor]; </div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">	<span class="keyword">self</span>.window.backgroundColor = [<span class="built_in">UIColor</span> whiteColor];</div><div class="line">&#125;</div><div class="line"><span class="keyword">self</span>.window.rootViewController = <span class="keyword">self</span>.rootVC;</div><div class="line">[<span class="keyword">self</span>.window makeKeyAndVisible];</div></pre></td></tr></table></figure>
 <p><em>对于iOS 13的体会就是，交互好了，性能提升了，替开发者做的事情也越来越多了。</em></p>
 
       
@@ -489,8 +497,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/13/iOS知识点笔记/" rel="next" title="iOS面试知识点笔记">
-                <i class="fa fa-chevron-left"></i> iOS面试知识点笔记
+              <a href="/2017/09/23/iOS 11:iPhoneX:Xcode9 适配笔记/" rel="next" title="iOS 11/iPhoneX/Xcode9 适配笔记">
+                <i class="fa fa-chevron-left"></i> iOS 11/iPhoneX/Xcode9 适配笔记
               </a>
             
           </div>
@@ -527,7 +535,7 @@
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2019/09/23/iOS13适配笔记/"
-           data-title="iOS13适配笔记" data-url="http://note.snail-z.me/2019/09/23/iOS13适配笔记/">
+           data-title="iOS 13适配笔记" data-url="http://note.snail-z.me/2019/09/23/iOS13适配笔记/">
       </div>
     
   </div>
@@ -576,7 +584,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

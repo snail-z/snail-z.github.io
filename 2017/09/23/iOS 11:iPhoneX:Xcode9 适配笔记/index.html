@@ -106,14 +106,14 @@
 
 <meta name="description" content="1. 升级Xcode 9后本地图片不能正确的显示 ？ 最近更新到Xcode9后，发现本地的图片都不能正常显示，后来发现如果是直接拉入到工程，Bundle Reources 里面并没有该资源图片，于是又手动添加了一遍，问题解决。如下 ：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="整理有关iOS11/iPhoneX/Xcode9踩到的坑">
-<meta property="og:url" content="http://note.snail-z.me/2017/09/23/整理有关iOS11:iPhoneX:Xcode9踩到的坑/index.html">
+<meta property="og:title" content="iOS 11/iPhoneX/Xcode9 适配笔记">
+<meta property="og:url" content="http://note.snail-z.me/2017/09/23/iOS 11:iPhoneX:Xcode9 适配笔记/index.html">
 <meta property="og:site_name" content="Snail-z Notes">
 <meta property="og:description" content="1. 升级Xcode 9后本地图片不能正确的显示 ？ 最近更新到Xcode9后，发现本地的图片都不能正常显示，后来发现如果是直接拉入到工程，Bundle Reources 里面并没有该资源图片，于是又手动添加了一遍，问题解决。如下 ：">
 <meta property="og:image" content="http://oo8l3jrvb.bkt.clouddn.com/170921_image1.png">
-<meta property="og:updated_time" content="2019-09-23T14:24:13.128Z">
+<meta property="og:updated_time" content="2019-09-25T06:37:12.923Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="整理有关iOS11/iPhoneX/Xcode9踩到的坑">
+<meta name="twitter:title" content="iOS 11/iPhoneX/Xcode9 适配笔记">
 <meta name="twitter:description" content="1. 升级Xcode 9后本地图片不能正确的显示 ？ 最近更新到Xcode9后，发现本地的图片都不能正常显示，后来发现如果是直接拉入到工程，Bundle Reources 里面并没有该资源图片，于是又手动添加了一遍，问题解决。如下 ：">
 <meta name="twitter:image" content="http://oo8l3jrvb.bkt.clouddn.com/170921_image1.png">
 
@@ -143,13 +143,13 @@
 
 
 
-  <link rel="canonical" href="http://note.snail-z.me/2017/09/23/整理有关iOS11:iPhoneX:Xcode9踩到的坑/"/>
+  <link rel="canonical" href="http://note.snail-z.me/2017/09/23/iOS 11:iPhoneX:Xcode9 适配笔记/"/>
 
 
 
 
 
-  <title> 整理有关iOS11/iPhoneX/Xcode9踩到的坑 | Snail-z Notes </title>
+  <title> iOS 11/iPhoneX/Xcode9 适配笔记 | Snail-z Notes </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -288,7 +288,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://note.snail-z.me/2017/09/23/整理有关iOS11:iPhoneX:Xcode9踩到的坑/">
+    <link itemprop="mainEntityOfPage" href="http://note.snail-z.me/2017/09/23/iOS 11:iPhoneX:Xcode9 适配笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Snail-z Notes">
@@ -309,7 +309,7 @@
             
             
               
-                整理有关iOS11/iPhoneX/Xcode9踩到的坑
+                iOS 11/iPhoneX/Xcode9 适配笔记
               
             
           </h1>
@@ -365,8 +365,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/09/23/整理有关iOS11:iPhoneX:Xcode9踩到的坑/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/09/23/整理有关iOS11:iPhoneX:Xcode9踩到的坑/" itemprop="commentCount"></span>
+                <a href="/2017/09/23/iOS 11:iPhoneX:Xcode9 适配笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/09/23/iOS 11:iPhoneX:Xcode9 适配笔记/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -399,7 +399,6 @@
 <p>改用ios 7 之后推出的<code>currentRadioAccessTechnology</code>来判断当前的网络，需要使用到系统</p>
 <p> <code>import &lt;CoreTelephony/CTTelephonyNetworkInfo.h&gt;</code> 框架里的内容。或者改用 <strong>Reachability</strong>来判断</p>
 <figure class="highlight objc"><table><tr><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)networkStatus &#123;</div><div class="line">    <span class="built_in">NSArray</span> *typeStrings2G = @[<span class="built_in">CTRadioAccessTechnologyEdge</span>,</div><div class="line">                               <span class="built_in">CTRadioAccessTechnologyGPRS</span>,</div><div class="line">                               <span class="built_in">CTRadioAccessTechnologyCDMA1x</span>];</div><div class="line">    </div><div class="line">    <span class="built_in">NSArray</span> *typeStrings3G = @[<span class="built_in">CTRadioAccessTechnologyHSDPA</span>,</div><div class="line">                               <span class="built_in">CTRadioAccessTechnologyWCDMA</span>,</div><div class="line">                               <span class="built_in">CTRadioAccessTechnologyHSUPA</span>,</div><div class="line">                               <span class="built_in">CTRadioAccessTechnologyCDMAEVDORev0</span>,</div><div class="line">                               <span class="built_in">CTRadioAccessTechnologyCDMAEVDORevA</span>,</div><div class="line">                               <span class="built_in">CTRadioAccessTechnologyCDMAEVDORevB</span>,</div><div class="line">                               <span class="built_in">CTRadioAccessTechnologyeHRPD</span>];</div><div class="line">    </div><div class="line">    <span class="built_in">NSArray</span> *typeStrings4G = @[<span class="built_in">CTRadioAccessTechnologyLTE</span>];</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> ([[[<span class="built_in">UIDevice</span> currentDevice] systemVersion] floatValue] &gt;= <span class="number">7.0</span>) &#123;</div><div class="line">        <span class="built_in">CTTelephonyNetworkInfo</span> *teleInfo= [[<span class="built_in">CTTelephonyNetworkInfo</span> alloc] init];</div><div class="line">        <span class="built_in">NSString</span> *accessString = teleInfo.currentRadioAccessTechnology;</div><div class="line">        <span class="keyword">if</span> ([typeStrings4G containsObject:accessString]) &#123;</div><div class="line">            <span class="built_in">NSLog</span>(<span class="string">@"4G网络"</span>);</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> ([typeStrings3G containsObject:accessString]) &#123;</div><div class="line">            <span class="built_in">NSLog</span>(<span class="string">@"3G网络"</span>);</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> ([typeStrings2G containsObject:accessString]) &#123;</div><div class="line">            <span class="built_in">NSLog</span>(<span class="string">@"2G网络"</span>);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="built_in">NSLog</span>(<span class="string">@"未知网络"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"未知网络"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>参考： <a href="http://blog.csdn.net/u011619283/article/details/51899988" target="_blank" rel="external">http://blog.csdn.net/u011619283/article/details/51899988</a></p>
 <h4 id="3-导航栏高度的变化"><a href="#3-导航栏高度的变化" class="headerlink" title="3.导航栏高度的变化"></a>3.导航栏高度的变化</h4><p>iOS11之前导航栏默认高度为64pt(这里高度指statusBar + NavigationBar)，iOS11之后如果设置了prefersLargeTitles = YES则为96pt，默认情况下还是64pt，但在iPhoneX上由于刘海的出现statusBar由以前的20pt变成了44pt，所以iPhoneX上高度变为88pt，如果项目里隐藏了导航栏加了自定义按钮之类的，这里需要注意适配一下。</p>
 <p> 最新官方设计指南: <a href="https://developer.apple.com/ios/human-interface-guidelines/overview/iphone-x/" target="_blank" rel="external">https://developer.apple.com/ios/human-interface-guidelines/overview/iphone-x/</a></p>
 <p> 根据设备屏幕尺寸确定当前设备型号 </p>
@@ -481,8 +480,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/09/13/iOS知识点笔记/" rel="prev" title="iOS面试知识点笔记">
-                iOS面试知识点笔记 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/09/23/iOS13适配笔记/" rel="prev" title="iOS 13适配笔记">
+                iOS 13适配笔记 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -512,8 +511,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/09/23/整理有关iOS11:iPhoneX:Xcode9踩到的坑/"
-           data-title="整理有关iOS11/iPhoneX/Xcode9踩到的坑" data-url="http://note.snail-z.me/2017/09/23/整理有关iOS11:iPhoneX:Xcode9踩到的坑/">
+      <div class="ds-thread" data-thread-key="2017/09/23/iOS 11:iPhoneX:Xcode9 适配笔记/"
+           data-title="iOS 11/iPhoneX/Xcode9 适配笔记" data-url="http://note.snail-z.me/2017/09/23/iOS 11:iPhoneX:Xcode9 适配笔记/">
       </div>
     
   </div>
@@ -562,7 +561,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

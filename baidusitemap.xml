@@ -4,16 +4,46 @@
 
     
   <url>
-    <loc>http://note.snail-z.me/2019/09/13/iOS%E7%9F%A5%E8%AF%86%E7%82%B9%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2019-09-23T14:42:33.696Z</lastmod>
+    <loc>http://note.snail-z.me/2017/09/23/iOS%2011:iPhoneX:Xcode9%20%E9%80%82%E9%85%8D%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2019-09-25T06:37:12.923Z</lastmod>
     <data>
         <display>
-        <title>iOS面试知识点笔记</title>
-        <pubTime>2019-09-13T08:36:32.000Z</pubTime>
+        <title>iOS 11/iPhoneX/Xcode9 适配笔记</title>
+        <pubTime>2017-09-23T14:24:43.000Z</pubTime>
         
         <tag>iOS</tag>
          
-        <tag>面试题</tag>
+        <tag>Objective-C</tag>
+         
+        <tag>适配</tag>
+         
+        <tag>Xcode 9</tag>
+         
+        <tag>iOS 11</tag>
+         
+        <tag>iPhone X</tag>
+         
+         
+           
+             
+              <breadCrumb title="技术" url="http://note.snail-z.me/categories/%E6%8A%80%E6%9C%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://note.snail-z.me/2019/09/23/iOS13%E9%80%82%E9%85%8D%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2019-09-25T06:33:41.878Z</lastmod>
+    <data>
+        <display>
+        <title>iOS 13适配笔记</title>
+        <pubTime>2019-09-23T13:56:56.000Z</pubTime>
+        
+        <tag>iOS</tag>
+         
+        <tag>Objective-C</tag>
          
          
            
@@ -60,58 +90,6 @@
         <tag>Objective-C</tag>
          
         <tag>AutoLayout</tag>
-         
-         
-           
-             
-              <breadCrumb title="技术" url="http://note.snail-z.me/categories/%E6%8A%80%E6%9C%AF/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://note.snail-z.me/2017/09/23/%E6%95%B4%E7%90%86%E6%9C%89%E5%85%B3iOS11:iPhoneX:Xcode9%E8%B8%A9%E5%88%B0%E7%9A%84%E5%9D%91/</loc>
-    <lastmod>2019-09-23T14:24:13.128Z</lastmod>
-    <data>
-        <display>
-        <title>整理有关iOS11/iPhoneX/Xcode9踩到的坑</title>
-        <pubTime>2017-09-23T14:24:43.000Z</pubTime>
-        
-        <tag>iOS</tag>
-         
-        <tag>Objective-C</tag>
-         
-        <tag>适配</tag>
-         
-        <tag>Xcode 9</tag>
-         
-        <tag>iOS 11</tag>
-         
-        <tag>iPhone X</tag>
-         
-         
-           
-             
-              <breadCrumb title="技术" url="http://note.snail-z.me/categories/%E6%8A%80%E6%9C%AF/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://note.snail-z.me/2019/09/23/iOS13%E9%80%82%E9%85%8D%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2019-09-23T14:20:15.469Z</lastmod>
-    <data>
-        <display>
-        <title>iOS13适配笔记</title>
-        <pubTime>2019-09-23T14:09:31.000Z</pubTime>
-        
-        <tag>iOS</tag>
-         
-        <tag>Objective-C</tag>
          
          
            
