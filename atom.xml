@@ -110,6 +110,143 @@
   </entry>
   
   <entry>
+    <title>编程基础 - 二进制学习笔记</title>
+    <link href="http://note.snail-z.me/2018/09/25/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%20-%20%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>http://note.snail-z.me/2018/09/25/编程基础 - 二进制学习笔记/</id>
+    <published>2018-09-25T11:56:56.000Z</published>
+    <updated>2019-09-26T10:30:24.993Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="1-二进制简介"><a href="#1-二进制简介" class="headerlink" title="1. 二进制简介"></a>1. 二进制简介</h4><p>二进制数据是用0和1两个数码来表示的数。它的基数为2，进位规则是“逢二进一”，借位规则是“借一当二”。当前的计算机系统使用的基本上是二进制系统，数据在计算机中主要是以补码的形式存储的。计算机中的二进制则是一个非常微小的开关，用“开”来表示1，“关”来表示0。</p>
+<a id="more"></a>
+<h4 id="2-二进制表示"><a href="#2-二进制表示" class="headerlink" title="2. 二进制表示"></a>2. 二进制表示</h4><p>对于有n位整数，m位小数的二进制数据用加权系数展开式表示，可写为：</p>
+<p>$a<em>{n-1} \times 2^{n-1} + a</em>{n-2} \times 2^{n-2} + \dots + a<em>1 \times 2^1 + a_0 \times 2^0 + a</em>{-1} \times 2^{-1} + a<em>{-2} \times 2^{-2} + \dots + a</em>{-m} \times 2^{-m}$  </p>
+<p>一般可简化为：$(a<em>{n-1}a</em>{n-2} \dots a<em>1a_0 . a</em>{-1}a<em>{-2} \dots a</em>{-m})_2$  </p>
+<p>表达式中形如$a_p$的写法表示为第$p$位的系数，它为0和1中的某一个数。 </p>
+<p>例如将二进制数据101.01写成加权系数的形式：</p>
+<p>解：$(101.01)_2 = (1 \times 2^2) + (0 \times 2^1) + (1 \times 2^0) + (0 \times 2^{-1}) + (1 \times 2^{-2})$  </p>
+<p>可以这样来记，比如101.01整数部分有三位，从右往左从0开始数其指数系数依次就是0，1，2</p>
+<p>小数部分有两位，从左往右从-1开始数其指数系数依次是-1，-2，然后用对应的位权系数乘以2的n次幂相加即可</p>
+<p>也可以按照公式中读位的方式来记。</p>
+<p>补充个小知识，一个数的负次方即为这个数正倒数的正次方。如 $2^{-5} = {\frac{1}{2}}^{5}$</p>
+<h4 id="3-二进制运算"><a href="#3-二进制运算" class="headerlink" title="3. 二进制运算"></a>3. 二进制运算</h4><p>加运算：0+0=0，0+1=1，1+0=1，1+1=10 （逢2进1）</p>
+<p>减运算：1-1=0，1-0=1，0-0=0，0-1=1，（向高位借1当2）</p>
+<p>乘运算：0×0=0，0×1=0，1×0=0，1×1=1，（只有同时为“1”时结果才为“1”）</p>
+<p>除运算：0÷1=0，1÷1=1，0÷0 = 0，1÷0 = 0 (无意义)</p>
+<p>逻辑运算：</p>
+<ul>
+<li>或运算：遇1得1 </li>
+<li>与运算：遇0得0 </li>
+<li>非运算：各位取反</li>
+</ul>
+<h4 id="4-二进制转换"><a href="#4-二进制转换" class="headerlink" title="4. 二进制转换"></a>4. 二进制转换</h4><p>首先了解一个概念，什么是“权”。“权”就是进制的基底的n次幂。如二进制的权就是$2^n$了，十进制的权就是$10^n$。</p>
+<p>接下来转换为其他进制：</p>
+<p><strong>（a.）二进制转十进制：</strong></p>
+<p>按权展开求和既可，简化运算时可以把数位数为0的项不写出来，（因为0乘以其他不为0的数都是0）。小数部分也一样，但精确度较少。</p>
+<p>例1：$(1011)<em>2 = (1 \times 2^3) + (0 \times 2^2) + (1 \times 2^1) + (1 \times 2^0) = (11)</em>{10}$  </p>
+<p>例2：$(11.01)_2 = (1 \times 2^1) + (1 \times 2^0) + (0 \times 2^{-1}) + (1 \times 2^{-2}) $</p>
+<p>​                        $= (2 + 1 + 0 + 0.25)_{10}$</p>
+<p>​                        $= (3.25)_{10}$</p>
+<p><strong>（b.）二进制转十六进制：</strong></p>
+<p>二进制数转换成十六进制数时，只要从小数点位置开始，向左或向右每四位二进制划分一组（不足四位数可补0），然后写出每一组二进制数所对应的十六进制数码即可，采用的是“四位一并法”。</p>
+<p>例题：将二进制数10110.0011转成对应的十六进制数</p>
+<p>首先将二进制数10110.0011写出对应的十六进制数码为0001  0110 . 0011</p>
+<p>接下来再看十六进制表示和与二进制数之间的对应关系表：</p>
+<p>十进制数表示与十六进制数表示对照表：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">0				1				2				3				4				5		</div><div class="line">0				1				2				3				4				5</div><div class="line"></div><div class="line">6				7				8				9				10			11</div><div class="line">6				7				8				9				A				B	</div><div class="line"></div><div class="line">12		       	13		       	14	           15</div><div class="line">C				D				E				F</div></pre></td></tr></table></figure>
+<p>十六进制数与二进制数对应关系表：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">0		    1			2			3			4			5		</div><div class="line">0000		0001		0010		0011		0100		0101</div><div class="line"></div><div class="line">6			7			8			9			A			B</div><div class="line">0110		0111		1000		1001		1010		1011</div><div class="line"></div><div class="line">C			D			E			F</div><div class="line">1100		1101		1110		1111</div></pre></td></tr></table></figure>
+<p>对应关系表可以采用8421法来对应转换，可以参考<a href="https://baike.baidu.com/item/8421码/4405565?fr=aladdin" target="_blank" rel="external">8421码</a>，牢记对应关系，在转换的过程中就会事半功倍。</p>
+<p>然后将十六进制数码按取四合一法，即每四位取成一位，就是对应的十六进制数：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">0001  0110 . 0011</div><div class="line">1	  6	   . 3</div></pre></td></tr></table></figure>
+<p>所以例题中的二进制数10110.0011转成十六进制数为0x16.3</p>
+<p>注：十六进制的表示法，用字母H后缀表示，也可以用0x前缀表示，比如BH表示16进制11，比如0x23就是16进制的23</p>
+<p>关于十六进制的转换，更加直观的理解可以参考<a href="https://www.cnblogs.com/OICOmay/p/7691278.html" target="_blank" rel="external">这里</a>。</p>
+<p><strong>（c.）二进制转八进制：</strong></p>
+<p>二进制转换为八进制，采用“三位一并法”，就是以小数点为中心向左或向右以每三位划分一组，（不足三位的补0），这样就可以轻松的进行转换。</p>
+<p>例题：将二进制数10110.0011转成对应的八进制数</p>
+<p>首先将二进制数10110.0011写出对应的八进制数码为010  110 . 001 100</p>
+<p>接下来再看八进制表示和与二进制数之间的对应关系表：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"> 0		 1		 2		 3		</div><div class="line">000		001		010		011	</div><div class="line"></div><div class="line"> 4		 5		 6		 7		</div><div class="line">100		101		110		111</div></pre></td></tr></table></figure>
+<p>对应关系表可以采用421法来对应转换，然后将八进制数码按取三合一法，即每三位取成一位，就是对应的八进制数：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">010  110 . 001 100</div><div class="line">2	 6	 .  1   4</div></pre></td></tr></table></figure>
+<p>所以例题中的二进制数10110.0011转成八进制数为26.14</p>
+<h4 id="5-其他进制转换为二进制"><a href="#5-其他进制转换为二进制" class="headerlink" title="5. 其他进制转换为二进制"></a>5. 其他进制转换为二进制</h4><p><strong>（a.）十进制转二进制：</strong></p>
+<p>整数转换：采用连续除基取余(短除法)，逆序排列法，直至商为0。</p>
+<p>小数转换：采用连续乘基（即2）取整，顺序排列法，直至乘积没有小数，一般是乘不尽的，保留相应位数即可。</p>
+<p>例题：将十进制数125.11转为二进制数(保留6位小数)</p>
+<p>先算整数部分：(除2取余法)</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">125/2 = 62 ...... 1(余数)</div><div class="line">62/2  = 31 ...... 0</div><div class="line">31/2  = 15 ...... 1</div><div class="line">15/2  = 7  ...... 1</div><div class="line">7/2   = 3  ...... 1</div><div class="line">3/2   = 1  ...... 1</div><div class="line">1/2   = 0  ...... 1 // 直至商为0，逆序排列，由下往上抄写为1111101</div></pre></td></tr></table></figure>
+<p>再来算小数部分：(乘2取整法)</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">0.11 × 2 = 0.22 ...... 0 (取整)</div><div class="line">0.22 × 2 = 0.44 ...... 0</div><div class="line">0.44 × 2 = 0.88 ...... 0</div><div class="line">0.88 × 2 = 1.76 ...... 1</div><div class="line">0.76 × 2 = 1.52 ...... 1</div><div class="line">0.52 × 2 = 1.04 ...... 1</div><div class="line">... 	一般都是乘不尽的，保留相应的小数位即可，顺序排列，由上往下抄写为000111</div></pre></td></tr></table></figure>
+<p>所以例题中最后结果为1111101.000111</p>
+<p><strong>（b.）十六进制转二进制：</strong></p>
+<p>把每一位十六进制数对应转换为一个四位二进制数即可。</p>
+<p>例题：将十六进制数5FD6.7转为二进制数</p>
+<p>由上面的对应关系表可以得出：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">5		F	    D       6 	    . 	7</div><div class="line">0101	1111	1101	0110	.	0111</div></pre></td></tr></table></figure>
+<p>高位的0可以省去，所以最后结果为101111111010110.0111</p>
+<p><strong>（c.）八进制转二进制：</strong></p>
+<p>同理，把每一位八进制数对应转换为一个三位二进制数即可。</p>
+<p>例题：将八进制数25.5转为二进制数</p>
+<p>由上面的对应关系表可以得出：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"> 2		 5		.		 7</div><div class="line">010		101		.		111</div></pre></td></tr></table></figure>
+<p>高位的0可以省去，所以最后结果为10101.111</p>
+<h4 id="6-其他进制的相互转换"><a href="#6-其他进制的相互转换" class="headerlink" title="6. 其他进制的相互转换"></a>6. 其他进制的相互转换</h4><p>其他进制转换都可以借助转为二进制再间接转换，但也有一些便捷的算法</p>
+<p><strong>（a.）十进制转十六进制：</strong></p>
+<p>整数转换：采用连续除16取余法，逆序排列法，直至商为0。</p>
+<p>小数转换：采用连续乘基（即16）取整，顺序排列法，直至乘积没有小数，一般乘不尽，保留相应位数即可。</p>
+<p>例题：将十进制数186.11转为十六进制数(保留6位小数)</p>
+<p>先算整数部分：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">186/16 = 11 ...... 10(余数)</div><div class="line">11/16  = 0  ...... 11 // 直至商为0，逆序排列，由下往上抄写为BA</div></pre></td></tr></table></figure>
+<p>再算小数部分：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">0.11 × 16 = 1.76  ...... 1(取整)</div><div class="line">0.76 × 16 = 12.16 ...... C</div><div class="line">0.16 × 16 = 2.56  ...... 2</div><div class="line">0.56 × 16 = 8.96  ...... 8</div><div class="line">0.96 × 16 = 15.36 ...... F</div><div class="line">0.36 × 16 = 5.76  ...... 5</div><div class="line">... 	一般都是乘不尽的，保留相应的小数位即可，顺序排列，由上往下抄写为1C28F5</div></pre></td></tr></table></figure>
+<p>所以例题中最后结果为BA.1C28F5</p>
+<p><strong>（b.）十进制转八进制：</strong></p>
+<p>同上面转换原理相同，整数部分使用除8取余法，小数部分使用乘8取整法</p>
+<p>例题：将十进制数186.11转为八进制数(保留6位小数)</p>
+<p>先算整数部分：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">186/8 = 23 ...... 2(余数)</div><div class="line">23/8  = 2  ...... 7</div><div class="line">2/8   = 0  ...... 2 // 直至商为0，逆序排列，由下往上抄写为272</div></pre></td></tr></table></figure>
+<p>再算小数部分：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">0.11 × 8 = 0.88  ...... 0(取整)</div><div class="line">0.88 × 8 = 7.04  ...... 7</div><div class="line">0.04 × 8 = 0.32  ...... 0</div><div class="line">0.32 × 8 = 2.56  ...... 2</div><div class="line">0.56 × 8 = 4.48  ...... 4 </div><div class="line">0.48 × 8 = 3.84  ...... 3</div><div class="line">... 保留相应的小数位顺序排列，由上往下抄写为070243</div></pre></td></tr></table></figure>
+<p>所以例题中最后结果为272.070243</p>
+<p><strong>（c.）十六进制转十进制：</strong></p>
+<p>十进制的权就是$10^n$，十六进制的权就是$16^n$，同理按权展开求和即可。</p>
+<p>例如将十六进制BBA5 .2转为十进制数：</p>
+<p>0xBBA5 .2F $ = 11 \times 16^3 + 11 \times 16^2 + 10 \times 16^1 + 5 \times 16^0 + 2 \times16^{-1}$</p>
+<p>​                     $=(45056 + 2816 + 160 + 5 + 0.125)_{10}$</p>
+<p>​                     $= (48037.125)_{10}$</p>
+<p><strong>（d.）八进制转十进制：</strong></p>
+<p>八进制的权就是$8^n$</p>
+<p>例如将八进制75 .2转为十进制数，同理按权展开求和为：</p>
+<p>$(75.2)_8 = (7 \times 8^1) + (5 \times 8^0) + (2 \times 8^{-1})$  </p>
+<p>​              $=(56+5+0.25)_{10}$            </p>
+<p>​              $=(61.25)_{10} $</p>
+<h4 id="7-相关概念"><a href="#7-相关概念" class="headerlink" title="7. 相关概念"></a>7. 相关概念</h4><p><strong>（a.）机器数</strong></p>
+<p>一个数在计算机中的二进制表现形式，叫做这个数的机器数，机器数是带符号的，在计算机用一个数的最高位存放符号，正数位为0，负数为1。</p>
+<p>例：+3(10进制)    ———  0000 0011(2进制)          计算机字节长8位</p>
+<p><strong>（b.）真值</strong></p>
+<p>将带符号的机器数对应的真正数值称为机器数的真值.</p>
+<p>例：1000 0011(2) ——— 该数据代表的真值为-3(10)</p>
+<p><strong>（c.）原码、反码、补码</strong></p>
+<p>原码：一个整数按照绝对值大小转换成的二进制数称为原码</p>
+<p>反码：将二进制数按位取反，取得的新二进制数称为原二进制数的反码。</p>
+<p>补码：反码加1称为补码</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;1-二进制简介&quot;&gt;&lt;a href=&quot;#1-二进制简介&quot; class=&quot;headerlink&quot; title=&quot;1. 二进制简介&quot;&gt;&lt;/a&gt;1. 二进制简介&lt;/h4&gt;&lt;p&gt;二进制数据是用0和1两个数码来表示的数。它的基数为2，进位规则是“逢二进一”，借位规则是“借一当二”。当前的计算机系统使用的基本上是二进制系统，数据在计算机中主要是以补码的形式存储的。计算机中的二进制则是一个非常微小的开关，用“开”来表示1，“关”来表示0。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="技术" scheme="http://note.snail-z.me/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="编程基础" scheme="http://note.snail-z.me/tags/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
     <title>iOS 11/iPhoneX/Xcode9 适配笔记</title>
     <link href="http://note.snail-z.me/2017/09/23/iOS%2011:iPhoneX:Xcode9%20%E9%80%82%E9%85%8D%E7%AC%94%E8%AE%B0/"/>
     <id>http://note.snail-z.me/2017/09/23/iOS 11:iPhoneX:Xcode9 适配笔记/</id>
@@ -659,7 +796,7 @@
 <p>可以看到上面代码主要就在于取消了<code>pointInside</code>函数的检测，让我们可以捕获到当前 Frame 范围以外的子 View 的触控事件。</p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li><a href="https://hit-alibaba.github.io/interview/iOS/Cocoa-Touch/Event-Handling.html" target="_blank" rel="external">事件处理-iOS面试题</a></li>
-<li><a href="http://blog.csdn.net/wzzvictory/article/details/9264335" target="_blank" rel="external">Cocoa Touch事件处理流程–响应者链</a></li>
+<li><a href="http://blog.csdn.net/wzzvictory/article/details/9264335" target="_blank" rel="external">Cocoa Touch事件处理流程—响应者链</a></li>
 </ul>
 ]]></content>
     
@@ -1005,7 +1142,7 @@
 <h4 id="逛京城"><a href="#逛京城" class="headerlink" title="逛京城"></a>逛京城</h4><p>西单，王府井，崇文门，国贸，三里屯，蓝色港湾，望京798，中关村，五道口，南锣鼓巷，雍和宫，簋街，立水桥，奥林匹克公园，故宫，长城等。我在这些地方留下了我的足迹。无论在哪里都离不开吃喝住行，在北京的吃喝住行还算是便利的，虽然南北有差异，但是在北京的生活并不让我排斥。</p>
 <h4 id="谋生术"><a href="#谋生术" class="headerlink" title="谋生术"></a>谋生术</h4><p>工作就是做自己喜欢做的事情————敲代码。我喜欢做的事情很多，看书，画画，设计，总结一句就是看到美好的事物总是心生向往，想去触碰它。敲代码是一件我已经做了快4年的事情了。不是什么高手级别的，只是一年比一年对它更加熟悉，更加了解它，更想去了解它的点滴。对于想去了解它的动机也越来越单纯。它不再是一个用来挣钱养活自己的利器，而是它更加具有魅力，让我更想追寻着它奔跑。有人说追着累，而我有时候感觉看着它发展也挺高兴的。跟着它的脚步看它在未来某个时候蜕变或是变得消声觅迹也是一种心灵上的安慰。在这个互联网的时代，遍地是码农的时代，我只想做好自己，保持学习，分享的心态。</p>
 <h4 id="流浪四海"><a href="#流浪四海" class="headerlink" title="流浪四海"></a>流浪四海</h4><p>曾经畅想过很多次我的老年生活————我希望到了某个年纪，有诗和远方。人总是喜欢用各种方式满足自己的好奇心。以前的生活很慢，慢得一生只够爱一个人。现在的生活很快，快到现在我在北京，晚上我估计已经在厦门和朋友聚餐了。这样的航空条件，还有当今的多媒体，让我们对整个国家乃至整个地球有了即视感。巴西的热带丛林，澳洲夏天的圣诞节，斯里兰卡的海岸线，欧洲的古老建筑，纽约的Open。我很想去亲身体验一下。想想这些场景，自己心里美滋滋的，脸上也洋溢的微笑，感觉棒棒的。这是我不敲代码想做的事情。(我会努力的带你走遍世界的每个角落~~)</p>
-<p>— <a href="http://www.jianshu.com/p/17321419e238" target="_blank" rel="external">小鸿子的随笔</a></p>
+<p>—- <a href="http://www.jianshu.com/p/17321419e238" target="_blank" rel="external">小鸿子的随笔</a></p>
 ]]></content>
     
     <summary type="html">
@@ -1087,7 +1224,7 @@
 <li><a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="external">Hexo 使用文档</a></li>
 <li><a href="http://theme-next.iissnan.com" target="_blank" rel="external">NexT 使用文档</a></li>
 <li><a href="http://zhouhuix.cn/2016/11/24/%E4%BF%AE%E6%94%B9Hexo%E7%9A%84Next%E4%B8%BB%E9%A2%98/" target="_blank" rel="external">修改Hexo的Next主题</a></li>
-<li><a href="https://www.fengyu.info/blog/2016/06/30/hexo-theme-next-modify/" target="_blank" rel="external">Hexo Next主题修改与优化 – 基础篇</a></li>
+<li><a href="https://www.fengyu.info/blog/2016/06/30/hexo-theme-next-modify/" target="_blank" rel="external">Hexo Next主题修改与优化 — 基础篇</a></li>
 <li><a href="http://www.wuxubj.cn/2016/08/Hexo-nexT-build-personal-blog/" target="_blank" rel="external">Hexo+nexT主题搭建个人博客</a></li>
 <li><a href="https://github.com/iissnan/hexo-theme-next/wiki" target="_blank" rel="external">hexo-theme-next wiki</a></li>
 <li><a href="https://maxchendt.github.io/Blog/20161007NextSet.html" target="_blank" rel="external">NexT 主题私人定制</a></li>
